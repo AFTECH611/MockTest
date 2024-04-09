@@ -17,4 +17,6 @@ public:
 	std::string getDeparture();
 	std::string getDestination();
 	int getPrice();
+	std::string toString();
+	bool fromString(std::string s);
 };

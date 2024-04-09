@@ -12,18 +12,16 @@ private:
     static std::vector<Vehicle> vehicles;
 
 public:
-    static void loadTrips();
-    static void loadHotels();
-    static void loadVehicles();
-    static void printAllHotels();
-    static void printAllVehicles();
+    template<class T>
+    static void load(std::string path, std::vector<T> vec);
+
+    static void sortTrips();
     static void sortHotels();
     static void sortVehicles();
+
+    static std::vector<Trip> searchTrips();
     static std::vector<Hotel> searchHotels();
     static std::vector<Vehicle> searchVehicles();
-    static std::unique_ptr<Hotel> getHotelFromVector(std::vector<std::string> vec);
-    static std::unique_ptr<Vehicle> getVehicleFromVector(std::vector<std::string> vec);
-
 };
 
 #endif

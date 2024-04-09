@@ -11,7 +11,8 @@ private:
 public:
     std::vector<std::string> getCommandsList() override;
     void executeCommand(int command) override;
-    void toString() override;
+    std::string toString() override;
+    bool fromString(std::string s) override;
     void editUser(std::string username);
     void removeUser(std::string username);
     void addHotel();

@@ -19,15 +19,15 @@ public:
     void setName(std::string name);
     const std::string& getAddress();
     void setAddress(std::string address);
+    const std::vector<Trip>& getBookedTrips();
     
     std::vector<std::string> getCommandsList() override;
     void executeCommand(int command) override;
-    void toString() override; 
-    std::vector<Trip>& getBookedTrips();
+    std::string toString() override; 
+    bool fromsTring(std::string s);
     void editTrip();
     void cancelTrip();
     void editUserInfo();
-    
 
     void display() override;
 

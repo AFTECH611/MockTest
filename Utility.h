@@ -12,7 +12,10 @@ public:
     static bool isValidAcc(std::string acc);
     static bool isValidPassword(std::string pass);
     static bool isValidName(std::string name);  
+    static int getCommandFromCLI();
+    static std::vector<std::string> stringToVector(std::string s, char delimiter);
     static void isValidDate(std::string date);
+
 };
 
 #endif

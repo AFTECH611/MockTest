@@ -17,11 +17,11 @@ Application& Application::getApplication() {
 
 void Application::run() {
     while(true) {
-        // log in while
+        // while the account is not logged in
         while(!AccountManager::getCurrentAccount()) {
             Utility::printVector(getAppCommandsList());
 
-            int command = getCommandFromCLI();
+            int command = Utility::getCommandFromCLI();
 
             executeAppCommand(command);
         }
@@ -30,7 +30,7 @@ void Application::run() {
         while(AccountManager::getCurrentAccount()) {
             Utility::printVector(AccountManager::getCurrentAccount()->getCommandsList());
     
-            int command = getCommandFromCLI();
+            int command = Utility::getCommandFromCLI();
 
             AccountManager::getCurrentAccount()->executeCommand(command);
         }
@@ -64,21 +64,6 @@ void Application::executeAppCommand(int command) {
         default:
         {
             std::cout << "Unknown command" << std::endl;
-        }
-    }
-}
-
-int Application::getCommandFromCLI() {
-    std::string command;
-
-    while(true) {
-        std::cout << "Insert command: "; std::cin >> command;
-
-        if(Utility::isValidInt(command)) {
-            return stoi(command);
-        }
-        else {
-            std::cout << "Invalid command" << std::endl;
         }
     }
 }

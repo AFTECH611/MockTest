@@ -16,7 +16,6 @@ public:
 
     std::vector<std::string> getAppCommandsList();
     void executeAppCommand(int command);
-    int getCommandFromCLI();
 };
 
 

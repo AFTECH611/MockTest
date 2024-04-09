@@ -22,6 +22,10 @@ void User::setAddress(std::string addr) {
     address = addr;
 }
 
+const std::vector<Trip>& User::getBookedTrips() {
+    return bookedTrips;
+}
+
 std::vector<std::string> User::getCommandsList() {
     
 }

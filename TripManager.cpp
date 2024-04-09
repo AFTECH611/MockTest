@@ -1,10 +1,11 @@
 #include "TripManager.h"
+#include "DatabaseManager.h"
 
-std::unique_ptr<Hotel> TripManager::getHotelFromVector(std::vector<std::string> vec) {
-    try {
-        return std::unique_ptr<Hotel> (new Hotel(vec[0], vec[1], ));
-    }
-    catch(const std::exception& e) {
-        return nullptr;
-    }
-}
+// void TripManager::loadTrips(std::string path) { 
+//     std::vector<std::string> strTrips;
+//     DatabaseManager::readFile(path,strTrips);
+
+//     for() {
+
+//     }
+// }

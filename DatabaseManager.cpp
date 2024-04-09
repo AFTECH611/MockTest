@@ -4,15 +4,6 @@
 
 #include "DatabaseManager.h"
 
-std::unique_ptr<DatabaseManager> DatabaseManager::dm = nullptr;
-const DatabaseManager& DatabaseManager::getDatabaseManager() {
-    if(!dm) {
-        dm = std::unique_ptr<DatabaseManager>(new DatabaseManager);
-    }
-
-    return *(dm.get());
-}
-
 void DatabaseManager::readFile(std::string path, std::vector<std::string>& vec) {
     std::ifstream file(path);
 

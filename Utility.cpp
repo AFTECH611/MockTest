@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 #include <unordered_map>
 
 #include "Utility.h"
@@ -121,4 +122,35 @@ void Utility::printVector(std::vector<std::string> vec) {
     for(const std::string& s: vec) {
         std::cout << s << std::endl;
     }
+}
+
+int Utility::getCommandFromCLI() {
+    std::string command;
+
+    while(true) {
+        std::cout << "Insert command: "; std::cin >> command;
+
+        if(Utility::isValidInt(command)) {
+            return stoi(command);
+        }
+        else {
+            std::cout << "Invalid command" << std::endl;
+        }
+    }
+
+    return stoi(command);
+}
+
+std::vector<std::string> Utility::stringToVector(std::string s, char delimiter) {
+    std::vector<std::string> vec;
+
+	std::stringstream ss(s);
+
+	while(ss.good()) {
+		std::string temp;
+		getline(ss,temp, ',');
+		vec.push_back(temp);
+	}
+    
+    return vec;
 }

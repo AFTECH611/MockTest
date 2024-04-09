@@ -2,21 +2,27 @@
 #include "Utility.h"
 #include <vector>
 
-struct room {
+class Room {
+public:
 	std::string type;
 	int available;
 	int price;
+	std::string toString();
+	void fromString(std::string s);
 };
 
 class Hotel {
 private:
 	std::string address;
 	std::string name;
-	std::vector<room> roomTypeList;
+	std::vector<Room> roomTypeList;
+
 public:
 	Hotel();
-	Hotel(std::string _address, std::string _name, std::vector<room> _roomTypeList);
+	Hotel(std::string _address, std::string _name, std::vector<Room> _roomTypeList);
 	std::string getAddress();
 	std::string getName();
-	std::vector<room> getRoomTypeList();
+	std::vector<Room> getRoomTypeList();
+	std::string toString();
+	bool fromString(std::string s);
 };
