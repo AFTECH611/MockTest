@@ -19,7 +19,7 @@ void Application::run() {
     while(true) {
         // log in while
         while(!AccountManager::getCurrentAccount()) {
-            printAppCommandsList();
+            Utility::printVector(getAppCommandsList());
 
             int command = getCommandFromCLI();
 
@@ -28,22 +28,20 @@ void Application::run() {
 
         // while user is logged in
         while(AccountManager::getCurrentAccount()) {
-            AccountManager::getCurrentAccount()->printCommandsList();
-            
+            Utility::printVector(AccountManager::getCurrentAccount()->getCommandsList());
+    
             int command = getCommandFromCLI();
 
             AccountManager::getCurrentAccount()->executeCommand(command);
         }
 
-        // AccountManager::logOutAccount(currentAccount);
+        AccountManager::logout();
     }
 
 }
 
-void Application::printAppCommandsList() {
-    std::cout << "1 - Login account" << std::endl;
-    std::cout << "2 - Register account" << std::endl;
-    std::cout << "3 - Exit program" << std::endl;
+std::vector<std::string> Application::getAppCommandsList() {
+    return std::vector<std::string>{"1 - Login account", "2 - Register account", "3 - Exit program"};
 }
 
 void Application::executeAppCommand(int command) {

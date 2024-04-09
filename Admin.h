@@ -9,7 +9,7 @@ class Admin: public Account {
 private:
 
 public:
-    void printCommandsList() override;
+    std::vector<std::string> getCommandsList() override;
     void executeCommand(int command) override;
     void toString() override;
     void editUser(std::string username);

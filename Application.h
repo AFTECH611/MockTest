@@ -14,7 +14,7 @@ public:
     
     void run();
 
-    void printAppCommandsList();
+    std::vector<std::string> getAppCommandsList();
     void executeAppCommand(int command);
     int getCommandFromCLI();
 };

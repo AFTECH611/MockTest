@@ -22,8 +22,8 @@ void User::setAddress(std::string addr) {
     address = addr;
 }
 
-void User::printCommandsList() {
-
+std::vector<std::string> User::getCommandsList() {
+    
 }
 
 void User::executeCommand(int command) {

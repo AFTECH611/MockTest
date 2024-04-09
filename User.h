@@ -20,15 +20,14 @@ public:
     const std::string& getAddress();
     void setAddress(std::string address);
     
-    void printCommandsList() override;
+    std::vector<std::string> getCommandsList() override;
     void executeCommand(int command) override;
     void toString() override; 
-    std::vector<Hotel>& getBookedHotels();
-    void bookHotel();
-    void cancelHotel();
-    std::vector<Vehicle>& getBookedTransportations();
-    void bookTransportation();
-    void cancelTransportation();
+    std::vector<Trip>& getBookedTrips();
+    void editTrip();
+    void cancelTrip();
+    void editUserInfo();
+    
 
     void display() override;
 

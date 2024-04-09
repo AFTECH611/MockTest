@@ -1,15 +1,8 @@
-// #include "Application.h"
-#include "DatabaseManager.h"
-
-#include <vector>
+#include "Application.h"
 
 using namespace std;
 
 int main() {
-    // Application::getApplication().run();
-    vector<string> v{"a", "b", "c"};
-
-
-    DatabaseManager::writeFile("testFile.txt", v);
+    Application::getApplication().run();
     return 0;
 }

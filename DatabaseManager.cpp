@@ -5,7 +5,7 @@
 #include "DatabaseManager.h"
 
 std::unique_ptr<DatabaseManager> DatabaseManager::dm = nullptr;
-DatabaseManager& DatabaseManager::getDatabaseManager() {
+const DatabaseManager& DatabaseManager::getDatabaseManager() {
     if(!dm) {
         dm = std::unique_ptr<DatabaseManager>(new DatabaseManager);
     }

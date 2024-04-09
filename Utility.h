@@ -8,6 +8,7 @@ public:
     static bool isValidInt(std::string s);
     static std::string encrypt(std::string s);
     static std::string toLower(std::string input);
+    static void printVector(std::vector<std::string> vec);
     static bool isValidAcc(std::string acc);
     static bool isValidPassword(std::string pass);
     static bool isValidName(std::string name);  

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <unordered_map>
 
 #include "Utility.h"
@@ -114,4 +115,10 @@ bool Utility::isValidName(std::string name) {
         }
     }
     return true;
+}
+
+void Utility::printVector(std::vector<std::string> vec) {
+    for(const std::string& s: vec) {
+        std::cout << s << std::endl;
+    }
 }
