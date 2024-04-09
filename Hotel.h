@@ -1,18 +1,22 @@
 #pragma once
-#include "util.h"
+#include "Utility.h"
+#include <vector>
 
 struct room{
-	std::string type;
+	string type;
 	int available;
 	int price;
 };
 
 class Hotel {
 private:
-	std::string address;
-	std::string name;
-	room roomTypeList;
+	string address;
+	string name;
+	vector<room> roomTypeList;
 public:
-	void get();
-	void set();
+	Hotel();
+	Hotel(string _address, string _name, vector<room> _roomTypeList);
+	string getAddress();
+	string getName();
+	vector<room> getRoomTypeList();
 };
