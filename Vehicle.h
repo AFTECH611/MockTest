@@ -17,5 +17,4 @@ public:
 	std::string getDeparture();
 	std::string getDestination();
 	int getPrice();
-	//void set();
 };

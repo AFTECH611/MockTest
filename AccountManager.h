@@ -18,13 +18,9 @@ private:
     static Account* currentAccount;
 
 public:
-    // AccountManager() : currentUser(nullptr) {}
-
-    // ~AccountManager() {
-    //     for (Account* acc : accounts) {
-    //         delete acc;
-    //     }
-    // }
+    static Account* getCurrentAccount() {
+        return currentAccount;
+    }
 
     static bool exists(string username){
         for (int i = 0; i < accounts.size(); i++) {
@@ -110,18 +106,6 @@ public:
         }
         return age;
     }
-
-    // chi moi user can register
-    
-    // static void registerAdmin(){
-    //     Account* newAdmin = new Admin();
-    //     string acc = inputRegAccount();
-    //     string pass = inputRegPassword();
-    //     newAdmin->setUsername(acc);
-    //     newAdmin->setPassword(pass);
-    //     accounts.push_back(newAdmin);
-    //     cout << "Administrator account registered successfully." << endl;
-    // }
 
     static void registerUser(){
         Account* newUser = new User();

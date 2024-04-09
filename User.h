@@ -10,8 +10,7 @@ private:
     int age;
     std::string name;
     std::string address;
-    std::vector<Hotel> bookedHotels;
-    std::vector<Vehicle> bookedTransportations;
+    std::vector<Trip> bookedTrips;
 
 public:
     const int& getAge();

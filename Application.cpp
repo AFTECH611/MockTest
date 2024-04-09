@@ -18,7 +18,7 @@ Application& Application::getApplication() {
 void Application::run() {
     while(true) {
         // log in while
-        while(!currentAccount) {
+        while(!AccountManager::getCurrentAccount()) {
             printAppCommandsList();
 
             int command = getCommandFromCLI();
@@ -27,12 +27,12 @@ void Application::run() {
         }
 
         // while user is logged in
-        while(currentAccount) {
-            currentAccount->printCommandsList();
+        while(AccountManager::getCurrentAccount()) {
+            AccountManager::getCurrentAccount()->printCommandsList();
             
             int command = getCommandFromCLI();
 
-            currentAccount->executeCommand(command);
+            AccountManager::getCurrentAccount()->executeCommand(command);
         }
 
         // AccountManager::logOutAccount(currentAccount);

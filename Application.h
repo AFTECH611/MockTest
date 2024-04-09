@@ -4,11 +4,9 @@
 #include <memory>
 #include "Account.h"
 
-class Application {
+class Application final {
 private:
     static std::unique_ptr<Application> app;
-    std::unique_ptr<Account> currentAccount;
-
     Application();
 
 public:
