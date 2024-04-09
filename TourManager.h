@@ -3,28 +3,28 @@
 
 #include <vector>
 #include "Hotel.h"
-#include "Transportation.h"
+#include "Vehicle.h"
 
 class TourManager {
 private:
     static std::vector<Hotel> allHotels;
-    static std::vector<Transportation> allTransportations;
+    static std::vector<Vehicle> allVehicles;
 
 public:
     static void loadAllHotels();
-    static void loadAllTransportations();
+    static void loadAllVehicles();
     static void printHotel();
-    static void printTransportation();
+    static void printVehicle();
     static void printAllHotels();
-    static void printAllTransportations();
+    static void printAllVehicles();
     static void sortHotels();
-    static void sortTransportations();
+    static void sortVehicles();
     static std::vector<Hotel> searchHotels();
-    static std::vector<Transportation> searchTransportations();
+    static std::vector<Vehicle> searchVehicles();
     static Hotel hotelFromString(std::string s);
-    static Transportation transporationFromString(std::string s);
+    static Vehicle transporationFromString(std::string s);
     static std::string hotelToString(Hotel r);
-    static std::string transporationToString(Transportation v);
+    static std::string transporationToString(Vehicle v);
 
 };
 

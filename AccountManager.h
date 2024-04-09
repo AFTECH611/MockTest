@@ -15,7 +15,7 @@ using namespace std;
 class AccountManager {
 private:
     static vector<Account*> accounts;
-    static Account* currentUser;
+    static Account* currentAccount;
 
 public:
     // AccountManager() : currentUser(nullptr) {}
@@ -142,7 +142,7 @@ public:
         string pass = inputLogPassword();
         for (Account* acc : accounts) {
             if (acc->getUsername() == username && acc->getPassword() == pass) {
-                currentUser = acc;
+                currentAccount = acc;
                 cout << "Logged in successfully." << endl;
                 return true;
             }
@@ -152,7 +152,7 @@ public:
     }
 
     static void logout() {
-        currentUser = nullptr;
+        currentAccount = nullptr;
         cout << "Logged out successfully." << endl;
     }
 
@@ -172,6 +172,6 @@ public:
 };
 
 vector<Account*> AccountManager::accounts;
-Account* AccountManager::currentUser;
+Account* AccountManager::currentAccount;
 
 #endif

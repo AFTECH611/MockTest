@@ -5,9 +5,9 @@ Vehicle::Vehicle() {
 	price = 0;
 }
 
-Vehicle::Vehicle(string _type, string _brand, string _departure,
-	string _destination, string _startDate,
-	string _endDate, int _price) {
+Vehicle::Vehicle(std::string _type, std::string _brand, std::string _departure,
+	std::string _destination, std::string _startDate,
+	std::string _endDate, int _price) {
 	type = _type;
 	brand = _brand;
 	departure = _departure;
@@ -17,27 +17,27 @@ Vehicle::Vehicle(string _type, string _brand, string _departure,
 	price = _price;
 }
 
-string Vehicle::getStartDate() {
+std::string Vehicle::getStartDate() {
 	return startDate;
 }
 
-string Vehicle::getEndDate() {
+std::string Vehicle::getEndDate() {
 	return endDate;
 }
 
-string Vehicle::getType() {
+std::string Vehicle::getType() {
 	return type;
 }
 
-string Vehicle::getBrand() {
+std::string Vehicle::getBrand() {
 	return brand;
 }
 
-string Vehicle::getDeparture() {
+std::string Vehicle::getDeparture() {
 	return departure;
 }
 
-string Vehicle::getDestination() {
+std::string Vehicle::getDestination() {
 	return destination;
 }
 

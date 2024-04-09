@@ -17,6 +17,7 @@ Application& Application::getApplication() {
 
 void Application::run() {
     while(true) {
+        // log in while
         while(!currentAccount) {
             printAppCommandsList();
 
@@ -25,6 +26,7 @@ void Application::run() {
             executeAppCommand(command);
         }
 
+        // while user is logged in
         while(currentAccount) {
             currentAccount->printCommandsList();
             

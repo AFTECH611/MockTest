@@ -7,7 +7,7 @@ Trip::Trip() {
 	startDate = "None";
 }
 
-Trip::Trip(string _departure, string _destination, string _startDate, string _endDate, int _price) {
+Trip::Trip(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price) {
 	departure = _departure;
 	destination = _destination;
 	startDate = _startDate;
@@ -19,31 +19,31 @@ int Trip::getPrice() {
 	return price;
 }
 
-string Trip::getDeparture() {
+std::string Trip::getDeparture() {
 	return departure;
 }
 
-string Trip::getDestination() {
+std::string Trip::getDestination() {
 	return destination;
 }
 
-string Trip::getStartDate() {
+std::string Trip::getStartDate() {
 	return startDate;
 }
 
-string Trip::getEndDate() {
+std::string Trip::getEndDate() {
 	return endDate;
 }
 
-vector<Vehicle> Trip::getVehicleList() {
+std::vector<Vehicle> Trip::getVehicleList() {
 	return vehicleList;
 }
 
-vector<Hotel> Trip::getHotelList() {
+std::vector<Hotel> Trip::getHotelList() {
 	return hotelList;
 }
 
-void Trip::setData(string _departure, string _destination, string _startDate, string _endDate, int _price) {
+void Trip::setData(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price) {
 	departure = _departure;
 	destination = _destination;
 	startDate = _startDate;

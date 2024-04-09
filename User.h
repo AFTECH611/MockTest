@@ -11,7 +11,7 @@ private:
     std::string name;
     std::string address;
     std::vector<Hotel> bookedHotels;
-    std::vector<Transportation> bookedTransportations;
+    std::vector<Vehicle> bookedTransportations;
 
 public:
     const int& getAge();
@@ -27,7 +27,7 @@ public:
     std::vector<Hotel>& getBookedHotels();
     void bookHotel();
     void cancelHotel();
-    std::vector<Transportation>& getBookedTransportations();
+    std::vector<Vehicle>& getBookedTransportations();
     void bookTransportation();
     void cancelTransportation();
 

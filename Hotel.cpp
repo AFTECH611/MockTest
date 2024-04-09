@@ -4,7 +4,7 @@ Hotel::Hotel() {
 	address = name = "None";
 }
 
-Hotel::Hotel(string _address, string _name, vector<room> _roomTypeList) {
+Hotel::Hotel(std::string _address, std::string _name, std::vector<room> _roomTypeList) {
 	address = _address;
 	name = _name;
 	for (int i = 0; i < _roomTypeList.size(); i++) {
@@ -14,14 +14,14 @@ Hotel::Hotel(string _address, string _name, vector<room> _roomTypeList) {
 	}
 }
 
-string Hotel::getAddress() {
+std::string Hotel::getAddress() {
 	return address;
 }
 
-string Hotel::getName() {
+std::string Hotel::getName() {
 	return name;
 }
 
-vector<room> Hotel::getRoomTypeList() {
+std::vector<room> Hotel::getRoomTypeList() {
 	return roomTypeList;
 }
