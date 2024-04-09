@@ -2,7 +2,7 @@
 
 #include "Application.h"
 #include "Utility.h"
-#include "User.h"
+#include "AccountManager.h"
 
 Application::Application() {}
 
@@ -17,7 +17,6 @@ Application& Application::getApplication() {
 
 void Application::run() {
     while(true) {
-
         while(!currentAccount) {
             printAppCommandsList();
 
@@ -34,7 +33,7 @@ void Application::run() {
             currentAccount->executeCommand(command);
         }
 
-        AccountManager::logOutAccount(currentAccount);
+        // AccountManager::logOutAccount(currentAccount);
     }
 
 }
@@ -49,27 +48,12 @@ void Application::executeAppCommand(int command) {
     switch(command) {
         case 1:
         {
-            std::string username, password;
-            std::cout << "Enter username:"; std::cin >> username;
-            std::cout << "Enter password:"; std::cin >> password;
-            AccountManager::logInAccount(currentAccount, username,password);
-            if(currentAccount) {
-                std::cout << "Logged in successful" << std::endl;
-            }
-            else {
-                std::cout << "Logged in unsuccessful" << std::endl;
-            }
-
+            AccountManager::login();
             break;
         }
         case 2:
         {
-            while(true) {
-                std::string username, password;
-                std::cout << "Enter username:"; std::cin >> username;
-                std::cout << "Enter password:"; std::cin >> password;
-                if(AccountManager::registerUser(currentAccount, username, password)) break;
-            }
+            AccountManager::registerUser();
             break;
         }
         case 3:

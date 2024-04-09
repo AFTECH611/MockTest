@@ -1,5 +1,5 @@
-#ifndef USER_H
-#define USER_H
+#ifndef ADMIN_H
+#define ADMIN_H
 
 #include <vector>
 #include "Account.h"
@@ -11,6 +11,7 @@ private:
 public:
     void printCommandsList() override;
     void executeCommand(int command) override;
+    void toString() override;
     void editUser(std::string username);
     void removeUser(std::string username);
     void addHotel();
@@ -19,6 +20,7 @@ public:
     void addTransportation();
     void editTransportation();
     void removeTransporation();
+    void display() override;
 };
 
 #endif

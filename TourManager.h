@@ -26,7 +26,6 @@ public:
     static std::string hotelToString(Hotel r);
     static std::string transporationToString(Transportation v);
 
-
 };
 
 #endif
