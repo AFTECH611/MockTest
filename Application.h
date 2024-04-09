@@ -2,6 +2,7 @@
 #define APPLICATION_H
 
 #include <memory>
+#include <vector>
 #include "Account.h"
 
 class Application final {
@@ -13,7 +14,6 @@ public:
     static Application& getApplication();
     
     void run();
-
     std::vector<std::string> getAppCommandsList();
     void executeAppCommand(int command);
 };

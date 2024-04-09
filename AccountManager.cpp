@@ -1,7 +1,27 @@
+#include "DatabaseManager.h"
 #include "AccountManager.h"
 
+std::vector<std::unique_ptr<Account>> accounts;
 std::unique_ptr<Account> AccountManager::currentAccount = nullptr;
-std::vector<Account*> accounts;
+
+// bool AccountManager::load(std::string accountsPath) {
+//     std::vector<std::string> strAccounts;
+//     DatabaseManager::readFile(accountsPath, strAccounts);
+//     try {
+//         for() {
+
+//         }
+//         // Utility::stringToVector(accountsPath, ',');
+
+//     }
+//     catch(const std::exception& e) {
+//         std::cout << "TripManager failed to load" << std::endl;
+//         return false;
+//     }
+
+//     return true;
+
+// }
 
 const std::unique_ptr<Account>& AccountManager::getCurrentAccount() {
     return currentAccount;

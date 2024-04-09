@@ -6,9 +6,9 @@
 #include "Hotel.h"
 
 class Admin: public Account {
-private:
-
 public:
+    Admin();
+    Admin(std::string _username, std::string _password);
     std::vector<std::string> getCommandsList() override;
     void executeCommand(int command) override;
     std::string toString() override;

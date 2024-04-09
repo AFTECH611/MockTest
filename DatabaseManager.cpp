@@ -26,3 +26,10 @@ void DatabaseManager::writeFile(std::string path, const std::vector<std::string>
     }
 }
 
+void DatabaseManager::appendFile(std::string path, const std::string s) {
+    std::ofstream file(path, std::ios_base::app);
+    if(file.is_open()) {
+        file << s;
+    }
+}
+

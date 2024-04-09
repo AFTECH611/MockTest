@@ -1,11 +1,26 @@
+#include <iostream>
 #include "TripManager.h"
 #include "DatabaseManager.h"
 
-// void TripManager::loadTrips(std::string path) { 
-//     std::vector<std::string> strTrips;
-//     DatabaseManager::readFile(path,strTrips);
+template<class T>
+bool loadVector(std::string path, std::vector<T> vec) {
+    std::vector<std::string> strVec;
+    DatabaseManager::readFile(path, strVec);
 
-//     for() {
+    try {
+        for(std::string s: strVec) {
+            T t;
+            t.fromString(s);
+            vec.push_back(t);
+        }
+    }
+    catch() {
+        std::cout << "TripManager failed to load" << std::endl;
+    }
+    
+    return true;
+}
 
-//     }
-// }
+bool TripManager::load(std::string tripsPath, std::string hotelsPath, std::string vehiclesPath) {
+    return loadVector<Trip>(tripsPath, trips) && loadVector<Hotel>(hotelsPath, hotels) && loadVector<Vehicle>(vehiclesPath, vehicles);
+}

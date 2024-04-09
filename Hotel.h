@@ -7,8 +7,11 @@ public:
 	std::string type;
 	int available;
 	int price;
+
+	Room();
+	Room(std::string _type, int _available, int _price);
 	std::string toString();
-	void fromString(std::string s);
+	bool fromString(std::string s);
 };
 
 class Hotel {

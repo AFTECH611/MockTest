@@ -17,6 +17,7 @@ private:
     static std::unique_ptr<Account> currentAccount;
 
 public:
+    static bool load(std::string accountsPath);
     static const std::unique_ptr<Account>& getCurrentAccount();
     static bool exists(std::string username);
     static std::string inputRegAccount();

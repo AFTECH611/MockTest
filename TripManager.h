@@ -12,8 +12,7 @@ private:
     static std::vector<Vehicle> vehicles;
 
 public:
-    template<class T>
-    static void load(std::string path, std::vector<T> vec);
+    static bool load(std::string tripsPath, std::string hotelsPath, std::string vehiclesPath);
 
     static void sortTrips();
     static void sortHotels();

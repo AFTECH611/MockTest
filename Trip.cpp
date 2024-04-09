@@ -1,4 +1,4 @@
-#include <string>
+#include <iostream>
 #include "Trip.h"
 
 Trip::Trip() {
@@ -56,14 +56,46 @@ void Trip::setData(std::string _departure, std::string _destination, std::string
 	vehicle = _vehicle;
 }
 
-// std::string Trip::toString() {
-// 	std::string s = departure + "," + destination + "," + startDate + "," + endDate + "," + std::to_string(price);
+std::string Trip::toString() {
+	std::string s = departure + "," + destination + "," + startDate + "," + endDate + "," + std::to_string(price);
 
-// 	if(hotel.getName() != "") {
+	if(hotel.getName() != "") {
+		s+= ",[" + hotel.toString() + "]";
+	}
 
-// 	}
+	s+=",";
 
-// 	s+=",";
+	if(vehicle.getType() != "") {
+		s+= ",[" + vehicle.toString() + "]";
+	}
 
-// 	return s;
-// }
+	return s;
+}
+
+bool Trip::fromString(std::string s) {
+	std::vector<std::string> vec = Utility::stringToVector(s,',');
+
+	try {
+		std::string _departure, _destination, _startDate, _endDate;
+		int _price;
+		departure = vec.at(0);
+		destination = vec.at(1);
+		startDate = vec.at(2);
+		endDate = vec.at(3);
+		price = std::stoi(vec.at(4));
+		Hotel tempHotel;
+		if(tempHotel.fromString(vec.at(5)) && tempHotel.getName() != "None") {
+			hotel = tempHotel;
+		}
+		Vehicle tempVehicle;
+		if(tempVehicle.fromString(vec.at(6)) && tempVehicle.getType() != "None") {
+			vehicle = tempVehicle;
+		}
+	}
+	catch(const std::exception& e) {
+		std::cout << "Can't read vehicle from string." << std::endl;
+		return false;
+	}
+
+	return true;
+}
