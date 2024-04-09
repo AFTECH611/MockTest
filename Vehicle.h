@@ -17,5 +17,8 @@ public:
 	std::string getDeparture();
 	std::string getDestination();
 	int getPrice();
-	//void set();
+	void setData(std::string _type, std::string _brand, std::string _departure,
+		std::string _destination, std::string _startDate,
+		std::string _endDate, int _price);
+	void display();
 };
