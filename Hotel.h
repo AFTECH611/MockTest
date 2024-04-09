@@ -1,14 +1,22 @@
-#ifndef HOTEL_H
-#define HOTEL_H
+#pragma once
+#include "Utility.h"
+#include <vector>
 
-#include <string>
-
-struct Hotel {
-    std::string hotelName;
-    std::string location;
-    std::string roomType;
-    int availableRooms;
-    int pricePerNight;
+struct room{
+	string type;
+	int available;
+	int price;
 };
 
-#endif
+class Hotel {
+private:
+	string address;
+	string name;
+	vector<room> roomTypeList;
+public:
+	Hotel();
+	Hotel(string _address, string _name, vector<room> _roomTypeList);
+	string getAddress();
+	string getName();
+	vector<room> getRoomTypeList();
+};
