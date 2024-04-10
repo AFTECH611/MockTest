@@ -2,6 +2,7 @@
 #define UTILITY_H
 
 #include <string>
+#include <vector>
 
 class Utility final{
 public:

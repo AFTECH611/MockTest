@@ -17,25 +17,25 @@ Application& Application::getApplication() {
 
 void Application::run() {
     while(true) {
-        // // while the account is not logged in
-        // while(!AccountManager::getCurrentAccount()) {
-        //     Utility::printVector(getAppCommandsList());
+        // while the account is not logged in
+        while(!AccountManager::getCurrentAccount()) {
+            Utility::printVector(getAppCommandsList());
 
-        //     int command = Utility::getCommandFromCLI();
+            int command = Utility::getCommandFromCLI();
 
-        //     executeAppCommand(command);
-        // }
+            executeAppCommand(command);
+        }
 
-        // // while user is logged in
-        // while(AccountManager::getCurrentAccount()) {
-        //     Utility::printVector(AccountManager::getCurrentAccount()->getCommandsList());
+        // while user is logged in
+        while(AccountManager::getCurrentAccount()) {
+            Utility::printVector(AccountManager::getCurrentAccount()->getCommandsList());
     
-        //     int command = Utility::getCommandFromCLI();
+            int command = Utility::getCommandFromCLI();
 
-        //     AccountManager::getCurrentAccount()->executeCommand(command);
-        // }
+            AccountManager::getCurrentAccount()->executeCommand(command);
+        }
 
-        // AccountManager::logout();
+        AccountManager::logout();
     }
 
 }
@@ -48,12 +48,12 @@ void Application::executeAppCommand(int command) {
     switch(command) {
         case 1:
         {
-            // AccountManager::login();
+            AccountManager::login();
             break;
         }
         case 2:
         {
-            // AccountManager::registerUser();
+            AccountManager::registerUser();
             break;
         }
         case 3:

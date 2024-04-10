@@ -1,6 +1,10 @@
 #include "DatabaseManager.h"
 #include "AccountManager.h"
 
+
+std::vector<std::shared_ptr<Account>> AccountManager::accounts;
+std::shared_ptr<Account> AccountManager::currentAccount;
+
 bool AccountManager::load(std::string accountsPath) {
     // std::vector<std::string> strAccounts;
     // DatabaseManager::readFile(accountsPath, strAccounts);

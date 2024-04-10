@@ -32,7 +32,4 @@ public:
     static void changeUserInfo(std::string name, std::string address, int age);
 };
 
-std::vector<std::shared_ptr<Account>> AccountManager::accounts;
-std::shared_ptr<Account> AccountManager::currentAccount;
-
 #endif
