@@ -10,7 +10,6 @@ Application& Application::getApplication() {
     if(!app) {
         app = std::unique_ptr<Application>(new Application);
     }
-
     return *(app.get());
 }
 
@@ -19,7 +18,6 @@ void Application::run() {
     TripManager::load("./Database/Hotels.txt", "./Database/Vehicles.txt");
 
     while(true) {
-
         // while the account is not logged in
         while(!AccountManager::getCurrentAccount()) {
             Utility::printVector(getAppCommandsList());
@@ -27,6 +25,8 @@ void Application::run() {
             int command = Utility::getCommandFromCLI();
 
             executeAppCommand(command);
+            AccountManager::updateDatabase("./Database/Accounts.txt");
+            TripManager::updateDatabase("./Database/Hotels.txt", "./Database/Vehicles.txt");
         }
 
         // while user is logged in
@@ -39,8 +39,6 @@ void Application::run() {
         }
 
         AccountManager::logout();
-        AccountManager::updateDatabase("./Database/Accounts.txt");
-        TripManager::updateDatabase("./Database/Hotels.txt", "./Database/Vehicles.txt");
     }
 }
 

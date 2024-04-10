@@ -3,7 +3,6 @@
 
 #include "Utility.h"
 #include "Account.h"
-#include "User.h"
 #include "Admin.h"
 
 class AccountManager {

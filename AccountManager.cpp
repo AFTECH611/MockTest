@@ -1,5 +1,6 @@
 #include "DatabaseManager.h"
 #include "AccountManager.h"
+#include "User.h"
 
 std::vector<std::shared_ptr<Account>> AccountManager::accounts;
 std::shared_ptr<Account> AccountManager::currentAccount;
