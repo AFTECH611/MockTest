@@ -117,9 +117,11 @@ bool Utility::isValidName(std::string name) {
 }
 
 void Utility::printVector(std::vector<std::string> vec) {
+    std::cout << "Menu: \n";
     for(const std::string& s: vec) {
         std::cout << s << std::endl;
     }
+    std::cout << "Enter number in range (1-" << vec.size() << "): ";
 }
 
 int Utility::getCommandFromCLI() {

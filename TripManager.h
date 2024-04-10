@@ -15,10 +15,18 @@ public:
     static void sortHotels();
     static void sortVehicles();
 
-    static std::vector<Hotel> searchHotels();
-    static std::vector<Vehicle> searchVehicles();
-
     static void updateDatabase(std::string hotelsPath, std::string vehiclesPath);
+    static void searchHotels();
+    static void searchVehicles();
+
+    static void deleteHotel();
+    static void deleteVehicle();
+
+    static void addVehicle();
+    static void addHotel();
+
+    static void displayHotels();
+    static void displayVehicles();
 };
 
 #endif

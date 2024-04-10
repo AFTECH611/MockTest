@@ -43,7 +43,7 @@ void Application::run() {
 }
 
 std::vector<std::string> Application::getAppCommandsList() {
-    return std::vector<std::string>{"1 - Login account", "2 - Register account", "3 - Exit program"};
+    return std::vector<std::string>{"1 - Login account", "2 - Register account", "3 - Auto create admin", "4 - Exit"};
 }
 
 void Application::executeAppCommand(int command) {
@@ -59,6 +59,11 @@ void Application::executeAppCommand(int command) {
             break;
         }
         case 3:
+        {
+            AccountManager::autoCreateAdmin();
+            break;
+        }
+        case 4:
         {
             exit(1);
             break;

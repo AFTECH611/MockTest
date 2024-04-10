@@ -61,6 +61,7 @@ bool User::fromString(std::string s) {
     
     try {
         if(vec.at(0) != "0") return false;
+        type = "user";
         username = vec.at(1);
         password = vec.at(2);
         name = vec.at(3);
@@ -83,9 +84,10 @@ bool User::fromString(std::string s) {
 }
 
 void User::display() {
-    std:: cout << "USER ACCOUNT" << std::endl;
-    std::cout << "Username: " << username << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Address: " << address << std::endl;
-    std::cout << "Age: " << age << std::endl;
+    std::cout << "|" << std::setw(20) << std::left << username << "| " << std::setw(20) << std::left << name << "| "  << std::setw(22) << std::left << address << "| " << std::setw(15) << std::right << age << "|" << std::endl;
+    // std:: cout << "USER ACCOUNT" << std::endl;
+    // std::cout << "Username: " << username << std::endl;
+    // std::cout << "Name: " << name << std::endl;
+    // std::cout << "Address: " << address << std::endl;
+    // std::cout << "Age: " << age << std::endl;
 }
