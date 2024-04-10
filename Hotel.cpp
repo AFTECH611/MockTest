@@ -33,9 +33,14 @@ void Hotel::setData(std::string _address, std::string _name, int _numbOfTypeRoom
 	name = _name;
 	numbOfTypeRoom = _numbOfTypeRoom;
 	for (int i = 0; i < _numbOfTypeRoom; i++) {
-		roomTypeList[i].available = _roomTypeList[i].available;
-		roomTypeList[i].type = _roomTypeList[i].type;
-		roomTypeList[i].price = _roomTypeList[i].price;
+		std::string _type = _roomTypeList[i].type;
+		int _available = _roomTypeList[i].available;
+		int _price = _roomTypeList[i].price;
+		room newRoom;
+		newRoom.available = _available;
+		newRoom.price = _price;
+		newRoom.type = _type;
+		roomTypeList.push_back(newRoom);
 	}
 }
 
