@@ -3,20 +3,19 @@
 
 class Vehicle {
 private:
-	std::string type, brand, departure, destination, startDate, endDate;
+	string type, brand, departure, destination, startDate, endDate;
 	int price;
 public:
 	Vehicle();
-	Vehicle(std::string _type, std::string _brand, std::string _departure,
-		std::string _destination, std::string _startDate,
-		std::string _endDate, int _price);
-	std::string getStartDate();
-	std::string getEndDate();
-	std::string getType();
-	std::string getBrand();
-	std::string getDeparture();
-	std::string getDestination();
+	Vehicle(string _type, string _brand, string _departure,
+		string _destination, string _startDate,
+		string _endDate, int _price);
+	string getStartDate();
+	string getEndDate();
+	string getType();
+	string getBrand();
+	string getDeparture();
+	string getDestination();
 	int getPrice();
-	std::string toString();
-	bool fromString(std::string s);
+	//void set();
 };

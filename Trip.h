@@ -6,22 +6,20 @@
 
 class Trip {
 private:
-	std::string departure, destination, startDate, endDate;
 	int price;
-	Hotel hotel;
-	Vehicle vehicle;
+	string departure, destination, startDate, endDate;
+	vector<Vehicle> vehicleList;
+	vector<Hotel> hotelList;
 
 public:
 	Trip();
-	Trip(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, Hotel _hotel, Vehicle _vehicle);
+	Trip(string _departure, string _destination, string _startDate, string _endDate, int _price);
 	int getPrice();
-	std::string getDeparture();
-	std::string getDestination();
-	std::string getStartDate();
-	std::string getEndDate();
-	Hotel getHotel();
-	Vehicle getVehicle();
-	void setData(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, Hotel _hotel, Vehicle _vehicle);
-	std::string toString();
-	bool fromString(std::string s);
+	string getDeparture();
+	string getDestination();
+	string getStartDate();
+	string getEndDate();
+	vector<Vehicle> getVehicleList();
+	vector<Hotel> getHotelList();
+	void setData(string _departure, string _destination, string _startDate, string _endDate, int _price);
 };
