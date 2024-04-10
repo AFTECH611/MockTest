@@ -29,6 +29,10 @@ public:
     static void registerUser();
     static bool login();
     static void logout();
+    static void deleteUser(std::string account);
+    static void searchingUser(std::string account);
+    static void displayAllAccounts();
+    static void autoCreateAdmin();
     static void changeUserInfo(std::string name, std::string address, int age);
 };
 

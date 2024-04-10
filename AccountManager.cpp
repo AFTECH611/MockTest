@@ -121,9 +121,10 @@ void AccountManager::registerUser(){
     std::string pass = inputRegPassword();
     int age = inputAge();
     newUser->setUsername(acc);
+    newUser->setPassword(pass);
+    newUser->setType("user");
     dynamic_cast<User*>(newUser.get())->setName(name); 
     dynamic_cast<User*>(newUser.get())->setAge(age);
-    dynamic_cast<User*>(newUser.get())->setPassword(pass);
     accounts.push_back(move(newUser));
     std::cout << "User account registered successfully." << std::endl;
 }
@@ -146,6 +147,40 @@ bool AccountManager::login() {
 void AccountManager::logout() {
     currentAccount = nullptr;
     std::cout << "Logged out successfully." << std::endl;
+}
+
+void AccountManager::displayAllAccounts(){
+    for(std::shared_ptr<Account>& acc : accounts){
+        acc->display();
+    }
+}
+
+void AccountManager::deleteUser(std::string username){
+    for(auto ac = accounts.begin(); ac != accounts.end(); ++ac){
+        if(ac->get()->getType() == "user"){
+            if(ac->get()->getUsername() == username){
+                accounts.erase(ac);
+                break;
+            }
+        }
+    }
+}
+
+void AccountManager::searchingUser(std::string username){
+    for(std::shared_ptr<Account>& acc : accounts){
+        if(acc->getUsername() == username) acc->display();
+    }
+}
+
+void AccountManager::autoCreateAdmin(){
+    std::shared_ptr<Account> newUser(new Admin());
+    std::string username = "admin";
+    std::string password = "admin";
+    newUser->setUsername(username); 
+    newUser->setPassword(password);
+    newUser->setType("admin");
+    accounts.push_back(move(newUser));
+    std::cout << "Admin account registered successfully." << std::endl;
 }
 
 void AccountManager::changeUserInfo(std::string name, std::string address, int age) {
