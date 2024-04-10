@@ -28,7 +28,7 @@ public:
     void removeHotel();
     void addTransportation();
     void editTransportation();
-    void removeTransporation();
+    void removeTransportation();
     void display() override;
 };
 

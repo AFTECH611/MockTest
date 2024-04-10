@@ -96,9 +96,9 @@ void Hotel::showRoomType() {
 			<< std::setw(10) << std::left << roomTypeList[i].price << std::endl;
 	}
 }
-std::vector<room> Hotel::searchRoom(std::string type, int available, int price){
-	std::vector<room> result;
-	for(room myRoom : roomTypeList){
+std::vector<Room> Hotel::searchRoom(std::string type, int available, int price){
+	std::vector<Room> result;
+	for(Room myRoom : roomTypeList){
 		if(myRoom.type == type && myRoom.available == price && myRoom.price == price){
 			result.push_back(myRoom);
 		}

@@ -24,7 +24,7 @@ public:
 	void setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList);
 	void display();
 	void showRoomType();
-	std::vector<room> searchRoom(std::string type, int available, int price);
+	std::vector<Room> searchRoom(std::string type, int available, int price);
 	std::string toString();
 	bool fromString(std::string s);
 };

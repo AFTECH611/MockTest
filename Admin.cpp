@@ -42,7 +42,7 @@ void Admin::executeCmdAfterUser(){
     {
         std::string username;
         username = AccountManager::inputLogAccountUser();
-        AccountManager::searchingUser(username);
+        AccountManager::searchUser(username);
         break;
     }      
     case 3:

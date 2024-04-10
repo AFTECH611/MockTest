@@ -25,8 +25,6 @@ void Application::run() {
             int command = Utility::getCommandFromCLI();
 
             executeAppCommand(command);
-            AccountManager::updateDatabase("./Database/Accounts.txt");
-            TripManager::updateDatabase("./Database/Hotels.txt", "./Database/Vehicles.txt");
         }
 
         // while user is logged in
@@ -39,6 +37,8 @@ void Application::run() {
         }
 
         AccountManager::logout();
+        AccountManager::updateDatabase("./Database/Accounts.txt");
+        TripManager::updateDatabase("./Database/Hotels.txt", "./Database/Vehicles.txt");
     }
 }
 
