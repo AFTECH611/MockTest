@@ -1,4 +1,2 @@
 1,admin,admin
-0,longvh34,Longcon1,vu hoang long,None,1
-0,nguyendk4,Nguyen123,do khoi nguyen,None,1
-0,hieunt05,Hieubeo123,nguyen truong hieu,None,1
+0,longvh34,5223669382134602710,vu hoang long,None,1

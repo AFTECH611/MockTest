@@ -128,6 +128,7 @@ void AccountManager::registerUser(){
     std::string acc = inputRegAccount();
     std::string name = inputFullName();
     std::string pass = inputRegPassword();
+    pass = Utility::encrypt(pass);
     int age = inputAge();
     newUser->setUsername(acc);
     newUser->setPassword(pass);
@@ -154,6 +155,7 @@ void AccountManager::greeting() {
 bool AccountManager::login() {
     std::string username = inputLogAccountUser(); 
     std::string pass = inputLogPassword();
+    pass = Utility::encrypt(pass);
     for (std::shared_ptr<Account>& acc : accounts) {
         if (acc->getUsername() == username && acc->getPassword() == pass) {
             currentAccount = acc;
