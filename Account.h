@@ -1,8 +1,7 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
-#include <string>
-#include <vector>
+#include "Utility.h"
 
 class Account {
 protected:

@@ -1,9 +1,7 @@
 #ifndef DATABASE_MANAGER_H
 #define DATABASE_MANAGER_H
 
-#include <string>
-#include <vector>
-#include <memory>
+#include "Utility.h"
 
 class DatabaseManager final {
 public:

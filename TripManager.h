@@ -1,8 +1,7 @@
 #ifndef TOUR_MANAGER_H
 #define TOUR_MANAGER_H
 
-#include <vector>
-#include <memory>
+#include "Utility.h"
 #include "Trip.h"
 
 class TripManager {

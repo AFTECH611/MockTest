@@ -1,7 +1,5 @@
-#include <iostream>
-
-#include "Application.h"
 #include "Utility.h"
+#include "Application.h"
 #include "AccountManager.h"
 #include "TripManager.h"
 

@@ -1,8 +1,7 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <memory>
-#include <vector>
+#include "Utility.h"
 #include "Account.h"
 
 class Application final {

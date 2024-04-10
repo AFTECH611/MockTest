@@ -1,4 +1,3 @@
-#include <iostream>
 #include "TripManager.h"
 #include "DatabaseManager.h"
 

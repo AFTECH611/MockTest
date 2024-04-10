@@ -1,5 +1,3 @@
-#include <iostream>
-#include <iomanip>
 #include "Trip.h"
 
 Trip::Trip() {
@@ -88,7 +86,7 @@ bool Trip::fromString(std::string s) {
 		if(tempHotel.fromString(Utility::stripBrackets(vec.at(5))) && tempHotel.getName() != "None") {
 			hotel = tempHotel;
 		}
-		
+
 		Vehicle tempVehicle;
 
 		if(tempVehicle.fromString(Utility::stripBrackets(vec.at(6))) && tempVehicle.getType() != "None") {

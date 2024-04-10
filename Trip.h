@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include "Utility.h"
 #include "Vehicle.h"
 #include "Hotel.h"

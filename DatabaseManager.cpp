@@ -1,7 +1,4 @@
-#include <iostream>
 #include <fstream>
-#include <vector>
-
 #include "DatabaseManager.h"
 
 void DatabaseManager::readFile(std::string path, std::vector<std::string>& vec) {

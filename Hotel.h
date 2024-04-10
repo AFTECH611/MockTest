@@ -1,6 +1,5 @@
 #pragma once
 #include "Utility.h"
-#include <vector>
 
 struct Room {
 	std::string type;

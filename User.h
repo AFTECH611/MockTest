@@ -1,7 +1,7 @@
 #ifndef USER_H
 #define USER_H
 
-#include <vector>
+#include "Utility.h"
 #include "Account.h"
 #include "Trip.h"
 

@@ -1,11 +1,6 @@
 #ifndef ACCOUNT_MANAGER_H
 #define ACCOUNT_MANAGER_H
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <memory>
-
 #include "Utility.h"
 #include "Account.h"
 #include "User.h"

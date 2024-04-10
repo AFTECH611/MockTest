@@ -1,7 +1,4 @@
-#include <iostream>
-#include <iomanip>
 #include "Hotel.h"
-
 
 Hotel::Hotel() {
 	address = name = "None";
