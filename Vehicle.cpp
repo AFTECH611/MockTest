@@ -1,3 +1,5 @@
+#include <iostream>
+#include <iomanip>
 #include "Vehicle.h"
 
 Vehicle::Vehicle() {
@@ -5,9 +7,9 @@ Vehicle::Vehicle() {
 	price = 0;
 }
 
-Vehicle::Vehicle(string _type, string _brand, string _departure,
-	string _destination, string _startDate,
-	string _endDate, int _price) {
+Vehicle::Vehicle(std::string _type, std::string _brand, std::string _departure,
+	std::string _destination, std::string _startDate,
+	std::string _endDate, int _price) {
 	type = _type;
 	brand = _brand;
 	departure = _departure;
@@ -17,30 +19,80 @@ Vehicle::Vehicle(string _type, string _brand, string _departure,
 	price = _price;
 }
 
-string Vehicle::getStartDate() {
+std::string Vehicle::getStartDate() {
 	return startDate;
 }
 
-string Vehicle::getEndDate() {
+std::string Vehicle::getEndDate() {
 	return endDate;
 }
 
-string Vehicle::getType() {
+std::string Vehicle::getType() {
 	return type;
 }
 
-string Vehicle::getBrand() {
+std::string Vehicle::getBrand() {
 	return brand;
 }
 
-string Vehicle::getDeparture() {
+std::string Vehicle::getDeparture() {
 	return departure;
 }
 
-string Vehicle::getDestination() {
+std::string Vehicle::getDestination() {
 	return destination;
 }
 
 int Vehicle::getPrice() {
 	return price;
+}
+
+void Vehicle::setData(std::string _type, std::string _brand, std::string _departure,
+	std::string _destination, std::string _startDate,
+	std::string _endDate, int _price) {
+	type = _type;
+	brand = _brand;
+	departure = _departure;
+	destination = _destination;
+	startDate = _startDate;
+	endDate = _endDate;
+	price = _price;
+}
+
+void Vehicle::display() {
+	std::cout << std::setw(10) << std::left << type << "|"
+		<< std::setw(10) << std::left << brand << "|"
+		<< std::setw(15) << std::left << departure << "|"
+		<< std::setw(15) << std::left << destination << "|"
+		<< std::setw(10) << std::left << startDate << "|"
+		<< std::setw(10) << std::left << endDate << "|"
+		<< std::setw(10) << std::left << price << "|" << std::endl;
+}
+
+std::string Vehicle::toString() {
+	return type + "," + brand + "," + departure + "," + destination + "," + startDate + "," + endDate + "," + std::to_string(price);
+}
+
+bool Vehicle::fromString(std::string s) {
+	std::vector<std::string> vec = Utility::stringToVector(s, ',');
+
+	try {
+		std::string _type, _brand, _departure, _destination, _startDate, _endDate;
+		int _price;
+		_type = vec.at(0);
+		_brand = vec.at(1);
+		_departure = vec.at(2);
+		_destination = vec.at(3);
+		_startDate = vec.at(4);
+		_endDate = vec.at(5);
+		_price = stoi(vec.at(6));
+
+		*this = Vehicle(_type, _brand, _departure, _destination, _startDate, _endDate, _price);
+	}
+	catch(const std::exception& e) {
+		std::cout << "Can't read vehicle from string" << std::endl;
+		return false;
+	}
+
+	return true;
 }

@@ -1,5 +1,5 @@
-#include "User.h"
 #include <iostream>
+#include "User.h"
 
 User::User() {
     username = password = name = address = "None";
@@ -45,7 +45,7 @@ std::vector<std::string> User::getCommandsList() {
 }
 
 void User::executeCommand(int command) {
-
+    
 }
 
 std::string User::toString() {
@@ -57,14 +57,14 @@ std::string User::toString() {
 }
 
 bool User::fromString(std::string s) {
-    // std::vector<std::string> vec = Utility::stringToVector(s, ',');
-    // try {
-    //     if(vec.at(0) != "0") return false;
+    std::vector<std::string> vec = Utility::stringToVector(s, ',');
+    try {
+        if(vec.at(0) != "0") return false;
 
-    // }
-    // catch(const std::exception& e) {
-    //     return false;
-    // }
+    }
+    catch(const std::exception& e) {
+        return false;
+    }
 
     return true;
 }
