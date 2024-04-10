@@ -1,0 +1,45 @@
+SedanToyotaNew York CityLos Angeles2024/05/012024/05/10800
+SUVFordChicagoMiami2024/06/152024/06/301200
+HatchbackHondaSeattleSan Francisco2024/07/102024/07/20700
+ConvertibleBMWBostonLas Vegas2024/08/052024/08/151500
+TruckChevroletDallasDenver2024/09/012024/09/101000
+SedanHyundaiAtlantaOrlando2024/10/102024/10/20850
+SUVJeepMiamiTampa2024/11/052024/11/151100
+HatchbackSubaruPortlandSan Diego2024/12/012024/12/10750
+ConvertibleMazdaLos AngelesSan Francisco2025/01/152025/01/251600
+TruckToyotaDenverPhoenix2025/02/102025/02/201050
+SedanChevroletNew OrleansHouston2025/03/052025/03/15900
+SUVVolvoSeattleDenver2025/04/012025/04/101250
+HatchbackKiaChicagoMinneapolis2025/05/152025/05/25700
+ConvertibleFiatSan FranciscoLas Vegas2025/06/102025/06/201700
+TruckFordDallasSt. Louis2025/07/052025/07/151100
+SedanHyundaiAtlantaOrlando2024/10/102024/10/20850
+SUVJeepMiamiTampa2024/11/052024/11/151100
+HatchbackSubaruPortlandSan Diego2024/12/012024/12/10750
+ConvertibleMazdaLos AngelesSan Francisco2025/01/152025/01/251600
+TruckToyotaDenverPhoenix2025/02/102025/02/201050
+SedanChevroletNew OrleansHouston2025/03/052025/03/15900
+SUVVolvoSeattleDenver2025/04/012025/04/101250
+HatchbackKiaChicagoMinneapolis2025/05/152025/05/25700
+ConvertibleFiatSan FranciscoLas Vegas2025/06/102025/06/201700
+TruckFordDallasSt. Louis2025/07/052025/07/151100
+SedanToyotaNew York CityLos Angeles2025/08/012025/08/10900
+SUVHondaChicagoMiami2025/09/152025/09/301300
+HatchbackSubaruSeattleSan Francisco2025/10/102025/10/20800
+ConvertibleBMWBostonOrlando2025/11/052025/11/151700
+TruckFordDallasDenver2025/12/012025/12/101100
+SedanChevroletLos AngelesSan Diego2026/01/152026/01/25950
+SUVJeepMiamiTampa2026/02/102026/02/201350
+HatchbackKiaPortlandPhoenix2026/03/052026/03/15750
+ConvertibleMazdaSan FranciscoLos Angeles2026/04/012026/04/101800
+TruckToyotaDenverSeattle2026/05/152026/05/251200
+SedanFordNew York CityWashington D.C.2026/06/102026/06/20950
+SUVToyotaLos AngelesSan Francisco2026/07/052026/07/151400
+HatchbackHondaChicagoDenver2026/08/012026/08/10850
+ConvertibleAudiMiamiOrlando2026/09/152026/09/301600
+TruckChevroletDallasHouston2026/10/102026/10/201050
+SedanHyundaiSeattlePortland2026/11/052026/11/15900
+SUVSubaruBostonNew York City2026/12/012026/12/101250
+HatchbackNissanSan FranciscoLos Angeles2027/01/152027/01/25750
+ConvertibleMercedes-BenzDenverPhoenix2027/02/102027/02/201700
+TruckJeepAtlantaMiami2027/03/052027/03/151100

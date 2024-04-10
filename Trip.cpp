@@ -61,21 +61,21 @@ void Trip::setData(int _id, std::string _departure, std::string _destination, st
 }
 
 std::string Trip::toString() {
-	std::string s = departure + "," + destination + "," + startDate + "," + endDate + "," + std::to_string(price);
+	std::string s = departure + Utility::strCommaD() + destination + Utility::strCommaD() + startDate + Utility::strCommaD() + endDate + Utility::strCommaD() + std::to_string(price);
 
 	if(hotel.getName() != "") {
-		s+= ",[" + hotel.toString() + "]";
+		s+= Utility::strCommaD() + Utility::strOpenBracketD() + hotel.toString() + Utility::strCloseBracketD();
 	}
 
 	if(vehicle.getType() != "") {
-		s+= ",[" + vehicle.toString() + "]";
+		s+= Utility::strCommaD() + Utility::strOpenBracketD() + vehicle.toString() + Utility::strCloseBracketD();
 	}
 
 	return s;
 }
 
 bool Trip::fromString(std::string s) {
-	std::vector<std::string> vec = Utility::stringToVector(s,',');
+	std::vector<std::string> vec = Utility::stringToVector(s, 31);
 	
 	try {
 		std::string _departure, _destination, _startDate, _endDate;

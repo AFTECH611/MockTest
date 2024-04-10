@@ -26,6 +26,9 @@ public:
     static int inputAge();
     static void delay();
     static int dateDiff(std::string date1, std::string date2);
+    static std::string strOpenBracketD();
+    static std::string strCloseBracketD();
+    static std::string strCommaD();
 };
 
 #endif

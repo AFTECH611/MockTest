@@ -5,7 +5,7 @@ std::vector<Hotel> TripManager::hotels;
 std::vector<Vehicle> TripManager::vehicles;
 
 template<class T>
-bool loadVector(std::string path, std::vector<T> vec) {
+bool loadVector(std::string path, std::vector<T>& vec) {
     std::vector<std::string> strVec;
     DatabaseManager::readFile(path, strVec);
 

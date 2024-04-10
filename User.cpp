@@ -43,15 +43,15 @@ const std::vector<Trip>& User::getBookedTrips() {
 }
 
 std::string User::toString() {
-    std::string s = "0," + username + "," + password + "," + name + "," + address + "," + std::to_string(age);
+    std::string s = "0" + Utility::strCommaD() + username + Utility::strCommaD() + password + Utility::strCommaD() + name + Utility::strCommaD() + address + Utility::strCommaD() + std::to_string(age);
     for(Trip t: bookedTrips) {
-        s+=",[" + t.toString() + "]";
+        s+=Utility::strCommaD() + Utility::strOpenBracketD() + t.toString() + Utility::strCloseBracketD();
     }
     return s;
 }
 
 bool User::fromString(std::string s) {
-    std::vector<std::string> vec = Utility::stringToVector(s, ',');
+    std::vector<std::string> vec = Utility::stringToVector(s, 31);
     
     try {
         if(vec.at(0) != "0") return false;
@@ -251,7 +251,6 @@ void User::makeItinerary() {
     while (!Utility::isValidPlace(to)) {
         std::cout << "Invalid place type, try: "; getline(std::cin, to);
     }
-
 }
 
 void User::showItinerary() {
@@ -277,6 +276,6 @@ void User::showItinerary() {
         }
     }
     else {
-        std::cout << "You have ho itinerary booked to show" << std::endl;
+        std::cout << "You have no itinerary booked to show" << std::endl;
     }
 }

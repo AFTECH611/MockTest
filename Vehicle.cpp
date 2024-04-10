@@ -70,11 +70,11 @@ void Vehicle::display() {
 }
 
 std::string Vehicle::toString() {
-	return type + "," + brand + "," + departure + "," + destination + "," + startDate + "," + endDate + "," + std::to_string(price);
+	return type + Utility::strCommaD() + brand + Utility::strCommaD() + departure + Utility::strCommaD() + destination + Utility::strCommaD() + startDate + Utility::strCommaD() + endDate + Utility::strCommaD() + std::to_string(price);
 }
 
 bool Vehicle::fromString(std::string s) {
-	std::vector<std::string> vec = Utility::stringToVector(s, ',');
+	std::vector<std::string> vec = Utility::stringToVector(s, 31);
 	try {
 		type = vec.at(0);
 		brand = vec.at(1);

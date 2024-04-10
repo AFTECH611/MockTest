@@ -145,10 +145,10 @@ std::vector<std::string> Utility::stringToVector(std::string s, char delimiter) 
             vec.push_back("");
         }
         else {
-            if(c == '[') {
+            if(c == 29) {
                 openBrackets++;
             }
-            else if(c == ']') {
+            else if(c == 30) {
                 openBrackets--;
             }
         
@@ -159,7 +159,7 @@ std::vector<std::string> Utility::stringToVector(std::string s, char delimiter) 
 }
 
 std::string Utility::stripBrackets(std::string s) {
-    if((s[0] == '(' && s.back() == ')') || (s[0] == '[' && s.back() == ']') || (s[0] == '{' && s.back() == '}')) {
+    if((s[0] == '(' && s.back() == ')') || (s[0] == '[' && s.back() == ']') || (s[0] == '{' && s.back() == '}') || (s[0] == 29 && s.back() == 30)) {
         s.pop_back();
         s.erase(0,1);
     }
@@ -240,4 +240,16 @@ int Utility::dateDiff(std::string date1, std::string date2) {
     int date1Since1900 = daysSince1900(day1, month1, year1);
     int date2Since1900 = daysSince1900(day2, month2, year2);
     return std::abs(date2Since1900 - date1Since1900);
+}
+
+std::string Utility::strOpenBracketD() {
+    return std::string(1, char(29));
+}
+
+std::string Utility::strCloseBracketD() {
+    return std::string(1, char(30));
+}
+
+std::string Utility::strCommaD() {
+    return std::string(1, char(31));
 }

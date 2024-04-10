@@ -13,7 +13,7 @@ Admin::Admin(std::string _username, std::string _password) {
 }
 
 std::string Admin::toString() {
-    return "1," + username + "," + password;
+    return "1" + Utility::strCommaD() + username + Utility::strCommaD() + password;
 }
 
 std::vector<std::string> Admin::getCmdListsUserManagement() {
@@ -176,7 +176,7 @@ void Admin::executeCommand(int command){
 }
 
 bool Admin::fromString(std::string s) {
-    std::vector<std::string> vec = Utility::stringToVector(s, ',');
+    std::vector<std::string> vec = Utility::stringToVector(s, 31);
     
     try {
         if(vec.at(0) != "1") return false;

@@ -64,6 +64,7 @@ std::string AccountManager::inputRegAccount(){
         getline(std::cin, lwacc);
     }
     lwacc = Utility::toLower(_Acc);
+    std::cout << lwacc << std::endl;
     return lwacc;
 }
 
@@ -136,6 +137,8 @@ void AccountManager::registerUser(){
     dynamic_cast<User*>(newUser.get())->setAge(age);
     accounts.push_back(move(newUser));
     std::cout << "User account registered successfully." << std::endl;
+    updateDatabase("./Database/Accounts.txt");
+
     Utility::delay();
     system("cls");
 }

@@ -5,11 +5,10 @@
 #include "Trip.h"
 
 class TripManager {
-private:
+public:
     static std::vector<Hotel> hotels;
     static std::vector<Vehicle> vehicles;
 
-public:
     static bool load(std::string hotelsPath, std::string vehiclesPath);
 
     static void sortHotels();
