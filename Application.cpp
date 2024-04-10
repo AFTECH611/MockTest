@@ -17,33 +17,30 @@ Application& Application::getApplication() {
 
 void Application::run() {
     while(true) {
-        // log in while
-        while(!currentAccount) {
-            printAppCommandsList();
+        // while the account is not logged in
+        while(!AccountManager::getCurrentAccount()) {
+            Utility::printVector(getAppCommandsList());
 
-            int command = getCommandFromCLI();
+            int command = Utility::getCommandFromCLI();
 
             executeAppCommand(command);
         }
 
         // while user is logged in
-        while(currentAccount) {
-            currentAccount->printCommandsList();
+        while(AccountManager::getCurrentAccount()) {
+            Utility::printVector(AccountManager::getCurrentAccount()->getCommandsList());
             
-            int command = getCommandFromCLI();
+            int command = Utility::getCommandFromCLI();
 
-            currentAccount->executeCommand(command);
+            AccountManager::getCurrentAccount()->executeCommand(command);
         }
 
-        // AccountManager::logOutAccount(currentAccount);
+        AccountManager::logout();
     }
-
 }
 
-void Application::printAppCommandsList() {
-    std::cout << "1 - Login account" << std::endl;
-    std::cout << "2 - Register account" << std::endl;
-    std::cout << "3 - Exit program" << std::endl;
+std::vector<std::string> Application::getAppCommandsList() {
+    return std::vector<std::string>{"1 - Login account", "2 - Register account", "3 - Exit program"};
 }
 
 void Application::executeAppCommand(int command) {
@@ -66,21 +63,6 @@ void Application::executeAppCommand(int command) {
         default:
         {
             std::cout << "Unknown command" << std::endl;
-        }
-    }
-}
-
-int Application::getCommandFromCLI() {
-    std::string command;
-
-    while(true) {
-        std::cout << "Insert command: "; std::cin >> command;
-
-        if(Utility::isValidInt(command)) {
-            return stoi(command);
-        }
-        else {
-            std::cout << "Invalid command" << std::endl;
         }
     }
 }

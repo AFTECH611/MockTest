@@ -3,13 +3,13 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
-class DatabaseManager final{
+class DatabaseManager final {
 public:
-    static bool exists(std::string path);
-    static std::vector<std::string> readFileToVector(std::string path);
-    static void writeFileFromVector(std::string path, std::vector<std::string>);
-
+    static void readFile(std::string path, std::vector<std::string>& vec);
+    static void writeFile(std::string path, const std::vector<std::string>& vec);
+    static void appendFile(std::string path, const std::string s);
 };
 
 #endif

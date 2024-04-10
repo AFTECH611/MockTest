@@ -1,5 +1,7 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
+#include <vector>
+#include <sstream>
 #include <unordered_map>
 
 #include "Utility.h"
@@ -114,4 +116,94 @@ bool Utility::isValidName(std::string name) {
         }
     }
     return true;
+}
+
+void Utility::printVector(std::vector<std::string> vec) {
+    std::cout << "Menu: " << std::endl;
+    for(const std::string& s: vec) {
+        std::cout << s << std::endl;
+    }
+    std:: cout << "Enter number (1 - " << vec.size() << "): ";
+}
+
+int Utility::getCommandFromCLI() {
+    std::string command;
+
+    while(true) {
+        std::cout << "Insert command: "; std::cin >> command;
+
+        if(Utility::isValidInt(command)) {
+            return stoi(command);
+        }
+        else {
+            std::cout << "Invalid command" << std::endl;
+        }
+    }
+
+    return stoi(command);
+}
+
+std::vector<std::string> Utility::stringToVector(std::string s, char delimiter) {
+    std::vector<std::string> vec;
+
+	std::stringstream ss(s);
+
+	while(ss.good()) {
+		std::string temp;
+		getline(ss,temp, ',');
+		vec.push_back(temp);
+	}
+    
+    return vec;
+}
+
+bool Utility::isValidDate(std::string date) {
+    int testIdx[8] = { 0, 1, 3, 4, 6, 7, 8, 9 };
+    if (date.length() != 10) {
+        return false;
+    }
+    else if (date[2] != '/' || date[5] != '/') {
+        return false;
+    }
+    else {
+        for (int i = 0; i < 8; i++) {
+            if (date[i] < '0' && date[i] > '9') {
+                return false;
+            }
+        }
+    }
+    int day, month, year;
+    day = (date[0] - '0') * 10 + (date[1] - '0');
+    month = (date[3] - '0') * 10 + (date[4] - '0');
+    year = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + (date[9] - '0');
+    if ((day == 0 || day > 31) || (month == 0 || month > 12) || (year < 1900 || year > 2024)) {
+        return false;
+    }
+    return true;
+}
+
+bool Utility::isValidPlace(std::string s) {
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] == ' ') {
+            return false;
+        }
+    }
+}
+
+int Utility::inputAge() {
+    int age;
+    std::cout << "Enter age: ";
+    std::cin >> age;
+    while (age < 0 || std::cin.fail()) {
+        std::cout << "Age is must non-negative number. Please enter again: \n";
+        std::cin.clear();
+        std::cin.ignore();
+        std::cin >> age;
+    }
+    return age;
+}
+
+void Utility::delay() {
+    auto start = std::chrono::steady_clock::now();
+    while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 1);
 }

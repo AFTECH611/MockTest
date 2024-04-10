@@ -6,12 +6,13 @@
 #include "Hotel.h"
 
 class Admin: public Account {
-private:
-
 public:
-    void printCommandsList() override;
+    Admin();
+    Admin(std::string _username, std::string _password);
+    std::vector<std::string> getCommandsList() override;
+    std::string toString() override;
     void executeCommand(int command) override;
-    void toString() override;
+    bool fromString(std::string s) override;
     void editUser(std::string username);
     void removeUser(std::string username);
     void addHotel();

@@ -2,23 +2,20 @@
 #define APPLICATION_H
 
 #include <memory>
+#include <vector>
 #include "Account.h"
 
-class Application {
+class Application final {
 private:
     static std::unique_ptr<Application> app;
-    std::unique_ptr<Account> currentAccount;
-
     Application();
 
 public:
     static Application& getApplication();
     
     void run();
-
-    void printAppCommandsList();
+    std::vector<std::string> getAppCommandsList();
     void executeAppCommand(int command);
-    int getCommandFromCLI();
 };
 
 

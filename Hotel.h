@@ -14,7 +14,9 @@ private:
 	std::string name;
 	int numbOfTypeRoom;
 	std::vector<room> roomTypeList;
+
 public:
+
 	Hotel();
 	Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList);
 	std::string getAddress();
@@ -24,4 +26,6 @@ public:
 	void setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList);
 	void display();
 	void showRoomType();
+	std::string toString();
+	bool fromString(std::string s);
 };

@@ -12,6 +12,7 @@ private:
 	Vehicle vehicle;
 	Hotel hotel;
 	int member;
+
 public:
 	Trip();
 	Trip(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member);
@@ -24,4 +25,7 @@ public:
 	Hotel getHotel();
 	void setData(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member);
 	void display();
+	
+	std::string toString();
+	bool fromString(std::string s);
 };
