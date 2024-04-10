@@ -3,22 +3,18 @@
 
 std::vector<std::shared_ptr<Account>> AccountManager::accounts;
 std::shared_ptr<Account> AccountManager::currentAccount;
-bool AccountManager::load(std::string usersPath, std::string adminsPath) {
-    std::vector<std::string> strUsers;
-    std::vector<std::string> strAdmins;
-    DatabaseManager::readFile(usersPath, strUsers);
-    DatabaseManager::readFile(adminsPath, strAdmins);
+bool AccountManager::load(std::string accountsPath) {
+    std::vector<std::string> strAccounts;
+    DatabaseManager::readFile(accountsPath, strAccounts);
     try {
-        for(std::string acc: strUsers) {
+        for(std::string acc: strAccounts) {
             if(acc.at(0) == '0') {
                 std::shared_ptr<Account> userPtr(new User());
                 if(userPtr->fromString(acc)) {
                     accounts.push_back(userPtr);
                 }
             }
-        }
-        for(std::string acc: strAdmins) {
-            if(acc.at(0) == '1') {
+            else if(acc.at(0) == '1') {
                 std::shared_ptr<Account> adminPtr(new Admin());
                 if(adminPtr->fromString(acc)) {
                     accounts.push_back(adminPtr);
@@ -151,20 +147,15 @@ bool AccountManager::login() {
     return false;
 }
 
-
 void AccountManager::logout() {
     currentAccount = nullptr;
     std::cout << "Logged out successfully." << std::endl;
 }
 
-void AccountManager::changeUserInfo(std::string name, std::string address, int age) {
-    // if(dynamic_cast<User*>(currentAccount.get())) {
-    //     dynamic_cast<User*>(currentAccount.get())->setName(name);
-    //     dynamic_cast<User*>(currentAccount.get())->setAddress(address);
-    //     dynamic_cast<User*>(currentAccount.get())->setAge(age);
-    //     std::cout << "User information updated successfully." << std::endl;
-    // }
-    // else {
-    //     std::cout << "Invalid command." << std::endl;
-    // }
+void AccountManager::updateDatabase(std::string accountsPath) {
+    DatabaseManager::clearFile(accountsPath);
+    
+    for(std::shared_ptr<Account> acc: accounts) {
+        DatabaseManager::appendFile(accountsPath, acc->toString());
+    }
 }

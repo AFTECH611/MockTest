@@ -17,7 +17,7 @@ private:
     static std::shared_ptr<Account> currentAccount;
 
 public:
-    static bool load(std::string usersPath, std::string adminsPath);
+    static bool load(std::string accountsPath);
     static const std::shared_ptr<Account>& getCurrentAccount();
     static bool exists(std::string username);
     static std::string inputRegAccount();
@@ -29,7 +29,7 @@ public:
     static void registerUser();
     static bool login();
     static void logout();
-    static void changeUserInfo(std::string name, std::string address, int age);
+    static void updateDatabase(std::string accountsPath);
 };
 
 #endif

@@ -16,7 +16,6 @@ private:
 	std::vector<Room> roomTypeList;
 
 public:
-
 	Hotel();
 	Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList);
 	std::string getAddress();

@@ -85,7 +85,7 @@ bool Vehicle::fromString(std::string s) {
 		price = stoi(vec.at(6));
 	}
 	catch(const std::exception& e) {
-		std::cout << "Can't read vehicle from string" << std::endl;
+		std::cout << "Can't read vehicle from string." << std::endl;
 		return false;
 	}
 

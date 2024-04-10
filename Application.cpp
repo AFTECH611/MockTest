@@ -17,8 +17,8 @@ Application& Application::getApplication() {
 }
 
 void Application::run() {
-    AccountManager::load("./Database/Users.txt", "./Database/Admins.txt");
-    TripManager::load("./Database/Trips.txt", "./Database/Hotels.txt", "./Database/Vehicles.txt");
+    AccountManager::load("./Database/Accounts.txt");
+    TripManager::load("./Database/Hotels.txt", "./Database/Vehicles.txt");
 
     while(true) {
 
@@ -41,6 +41,8 @@ void Application::run() {
         }
 
         AccountManager::logout();
+        AccountManager::updateDatabase("./Database/Accounts.txt");
+        TripManager::updateDatabase("./Database/Hotels.txt", "./Database/Vehicles.txt");
     }
 }
 

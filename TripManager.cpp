@@ -2,7 +2,6 @@
 #include "TripManager.h"
 #include "DatabaseManager.h"
 
-std::vector<Trip> TripManager::trips;
 std::vector<Hotel> TripManager::hotels;
 std::vector<Vehicle> TripManager::vehicles;
 
@@ -25,6 +24,19 @@ bool loadVector(std::string path, std::vector<T> vec) {
     return true;
 }
 
-bool TripManager::load(std::string tripsPath, std::string hotelsPath, std::string vehiclesPath) {
-    return loadVector<Trip>(tripsPath, trips) && loadVector<Hotel>(hotelsPath, hotels) && loadVector<Vehicle>(vehiclesPath, vehicles);
+bool TripManager::load(std::string hotelsPath, std::string vehiclesPath) {
+    return loadVector<Hotel>(hotelsPath, hotels) && loadVector<Vehicle>(vehiclesPath, vehicles);
+}
+
+void TripManager::updateDatabase(std::string hotelsPath, std::string vehiclesPath) {
+    DatabaseManager::clearFile(hotelsPath);
+    DatabaseManager::clearFile(vehiclesPath);
+    
+    for(Hotel hotel: hotels) {
+        DatabaseManager::appendFile(hotelsPath, hotel.toString());
+    }
+    
+    for(Vehicle vehicle: vehicles) {
+        DatabaseManager::appendFile(vehiclesPath, vehicle.toString());
+    }
 }

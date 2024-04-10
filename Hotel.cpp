@@ -54,8 +54,6 @@ bool stringToRoom(std::string s, Room& r) {
 	return true;
 }
 
-
-
 std::string Hotel::toString() {
 	std::string s = address + "," + name;
 	
