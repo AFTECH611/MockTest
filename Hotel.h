@@ -14,13 +14,12 @@ private:
 	std::string name;
 	int numbOfTypeRoom;
 	std::vector<room> roomTypeList;
-
 public:
-
 	Hotel();
 	Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList);
 	std::string getAddress();
 	std::string getName();
+	int getNumbOfRoomType();
 	std::vector<room> getRoomTypeList();
 	void minusRoom(int member, std::string type);
 	void setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList);

@@ -22,6 +22,23 @@ Hotel::Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::
 		roomTypeList.push_back(newRoom);
 	}
 }
+
+void Hotel::setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList) {
+	address = _address;
+	name = _name;
+	numbOfTypeRoom = _numbOfTypeRoom;
+	for (int i = 0; i < _numbOfTypeRoom; i++) {
+		std::string _type = _roomTypeList[i].type;
+		int _available = _roomTypeList[i].available;
+		int _price = _roomTypeList[i].price;
+		room newRoom;
+		newRoom.available = _available;
+		newRoom.price = _price;
+		newRoom.type = _type;
+		roomTypeList.push_back(newRoom);
+	}
+}
+
 std::string Hotel::getAddress() {
 	return address;
 }
@@ -32,6 +49,10 @@ std::string Hotel::getName() {
 
 std::vector<room> Hotel::getRoomTypeList() {
 	return roomTypeList;
+}
+
+int Hotel::getNumbOfRoomType() {
+	return numbOfTypeRoom;
 }
 
 std::string Hotel::toString() {

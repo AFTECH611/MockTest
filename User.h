@@ -22,23 +22,23 @@ public:
     void setAddress(std::string address);
     const std::vector<Trip>& getBookedTrips();
     const std::string& getName();
+    void addNewItinerary(Trip newTrip);
     
     std::vector<std::string> getCommandsList() override;
     std::vector<std::string> getCommandListAfterViewProfile();
+    std::vector<std::string> getCommandListAfterMakeItinerar();
     std::vector<std::string> getCommandListEditProfile();
     std::vector<std::string> getCommandListEditAccount();
-
     void executeCommand(int command) override;
     std::string toString() override; 
     bool fromString(std::string s) override;
     void viewProfile();
-    //void makeItinerary();
     void editProfile(int command);
     void editAccount(int command);
     void cancelTrip();
+    void makeItinerary();
     void showItinerary();
     void display() override;
-
 };
 
 #endif

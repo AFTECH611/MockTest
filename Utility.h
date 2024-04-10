@@ -6,6 +6,7 @@
 #include <vector>
 #include <iomanip>
 #include <chrono>
+#include <math.h>
 
 class Utility final{
 public:
@@ -22,7 +23,7 @@ public:
     static bool isValidPlace(std::string s);
     static int inputAge();
     static void delay();
-    static void logout();
+    static int dateDiff(std::string date1, std::string date2);
 };
 
 #endif

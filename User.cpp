@@ -62,6 +62,10 @@ const std::vector<Trip>& User::getBookedTrips() {
     return bookedTrips;
 }
 
+void User::addNewItinerary(Trip newTrip) {
+    bookedTrips.push_back(newTrip);
+}
+
 std::vector<std::string> User::getCommandsList() {
     //system("cls");
     return std::vector<std::string>{"1 - View profile", 
@@ -74,6 +78,12 @@ std::vector<std::string> User::getCommandListAfterViewProfile() {
     return std::vector<std::string>{"1 - Edit profile", 
         "2 - Edit account", 
         "3 - Return"};
+}
+
+std::vector<std::string> User::getCommandListAfterMakeItinerary() {
+    return std::vector<std::string>{"1 - Choose vehicle"
+        "2 - Choose hotel",
+        "3 - Done"};
 }
 
 std::vector<std::string> User::getCommandListEditProfile() {
@@ -95,7 +105,7 @@ void User::executeCommand(int command) {
         break;
     }
     case(2): {
-       // makeItinerary();
+        makeItinerary();
         break;
     }
     case(3): {
@@ -213,17 +223,44 @@ void User::editAccount(int command) {
     }
 }
 
+void User::makeItinerary() {
+    std::string from, to;
+    std::cout << "Enter your itinerary information" << std::endl;
+    std::cin.ignore();
+    std::cout << "From: "; getline(std::cin, from);
+    while (!Utility::isValidPlace(from)) {
+        std::cout << "Invalid place type, try: "; getline(std::cin, from);
+    }
+    std::cout << "To: "; getline(std::cin, to);
+    while (!Utility::isValidPlace(to)) {
+        std::cout << "Invalid place type, try: "; getline(std::cin, to);
+    }
+
+}
+
 void User::showItinerary() {
     std::cout << "Booked trip of " << name << ":" << std::endl;
-    std::cout << std::setw(5) << std::left << "ID" << "|"
-        << std::setw(15) << std::left << "From" << "|"
-        << std::setw(15) << std::left << "To" << "|"
-        << std::setw(10) << std::left <<  "Start" << "|"
-        << std::setw(10) << std::left << "End" << "|"
-        << std::setw(10) << std::left << "Vehicle type" << "|"
-        << std::setw(15) << std::left << "Hotel" << "|"
-        << std::setw(10) << std::left << "Total price" << "|" << std::endl;
-    for (int i = 0; i < bookedTrips.size(); i++) {
-        continue;
+    if (bookedTrips.size() != 0) {
+        std::cout << std::setw(5) << std::left << "ID" << "|"
+            << std::setw(10) << std::left << "From" << "|"
+            << std::setw(10) << std::left << "To" << "|"
+            << std::setw(10) << std::left <<  "Start" << "|"
+            << std::setw(10) << std::left << "End" << "|"
+            << std::setw(15) << std::left << "Vehicle type" << "|"
+            << std::setw(15) << std::left << "Hotel" << "|"
+            << std::setw(10) << std::left << "Total price" << "|" << std::endl;
+        for (int i = 0; i < bookedTrips.size(); i++) {
+            std::cout << std::setw(5) << std::left << i + 1 << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getDeparture() << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getDestination() << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getStartDate() << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getEndDate() << "|"
+                << std::setw(15) << std::left << bookedTrips[i].getVehicle().getType() << "|"
+                << std::setw(15) << std::left << bookedTrips[i].getHotel().getName() << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getTotalPrice() << "|" << std::endl;
+        }
+    }
+    else {
+        std::cout << "You have ho itinerary booked to show" << std::endl;
     }
 }

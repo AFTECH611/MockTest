@@ -176,7 +176,7 @@ bool Utility::isValidDate(std::string date) {
     day = (date[0] - '0') * 10 + (date[1] - '0');
     month = (date[3] - '0') * 10 + (date[4] - '0');
     year = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + (date[9] - '0');
-    if ((day == 0 || day > 31) || (month == 0 || month > 12) || (year < 1900 || year > 2024)) {
+    if ((day <= 0 || day > 31) || (month <= 0 || month > 12) || (year < 1900 || year > 2024)) {
         return false;
     }
     return true;
@@ -206,4 +206,27 @@ int Utility::inputAge() {
 void Utility::delay() {
     auto start = std::chrono::steady_clock::now();
     while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 1);
+}
+
+int daysSince1900(int day, int month, int year) {
+    const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    int days = (year - 1900) * 365 + (year - 1901) / 4;
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0 && month <= 2))
+        days--;
+    for (int i = 1; i < month; ++i)
+        days += daysInMonth[i];
+    days += day;
+    return days;
+}
+
+int dateDiff(std::string date1, std::string date2) {
+    int dayDiff, monthDiff, yearDiff;
+    int day1, day2, month1, month2, year1, year2;
+    day1 = (date1[0] - '0') * 10 + (date1[1] - '0'); day2 = (date2[0] - '0') * 10 + (date2[1] - '0');
+    month1 = (date1[3] - '0') * 10 + (date1[4] - '0'); month2 = (date2[3] - '0') * 10 + (date2[4] - '0');
+    year1 = (date1[6] - '0') * 1000 + (date1[7] - '0') * 100 + (date1[8] - '0') * 10 + (date1[9] - '0');
+    year2 = (date2[6] - '0') * 1000 + (date2[7] - '0') * 100 + (date2[8] - '0') * 10 + (date2[9] - '0');
+    int date1Since1900 = daysSince1900(day1, month1, year1);
+    int date2Since1900 = daysSince1900(day2, month2, year2);
+    return std::abs(date2Since1900 - date1Since1900);
 }

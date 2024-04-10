@@ -50,7 +50,7 @@ Hotel Trip::getHotel() {
 	return hotel;
 }
 
-void Trip::setData(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member) {
+void Trip::setData(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, Vehicle _vehicle, Hotel _hotel, int _price, int _member, int _bookedRoomIndex) {
 	id = _id;
 	member = _member;
 	departure = _departure;
@@ -58,6 +58,8 @@ void Trip::setData(int _id, std::string _departure, std::string _destination, st
 	startDate = _startDate;
 	endDate = _endDate;
 	price = _price;
+	vehicle.setData(_vehicle.getType(), _vehicle.getBrand(), _vehicle.getDeparture(), _vehicle.getDestination(), _vehicle.getStartDate(), _vehicle.getEndDate(), _vehicle.getPrice());
+	hotel.setData(_hotel.getAddress(), _hotel.getName(), _hotel.getNumbOfRoomType(), _hotel.getRoomTypeList());
 }
 
 std::string Trip::toString() {
@@ -102,6 +104,12 @@ bool Trip::fromString(std::string s) {
 	}
 
 	return true;
+}
+
+int Trip::getTotalPrice() {
+	int ret = price * Utility::dateDiff(startDate, endDate) + vehicle.getPrice();
+	ret += hotel.getRoomTypeList()[bookedRoomIndex].price * Utility::dateDiff(startDate, endDate);
+	return ret;
 }
 
 void Trip::display() {
