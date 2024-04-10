@@ -211,9 +211,9 @@ void AccountManager::searchUser(std::string username){
         } 
     }
     if(!found){
-        std::cout << "|System can not found user:                                                     " << username << std::endl;
+        std::cout << "|System can not found user:                                                  |" << username << std::endl;
     }
-    std::cout << "____________________________________________________________________________________" << std::endl;
+    std::cout << "|____________________________________________________________________________________|" << std::endl;
 }
 bool compareName(){
     //return a.getName() > b.getName();
