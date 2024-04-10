@@ -31,6 +31,7 @@ std::vector<std::string> Admin::getCmdListsFlightManagement() {
 void Admin::executeCmdAfterUser(){
     int cmd;
     std::cin >> cmd;
+    system("cls");
     switch (cmd)
     {
     case 1:
@@ -66,6 +67,7 @@ void Admin::executeCmdAfterUser(){
 void Admin::executeCmdAfterHotel(){
     int cmd;
     std::cin >> cmd;
+    system("cls");
     switch (cmd)
     {
     case 1:
@@ -98,6 +100,7 @@ void Admin::executeCmdAfterHotel(){
 void Admin::executeCmdAfterFlight(){
     int cmd;
     std::cin >> cmd;
+    system("cls");
     switch (cmd)
     {
     case 1:
@@ -128,6 +131,7 @@ void Admin::executeCmdAfterFlight(){
 }
 
 void Admin::executeCmdAfterLogin(int cmd) {
+    system("cls");
     switch (cmd)
     {
     case 1:
