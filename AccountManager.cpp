@@ -3,18 +3,22 @@
 
 std::vector<std::shared_ptr<Account>> AccountManager::accounts;
 std::shared_ptr<Account> AccountManager::currentAccount;
-bool AccountManager::load(std::string accountsPath) {
-    std::vector<std::string> strAccounts;
-    DatabaseManager::readFile(accountsPath, strAccounts);
+bool AccountManager::load(std::string usersPath, std::string adminsPath) {
+    std::vector<std::string> strUsers;
+    std::vector<std::string> strAdmins;
+    DatabaseManager::readFile(usersPath, strUsers);
+    DatabaseManager::readFile(adminsPath, strAdmins);
     try {
-        for(std::string acc: strAccounts) {
+        for(std::string acc: strUsers) {
             if(acc.at(0) == '0') {
                 std::shared_ptr<Account> userPtr(new User());
                 if(userPtr->fromString(acc)) {
                     accounts.push_back(userPtr);
                 }
             }
-            else if(acc.at(0) == '1') {
+        }
+        for(std::string acc: strAdmins) {
+            if(acc.at(0) == '1') {
                 std::shared_ptr<Account> adminPtr(new Admin());
                 if(adminPtr->fromString(acc)) {
                     accounts.push_back(adminPtr);

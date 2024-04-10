@@ -17,7 +17,7 @@ private:
     static std::shared_ptr<Account> currentAccount;
 
 public:
-    static bool load(std::string accountsPath);
+    static bool load(std::string usersPath, std::string adminsPath);
     static const std::shared_ptr<Account>& getCurrentAccount();
     static bool exists(std::string username);
     static std::string inputRegAccount();

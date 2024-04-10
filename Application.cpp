@@ -17,7 +17,7 @@ Application& Application::getApplication() {
 }
 
 void Application::run() {
-    AccountManager::load("./Database/Accounts.txt");
+    AccountManager::load("./Database/Users.txt", "./Database/Admins.txt");
     TripManager::load("./Database/Trips.txt", "./Database/Hotels.txt", "./Database/Vehicles.txt");
 
     while(true) {

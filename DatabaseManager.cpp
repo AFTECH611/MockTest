@@ -33,3 +33,7 @@ void DatabaseManager::appendFile(std::string path, const std::string s) {
     }
 }
 
+void DatabaseManager::clearFile(std::string path) {
+    std::ofstream file("filename.txt");
+}
+
