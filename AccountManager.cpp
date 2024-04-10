@@ -8,13 +8,17 @@ bool AccountManager::load(std::string accountsPath) {
     DatabaseManager::readFile(accountsPath, strAccounts);
     try {
         for(std::string acc: strAccounts) {
-            std::shared_ptr<Account> userPtr(new User());
-            std::shared_ptr<Account> adminPtr(new Admin());
-            if(userPtr->fromString(acc)) {
-                accounts.push_back(userPtr);
+            if(acc.at(0) == '0') {
+                std::shared_ptr<Account> userPtr(new User());
+                if(userPtr->fromString(acc)) {
+                    accounts.push_back(userPtr);
+                }
             }
-            else if(adminPtr->fromString(acc)) {
-                accounts.push_back(adminPtr);
+            else if(acc.at(0) == '1') {
+                std::shared_ptr<Account> adminPtr(new Admin());
+                if(adminPtr->fromString(acc)) {
+                    accounts.push_back(adminPtr);
+                }
             }
         }
     }
@@ -22,6 +26,7 @@ bool AccountManager::load(std::string accountsPath) {
         std::cout << "TripManager failed to load" << std::endl;
         return false;
     }
+
     return true;
 }
 

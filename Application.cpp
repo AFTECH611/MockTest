@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Utility.h"
 #include "AccountManager.h"
+#include "TripManager.h"
 
 Application::Application() {}
 
@@ -16,8 +17,11 @@ Application& Application::getApplication() {
 }
 
 void Application::run() {
+    AccountManager::load("./Database/Accounts.txt");
+    TripManager::load("./Database/Trips.txt", "./Database/Hotels.txt", "./Database/Vehicles.txt");
+
     while(true) {
-        std::cout << "test\n";
+
         // while the account is not logged in
         while(!AccountManager::getCurrentAccount()) {
             Utility::printVector(getAppCommandsList());

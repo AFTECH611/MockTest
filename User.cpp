@@ -41,6 +41,7 @@ const std::vector<Trip>& User::getBookedTrips() {
 }
 
 std::vector<std::string> User::getCommandsList() {
+    std::cout << "User commands list" << std::endl;
     return std::vector<std::string>{};
 }
 
@@ -51,16 +52,29 @@ void User::executeCommand(int command) {
 std::string User::toString() {
     std::string s = "0," + username + "," + password + "," + name + "," + address + "," + std::to_string(age);
     for(Trip t: bookedTrips) {
-        s+="," + t.toString();
+        s+=",[" + t.toString() + "]";
     }
     return s;
 }
 
 bool User::fromString(std::string s) {
     std::vector<std::string> vec = Utility::stringToVector(s, ',');
+    
     try {
         if(vec.at(0) != "0") return false;
+        username = vec.at(1);
+        password = vec.at(2);
+        name = vec.at(3);
+        address = vec.at(4);
+        age = stoi(vec.at(5));
+        for(int i = 6; i < vec.size(); i++) {
+            Trip tempTrip;
 
+            if(tempTrip.fromString(Utility::stripBrackets(vec.at(i)))) {
+                std::string strRoom = vec[i];
+                bookedTrips.push_back(tempTrip);
+            }
+        }
     }
     catch(const std::exception& e) {
         return false;

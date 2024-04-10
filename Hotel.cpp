@@ -36,9 +36,11 @@ std::vector<room> Hotel::getRoomTypeList() {
 
 std::string Hotel::toString() {
 	std::string s = address + "," + name;
+	
 	// for(room r: roomTypeList) {
 	// 	s+= (",[" + r.toString() + "]"); 
 	// }
+
 	return s;
 }
 

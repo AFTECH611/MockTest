@@ -6,7 +6,6 @@
 
 class Trip {
 private:
-	int id;
 	int price;
 	std::string departure, destination, startDate, endDate;
 	Vehicle vehicle;
@@ -15,7 +14,7 @@ private:
 
 public:
 	Trip();
-	Trip(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member);
+	Trip(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member);
 	int getPrice();
 	std::string getDeparture();
 	std::string getDestination();
@@ -23,7 +22,7 @@ public:
 	std::string getEndDate();
 	Vehicle getVehicle();
 	Hotel getHotel();
-	void setData(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member);
+	void setData(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member);
 	void display();
 	
 	std::string toString();

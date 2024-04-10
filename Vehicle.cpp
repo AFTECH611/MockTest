@@ -75,19 +75,14 @@ std::string Vehicle::toString() {
 
 bool Vehicle::fromString(std::string s) {
 	std::vector<std::string> vec = Utility::stringToVector(s, ',');
-
 	try {
-		std::string _type, _brand, _departure, _destination, _startDate, _endDate;
-		int _price;
-		_type = vec.at(0);
-		_brand = vec.at(1);
-		_departure = vec.at(2);
-		_destination = vec.at(3);
-		_startDate = vec.at(4);
-		_endDate = vec.at(5);
-		_price = stoi(vec.at(6));
-
-		*this = Vehicle(_type, _brand, _departure, _destination, _startDate, _endDate, _price);
+		type = vec.at(0);
+		brand = vec.at(1);
+		departure = vec.at(2);
+		destination = vec.at(3);
+		startDate = vec.at(4);
+		endDate = vec.at(5);
+		price = stoi(vec.at(6));
 	}
 	catch(const std::exception& e) {
 		std::cout << "Can't read vehicle from string" << std::endl;

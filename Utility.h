@@ -15,6 +15,7 @@ public:
     static bool isValidName(std::string name);  
     static int getCommandFromCLI();
     static std::vector<std::string> stringToVector(std::string s, char delimiter);
+    static std::string stripBrackets(std::string s);
     static void isValidDate(std::string date);
 
 };

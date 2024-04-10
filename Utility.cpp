@@ -1,7 +1,5 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include <sstream>
 #include <unordered_map>
 
 #include "Utility.h"
@@ -142,15 +140,31 @@ int Utility::getCommandFromCLI() {
 }
 
 std::vector<std::string> Utility::stringToVector(std::string s, char delimiter) {
-    std::vector<std::string> vec;
-
-	std::stringstream ss(s);
-
-	while(ss.good()) {
-		std::string temp;
-		getline(ss,temp, ',');
-		vec.push_back(temp);
-	}
-    
+    std::vector<std::string> vec = {""};
+    int openBrackets = 0;
+    for(char c: s) {
+        if(c == delimiter && openBrackets == 0) {
+            vec.push_back("");
+        }
+        else {
+            if(c == '[') {
+                openBrackets++;
+            }
+            else if(c == ']') {
+                openBrackets--;
+            }
+        
+            vec.back()+=c;
+        } 
+    }
     return vec;
+}
+
+std::string Utility::stripBrackets(std::string s) {
+    if((s[0] == '(' && s.back() == ')') || (s[0] == '[' && s.back() == ']') || (s[0] == '{' && s.back() == '}')) {
+        s.pop_back();
+        s.erase(0,1);
+    }
+
+    return s;
 }
