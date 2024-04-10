@@ -1,2 +1,1 @@
-1,admin,admin
 0,longvh34,5223669382134602710,vu hoang long,None,1

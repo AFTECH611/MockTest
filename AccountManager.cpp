@@ -229,6 +229,7 @@ void AccountManager::autoCreateAdmin(){
     std::shared_ptr<Account> newUser(new Admin());
     std::string username = "admin";
     std::string password = "admin";
+    password = Utility::encrypt(password);
     newUser->setUsername(username); 
     newUser->setPassword(password);
     newUser->setType("admin");
