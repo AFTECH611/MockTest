@@ -10,8 +10,8 @@ public:
     Admin();
     Admin(std::string _username, std::string _password);
     std::vector<std::string> getCommandsList() override;
-    void executeCommand(int command) override;
     std::string toString() override;
+    void executeCommand(int command) override;
     bool fromString(std::string s) override;
     void editUser(std::string username);
     void removeUser(std::string username);

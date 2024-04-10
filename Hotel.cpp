@@ -34,41 +34,41 @@ std::vector<room> Hotel::getRoomTypeList() {
 	return roomTypeList;
 }
 
-// std::string Hotel::toString() {
-// 	std::string s = address + "," + name;
-// 	for(room r: roomTypeList) {
-// 		s+= (",[" + r.toString() + "]"); 
-// 	}
-// 	return s;
-// }
+std::string Hotel::toString() {
+	std::string s = address + "," + name;
+	// for(room r: roomTypeList) {
+	// 	s+= (",[" + r.toString() + "]"); 
+	// }
+	return s;
+}
 
-// bool Hotel::fromString(std::string s) {
-// 	std::vector<std::string> vec = Utility::stringToVector(s, ',');
+bool Hotel::fromString(std::string s) {
+	// std::vector<std::string> vec = Utility::stringToVector(s, ',');
 
-// 	try {
-// 		std::string _address, _name;
-// 		_address = vec.at(0);
-// 		_name = vec.at(1);
-// 		address = _address;
-// 		name = _name;
-// 		roomTypeList.clear();
-// 		for(int i = 2; i < vec.size(); i++) {
-// 			std::string strRoom = vec[i];
-// 			strRoom.pop_back();
-// 			strRoom.erase(0,1);
+	// try {
+	// 	std::string _address, _name;
+	// 	_address = vec.at(0);
+	// 	_name = vec.at(1);
+	// 	address = _address;
+	// 	name = _name;
+	// 	roomTypeList.clear();
+	// 	for(int i = 2; i < vec.size(); i++) {
+	// 		std::string strRoom = vec[i];
+	// 		strRoom.pop_back();
+	// 		strRoom.erase(0,1);
 
-// 			Room tempRoom;
-// 			tempRoom.fromString(strRoom);
-// 			roomTypeList.push_back(tempRoom);
-// 		}
-// 	}
-// 	catch(const std::exception& e) {
-// 		std::cout << "Can't read hotel from string." << std::endl;
-// 		return false;
-// 	}
+	// 		Room tempRoom;
+	// 		tempRoom.fromString(strRoom);
+	// 		roomTypeList.push_back(tempRoom);
+	// 	}
+	// }
+	// catch(const std::exception& e) {
+	// 	std::cout << "Can't read hotel from string." << std::endl;
+	// 	return false;
+	// }
 
-// 	return true;
-// }
+	return true;
+}
 
 
 void Hotel::display() {

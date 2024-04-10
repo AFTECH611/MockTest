@@ -1,24 +1,28 @@
 #include "DatabaseManager.h"
 #include "AccountManager.h"
 
-
 std::vector<std::shared_ptr<Account>> AccountManager::accounts;
 std::shared_ptr<Account> AccountManager::currentAccount;
 
 bool AccountManager::load(std::string accountsPath) {
-    // std::vector<std::string> strAccounts;
-    // DatabaseManager::readFile(accountsPath, strAccounts);
-    // try {
-    //     for() {
-
-    //     }
-    //     // Utility::stringToVector(accountsPath, ',');
-
-    // }
-    // catch(const std::exception& e) {
-    //     std::cout << "TripManager failed to load" << std::endl;
-    //     return false;
-    // }
+    std::vector<std::string> strAccounts;
+    DatabaseManager::readFile(accountsPath, strAccounts);
+    try {
+        for(std::string acc: strAccounts) {
+            std::shared_ptr<Account> userPtr(new User());
+            std::shared_ptr<Account> adminPtr(new Admin());
+            if(userPtr->fromString(acc)) {
+                accounts.push_back(userPtr);
+            }
+            else if(adminPtr->fromString(acc)) {
+                accounts.push_back(adminPtr);
+            }
+        }
+    }
+    catch(const std::exception& e) {
+        std::cout << "TripManager failed to load" << std::endl;
+        return false;
+    }
 
     return true;
 
