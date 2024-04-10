@@ -1,6 +1,9 @@
+#include <iostream>
+#include <iomanip>
 #include "Trip.h"
 
 Trip::Trip() {
+	id = 0;
 	price = 0;
 	member = 0;
 	departure = "None";
@@ -46,13 +49,15 @@ Hotel Trip::getHotel() {
 	return hotel;
 }
 
-void Trip::setData(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member) {
+void Trip::setData(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, Vehicle _vehicle, Hotel _hotel, int _price, int _member, int _bookedRoomIndex) {
 	member = _member;
 	departure = _departure;
 	destination = _destination;
 	startDate = _startDate;
 	endDate = _endDate;
 	price = _price;
+	vehicle.setData(_vehicle.getType(), _vehicle.getBrand(), _vehicle.getDeparture(), _vehicle.getDestination(), _vehicle.getStartDate(), _vehicle.getEndDate(), _vehicle.getPrice());
+	hotel.setData(_hotel.getAddress(), _hotel.getName(), _hotel.getNumbOfRoomType(), _hotel.getRoomTypeList());
 }
 
 std::string Trip::toString() {
@@ -71,8 +76,7 @@ std::string Trip::toString() {
 
 bool Trip::fromString(std::string s) {
 	std::vector<std::string> vec = Utility::stringToVector(s,',');
-	// std::cout << s << std::endl;
-
+	
 	try {
 		std::string _departure, _destination, _startDate, _endDate;
 		int _price;
@@ -101,8 +105,15 @@ bool Trip::fromString(std::string s) {
 	return true;
 }
 
+int Trip::getTotalPrice() {
+	int ret = price * Utility::dateDiff(startDate, endDate) + vehicle.getPrice();
+	ret += hotel.getRoomTypeList()[bookedRoomIndex].price * Utility::dateDiff(startDate, endDate);
+	return ret;
+}
+
 void Trip::display() {
-	std::cout << std::setw(15) << std::left << departure << "|"
+	std::cout << std::setw(5) << std::left << id << "|"
+		<< std::setw(15) << std::left << departure << "|"
 		<< std::setw(15) << std::left << destination << "|"
 		<< std::setw(10) << std::left << startDate << "|"
 		<< std::setw(10) << std::left << endDate << "|"

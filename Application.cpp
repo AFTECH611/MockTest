@@ -30,7 +30,7 @@ void Application::run() {
         // while user is logged in
         while(AccountManager::getCurrentAccount()) {
             Utility::printVector(AccountManager::getCurrentAccount()->getCommandsList());
-    
+            
             int command = Utility::getCommandFromCLI();
 
             AccountManager::getCurrentAccount()->executeCommand(command);

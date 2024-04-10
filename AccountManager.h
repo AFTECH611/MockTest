@@ -12,6 +12,7 @@ private:
 
 public:
     static bool load(std::string accountsPath);
+    static void setCurrentAccount();
     static const std::shared_ptr<Account>& getCurrentAccount();
     static bool exists(std::string username);
     static std::string inputRegAccount();

@@ -1,7 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-
 #include "Utility.h"
 
 bool Utility::isValidInt(std::string s) {
@@ -67,7 +63,7 @@ bool Utility::isValidAcc(std::string acc){
     return true;
 }
 
-bool Utility::isValidPassword(std::string pass){
+bool Utility::isValidPassword(std::string pass) {
     bool f1, f2, f3;
     f1 = f2 = f3 = false;
     if(!lengthValidPwd(pass)) {
@@ -169,4 +165,79 @@ std::string Utility::stripBrackets(std::string s) {
     }
 
     return s;
+}
+
+bool Utility::isValidDate(std::string date) {
+    int testIdx[8] = { 0, 1, 3, 4, 6, 7, 8, 9 };
+    if (date.length() != 10) {
+        return false;
+    }
+    else if (date[2] != '/' || date[5] != '/') {
+        return false;
+    }
+    else {
+        for (int i = 0; i < 8; i++) {
+            if (date[i] < '0' && date[i] > '9') {
+                return false;
+            }
+        }
+    }
+    int day, month, year;
+    day = (date[0] - '0') * 10 + (date[1] - '0');
+    month = (date[3] - '0') * 10 + (date[4] - '0');
+    year = (date[6] - '0') * 1000 + (date[7] - '0') * 100 + (date[8] - '0') * 10 + (date[9] - '0');
+    if ((day <= 0 || day > 31) || (month <= 0 || month > 12) || (year < 1900 || year > 2024)) {
+        return false;
+    }
+    return true;
+}
+
+bool Utility::isValidPlace(std::string s) {
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] == ' ') {
+            return false;
+        }
+    }
+    return true;
+}
+
+int Utility::inputAge() {
+    int age;
+    std::cout << "Enter age: ";
+    std::cin >> age;
+    while (age < 0 || std::cin.fail()) {
+        std::cout << "Age is must non-negative number. Please enter again: \n";
+        std::cin.clear();
+        std::cin.ignore();
+        std::cin >> age;
+    }
+    return age;
+}
+
+void Utility::delay() {
+    auto start = std::chrono::steady_clock::now();
+    while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 1);
+}
+
+int daysSince1900(int day, int month, int year) {
+    const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    int days = (year - 1900) * 365 + (year - 1901) / 4;
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0 && month <= 2))
+        days--;
+    for (int i = 1; i < month; ++i)
+        days += daysInMonth[i];
+    days += day;
+    return days;
+}
+
+int Utility::dateDiff(std::string date1, std::string date2) {
+    int dayDiff, monthDiff, yearDiff;
+    int day1, day2, month1, month2, year1, year2;
+    day1 = (date1[0] - '0') * 10 + (date1[1] - '0'); day2 = (date2[0] - '0') * 10 + (date2[1] - '0');
+    month1 = (date1[3] - '0') * 10 + (date1[4] - '0'); month2 = (date2[3] - '0') * 10 + (date2[4] - '0');
+    year1 = (date1[6] - '0') * 1000 + (date1[7] - '0') * 100 + (date1[8] - '0') * 10 + (date1[9] - '0');
+    year2 = (date2[6] - '0') * 1000 + (date2[7] - '0') * 100 + (date2[8] - '0') * 10 + (date2[9] - '0');
+    int date1Since1900 = daysSince1900(day1, month1, year1);
+    int date2Since1900 = daysSince1900(day2, month2, year2);
+    return std::abs(date2Since1900 - date1Since1900);
 }

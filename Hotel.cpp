@@ -1,17 +1,36 @@
+#include <iostream>
+#include <iomanip>
 #include "Hotel.h"
+
 
 Hotel::Hotel() {
 	address = name = "None";
 }
 
-Hotel::Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _RoomTypeList) {
+Hotel::Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList) {
 	address = _address;
 	name = _name;
 	numbOfTypeRoom = _numbOfTypeRoom;
 	for (int i = 0; i < _numbOfTypeRoom; i++) {
-		std::string _type = _RoomTypeList[i].type;
-		int _available = _RoomTypeList[i].available;
-		int _price = _RoomTypeList[i].price;
+		std::string _type = _roomTypeList[i].type;
+		int _available = _roomTypeList[i].available;
+		int _price = _roomTypeList[i].price;
+		Room newRoom;
+		newRoom.available = _available;
+		newRoom.price = _price;
+		newRoom.type = _type;
+		roomTypeList.push_back(newRoom);
+	}
+}
+
+void Hotel::setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList) {
+	address = _address;
+	name = _name;
+	numbOfTypeRoom = _numbOfTypeRoom;
+	for (int i = 0; i < _numbOfTypeRoom; i++) {
+		std::string _type = _roomTypeList[i].type;
+		int _available = _roomTypeList[i].available;
+		int _price = _roomTypeList[i].price;
 		Room newRoom;
 		newRoom.available = _available;
 		newRoom.price = _price;
@@ -49,6 +68,10 @@ bool stringToRoom(std::string s, Room& r) {
 	}
 
 	return true;
+}
+
+int Hotel::getNumbOfRoomType() {
+	return numbOfTypeRoom;
 }
 
 std::string Hotel::toString() {
@@ -96,6 +119,7 @@ void Hotel::showRoomType() {
 			<< std::setw(10) << std::left << roomTypeList[i].price << std::endl;
 	}
 }
+
 std::vector<Room> Hotel::searchRoom(std::string type, int available, int price){
 	std::vector<Room> result;
 	for(Room myRoom : roomTypeList){

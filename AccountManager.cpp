@@ -27,8 +27,11 @@ bool AccountManager::load(std::string accountsPath) {
         std::cout << "TripManager failed to load" << std::endl;
         return false;
     }
-
     return true;
+}
+
+void AccountManager::setCurrentAccount() {
+    currentAccount = nullptr;
 }
 
 const std::shared_ptr<Account>& AccountManager::getCurrentAccount() {
@@ -133,6 +136,8 @@ void AccountManager::registerUser(){
     dynamic_cast<User*>(newUser.get())->setAge(age);
     accounts.push_back(move(newUser));
     std::cout << "User account registered successfully." << std::endl;
+    Utility::delay();
+    system("cls");
 }
 
 bool AccountManager::login() {
@@ -142,16 +147,13 @@ bool AccountManager::login() {
         if (acc->getUsername() == username && acc->getPassword() == pass) {
             currentAccount = acc;
             std::cout << "Logged in successfully." << std::endl;
+            Utility::delay();
+            system("cls");
             return true;
         }
     }
     std::cout << "Invalid username or password." << std::endl;
     return false;
-}
-
-void AccountManager::logout() {
-    currentAccount = nullptr;
-    std::cout << "Logged out successfully." << std::endl;
 }
 
 void AccountManager::updateDatabase(std::string accountsPath) {
@@ -194,4 +196,11 @@ void AccountManager::autoCreateAdmin(){
     newUser->setType("admin");
     accounts.push_back(move(newUser));
     std::cout << "Admin account registered successfully." << std::endl;
+}
+
+void AccountManager::logout() {
+    currentAccount = nullptr;
+    std::cout << "Logged out successfully." << std::endl;
+    Utility::delay();
+    system("cls");
 }
