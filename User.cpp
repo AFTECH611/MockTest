@@ -41,7 +41,7 @@ const std::vector<Trip>& User::getBookedTrips() {
 }
 
 std::vector<std::string> User::getCommandsList() {
-    
+    return std::vector<std::string>{};
 }
 
 void User::executeCommand(int command) {
@@ -56,18 +56,18 @@ std::string User::toString() {
     return s;
 }
 
-// bool User::fromString(std::string s) {
-//     std::vector<std::string> vec = Utility::stringToVector(s, ',');
-//     try {
-//         if(vec.at(0) != "0") return false;
+bool User::fromString(std::string s) {
+    // std::vector<std::string> vec = Utility::stringToVector(s, ',');
+    // try {
+    //     if(vec.at(0) != "0") return false;
 
-//     }
-//     catch(const std::exception& e) {
-//         return false;
-//     }
+    // }
+    // catch(const std::exception& e) {
+    //     return false;
+    // }
 
-//     return true;
-// }
+    return true;
+}
 
 void User::display() {
     std:: cout << "USER ACCOUNT" << std::endl;

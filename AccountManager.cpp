@@ -1,29 +1,26 @@
 #include "DatabaseManager.h"
 #include "AccountManager.h"
 
-std::vector<std::unique_ptr<Account>> accounts;
-std::unique_ptr<Account> AccountManager::currentAccount = nullptr;
+bool AccountManager::load(std::string accountsPath) {
+    // std::vector<std::string> strAccounts;
+    // DatabaseManager::readFile(accountsPath, strAccounts);
+    // try {
+    //     for() {
 
-// bool AccountManager::load(std::string accountsPath) {
-//     std::vector<std::string> strAccounts;
-//     DatabaseManager::readFile(accountsPath, strAccounts);
-//     try {
-//         for() {
+    //     }
+    //     // Utility::stringToVector(accountsPath, ',');
 
-//         }
-//         // Utility::stringToVector(accountsPath, ',');
+    // }
+    // catch(const std::exception& e) {
+    //     std::cout << "TripManager failed to load" << std::endl;
+    //     return false;
+    // }
 
-//     }
-//     catch(const std::exception& e) {
-//         std::cout << "TripManager failed to load" << std::endl;
-//         return false;
-//     }
+    return true;
 
-//     return true;
+}
 
-// }
-
-const std::unique_ptr<Account>& AccountManager::getCurrentAccount() {
+const std::shared_ptr<Account>& AccountManager::getCurrentAccount() {
     return currentAccount;
 }
 
@@ -113,7 +110,7 @@ int AccountManager::inputAge(){
 }
 
 void AccountManager::registerUser(){
-    std::unique_ptr<Account> newUser(new User());
+    std::shared_ptr<Account> newUser(new User());
     std::string acc = inputRegAccount();
     std::string name = inputFullName();
     std::string pass = inputRegPassword();
@@ -122,16 +119,16 @@ void AccountManager::registerUser(){
     dynamic_cast<User*>(newUser.get())->setName(name); 
     dynamic_cast<User*>(newUser.get())->setAge(age);
     dynamic_cast<User*>(newUser.get())->setPassword(pass);
-    accounts.push_back(newUser);
+    accounts.push_back(move(newUser));
     std::cout << "User account registered successfully." << std::endl;
 }
 
 bool AccountManager::login() {
     std::string username = inputLogAccountUser(); 
     std::string pass = inputLogPassword();
-    for (std::unique_ptr<Account>& acc : accounts) {
+    for (std::shared_ptr<Account>& acc : accounts) {
         if (acc->getUsername() == username && acc->getPassword() == pass) {
-            currentAccount = std::make_unique<Account>(*acc);
+            currentAccount = acc;
             std::cout << "Logged in successfully." << std::endl;
             return true;
         }
@@ -147,13 +144,13 @@ void AccountManager::logout() {
 }
 
 void AccountManager::changeUserInfo(std::string name, std::string address, int age) {
-    if(dynamic_cast<User*>(currentAccount.get())) {
-        dynamic_cast<User*>(currentAccount.get())->setName(name);
-        dynamic_cast<User*>(currentAccount.get())->setAddress(address);
-        dynamic_cast<User*>(currentAccount.get())->setAge(age);
-        std::cout << "User information updated successfully." << std::endl;
-    }
-    else {
-        std::cout << "Invalid command." << std::endl;
-    }
+    // if(dynamic_cast<User*>(currentAccount.get())) {
+    //     dynamic_cast<User*>(currentAccount.get())->setName(name);
+    //     dynamic_cast<User*>(currentAccount.get())->setAddress(address);
+    //     dynamic_cast<User*>(currentAccount.get())->setAge(age);
+    //     std::cout << "User information updated successfully." << std::endl;
+    // }
+    // else {
+    //     std::cout << "Invalid command." << std::endl;
+    // }
 }

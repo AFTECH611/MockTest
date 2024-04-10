@@ -12,3 +12,4 @@ Admin::Admin(std::string _username, std::string _password) {
 std::string Admin::toString() {
     return "1," + username + "," + password;
 }
+

@@ -13,12 +13,12 @@
 
 class AccountManager {
 private:
-    static std::vector<std::unique_ptr<Account>> accounts;
-    static std::unique_ptr<Account> currentAccount;
+    static std::vector<std::shared_ptr<Account>> accounts;
+    static std::shared_ptr<Account> currentAccount;
 
 public:
     static bool load(std::string accountsPath);
-    static const std::unique_ptr<Account>& getCurrentAccount();
+    static const std::shared_ptr<Account>& getCurrentAccount();
     static bool exists(std::string username);
     static std::string inputRegAccount();
     static std::string inputLogAccountUser();
@@ -32,7 +32,7 @@ public:
     static void changeUserInfo(std::string name, std::string address, int age);
 };
 
-std::vector<std::unique_ptr<Account>> AccountManager::accounts;
-std::unique_ptr<Account> AccountManager::currentAccount;
+std::vector<std::shared_ptr<Account>> AccountManager::accounts;
+std::shared_ptr<Account> AccountManager::currentAccount;
 
 #endif

@@ -14,7 +14,7 @@ bool loadVector(std::string path, std::vector<T> vec) {
             vec.push_back(t);
         }
     }
-    catch() {
+    catch(const std::exception& e) {
         std::cout << "TripManager failed to load" << std::endl;
     }
     
