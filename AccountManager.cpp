@@ -3,7 +3,6 @@
 
 std::vector<std::shared_ptr<Account>> AccountManager::accounts;
 std::shared_ptr<Account> AccountManager::currentAccount;
-
 bool AccountManager::load(std::string accountsPath) {
     std::vector<std::string> strAccounts;
     DatabaseManager::readFile(accountsPath, strAccounts);
@@ -23,9 +22,7 @@ bool AccountManager::load(std::string accountsPath) {
         std::cout << "TripManager failed to load" << std::endl;
         return false;
     }
-
     return true;
-
 }
 
 const std::shared_ptr<Account>& AccountManager::getCurrentAccount() {

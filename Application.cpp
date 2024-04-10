@@ -17,6 +17,7 @@ Application& Application::getApplication() {
 
 void Application::run() {
     while(true) {
+        std::cout << "test\n";
         // while the account is not logged in
         while(!AccountManager::getCurrentAccount()) {
             Utility::printVector(getAppCommandsList());
@@ -37,7 +38,6 @@ void Application::run() {
 
         AccountManager::logout();
     }
-
 }
 
 std::vector<std::string> Application::getAppCommandsList() {
