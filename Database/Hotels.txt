@@ -1,0 +1,31 @@
+ParisLe Grand3Standard10100Deluxe5200Suite3300
+LondonThe Royal2Standard15120Executive8250
+TokyoSakura4View20180Suite10300Style3500Villa5700
+New YorkManhattan3Cityscape12150Penthouse6400Studio5200
+RomeBella Vista2Classic18100Superior10180
+SydneyHarbour3Standard15150Oceanfront8300Executive4500
+Hong KongSkyline4View25200View12350Suite31000Room8400
+BerlinImperial2Classic2080Executive10200
+DubaiOasis4View30250Suite15600Villa51000
+BarcelonaMediterranean3Standard22120View10250Suite6400
+ShanghaiSilk2Cityscape18150Suite8350
+SingaporeMarina4View25200View12400Suite5800Room10350
+FlorenceTuscan2Classic15100Renaissance8220
+BangkokThai3Cityscape20150View10300Suite5600
+VeniceCanal2Standard12180Waterfront8350
+SeoulSkyline3View18180View10250Suite4800
+MoscowKremlin4Cityscape25200View12400Suite5700Room10350
+TorontoMaple3View20150View10300Suite5500
+ViennaDanube2Classic15120View8250
+CairoNileview3Cityscape20150View10300Suite5600
+AmsterdamCanal2Standard12180View8300
+MumbaiBollywood3Cityscape18150Suite10400Room5300
+Los AngelesHollywood4View25200View12400Suite5800Room10350
+ZurichAlpine2View15180Chalet8350
+PragueBohemian3Classic20120View10300Suite5600
+BudapestDanube2Classic15120View8250
+IstanbulBosphorus3Cityscape20150View10300Suite5600
+LisbonAtlantic2Standard12180View8300
+AthensAcropolis3Cityscape20150View10300Suite5600
+DaNangHotelA1Single10100
+DaNangHotel B3Desert15170VIP7300Villa3400
