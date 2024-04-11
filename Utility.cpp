@@ -10,11 +10,11 @@ bool Utility::isValidInt(std::string s) {
     }
 }
 
-std::string Utility::encrypt(std::string s) {
-    std::hash<std::string> hasher;
-    size_t hash = hasher(s);
-    return std::to_string(hash);
-}
+// std::string Utility::encrypt(std::string s) {
+//     std::hash<std::string> hasher;
+//     size_t hash = hasher(s);
+//     return std::to_string(hash);
+// }
 
 std::string Utility::toLower(std::string input){
     std::string res = "";

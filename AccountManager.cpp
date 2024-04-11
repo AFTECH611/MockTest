@@ -129,7 +129,7 @@ void AccountManager::registerUser(){
     std::string acc = inputRegAccount();
     std::string name = inputFullName();
     std::string pass = inputRegPassword();
-    pass = Utility::encrypt(pass);
+    // pass = Utility::encrypt(pass);
     int age = inputAge();
     newUser->setUsername(acc);
     newUser->setPassword(pass);
@@ -232,7 +232,7 @@ void AccountManager::autoCreateAdmin(){
     std::shared_ptr<Account> newUser(new Admin());
     std::string username = "admin";
     std::string password = "admin";
-    password = Utility::encrypt(password);
+    // password = Utility::encrypt(password);
     newUser->setUsername(username); 
     newUser->setPassword(password);
     newUser->setType("admin");
