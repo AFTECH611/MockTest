@@ -1,20 +1,20 @@
-NewYorkHotelA3Single10100Double5150Suite2250
-LosAngelesHotelB2Standard880Deluxe4120
-ParisHotelC2Economy1260Executive6100
+NewYorkHotelA3Single10100
+LosAngelesHotelB2Standard880
+ParisHotelC2Economy1260
 LondonHotelD1Standard1590
-TokyoHotelE3Single10120Double5180Suite2300
-MoscowHotelF2Standard870Deluxe4110
-BerlinHotelG2Economy1250Executive690
+TokyoHotelE3Single10120
+MoscowHotelF2Standard870
+BerlinHotelG2Economy1250
 RomeHotelH1Standard15100
-SydneyHotelI3Single10130Double5200Suite2350
-ShanghaiHotelJ2Standard875Deluxe4115
-BeijingHotelK2Economy1255Executive695
+SydneyHotelI3Single10130
+ShanghaiHotelJ2Standard875
+BeijingHotelK2Economy1255
 SeoulHotelL1Standard15110
-BangkokHotelM3Single10140Double5220Suite2380
-IstanbulHotelN2Standard885Deluxe4125
-DubaiHotelO2Economy1265Executive6105
+BangkokHotelM3Single10140
+IstanbulHotelN2Standard885
+DubaiHotelO2Economy1265
 SingaporeHotelP1Standard15120
-MumbaiHotelQ3Single10150Double5240Suite2400
-SaoPauloHotelR2Standard895Deluxe4135
-MexicoCityHotelS2Economy1275Executive6115
+MumbaiHotelQ3Single10150
+SaoPauloHotelR2Standard895
+MexicoCityHotelS2Economy1275
 NewDelhiHotelT1Standard15130

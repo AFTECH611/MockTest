@@ -52,7 +52,6 @@ std::string User::toString() {
 
 bool User::fromString(std::string s) {
     std::vector<std::string> vec = Utility::stringToVector(s, 31);
-    
     try {
         if(vec.at(0) != "0") return false;
         type = "user";
@@ -368,6 +367,7 @@ Vehicle User::chooseVehicle(std::string from, std::string to, std::string sDate)
         break;
     }
     }
+    return Vehicle();
 }
 
 void User::showItinerary() {

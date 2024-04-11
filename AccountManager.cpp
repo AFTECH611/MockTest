@@ -7,7 +7,6 @@ std::shared_ptr<Account> AccountManager::currentAccount;
 bool AccountManager::load(std::string accountsPath) {
     std::vector<std::string> strAccounts;
     DatabaseManager::readFile(accountsPath, strAccounts);
-
     try {
         for(std::string acc: strAccounts) {
             if(acc.at(0) == '0') {
@@ -159,7 +158,7 @@ void AccountManager::greeting() {
 bool AccountManager::login() {
     std::string username = inputLogAccountUser(); 
     std::string pass = inputLogPassword();
-    pass = Utility::encrypt(pass);
+    // pass = Utility::encrypt(pass);
     for (std::shared_ptr<Account>& acc : accounts) {
         if (acc->getUsername() == username && acc->getPassword() == pass) {
             currentAccount = acc;
