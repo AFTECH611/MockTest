@@ -14,8 +14,8 @@ Application& Application::getApplication() {
 }
 
 void Application::run() {
-    AccountManager::load("Database/Accounts.txt");
-    TripManager::load("Database/Hotels.txt", "Database/Vehicles.txt");
+    AccountManager::load("./Database/Accounts.txt");
+    TripManager::load("./Database/Hotels.txt", "./Database/Vehicles.txt");
 
     while(true) {
         // while the account is not logged in

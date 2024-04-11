@@ -52,6 +52,10 @@
         "typeinfo": "cpp",
         "fstream": "cpp",
         "optional": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "charconv": "cpp",
+        "format": "cpp",
+        "span": "cpp",
+        "variant": "cpp"
     }
 }

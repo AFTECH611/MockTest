@@ -8,6 +8,8 @@
 #include <memory>
 #include <chrono>
 #include <math.h>
+#include <algorithm>
+
 
 class Utility final{
 public:

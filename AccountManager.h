@@ -4,6 +4,7 @@
 #include "Utility.h"
 #include "Account.h"
 #include "Admin.h"
+#include "User.h"
 
 class AccountManager {
 private:
@@ -21,6 +22,7 @@ public:
     static std::string inputLogPassword();
     static std::string inputFullName();
     static int inputAge();
+    static void greeting();
     static void registerUser();
     static bool login();
     static void logout();
@@ -28,6 +30,8 @@ public:
     static void deleteUser(std::string account);
     static void searchUser(std::string account);
     static void displayAllAccounts();
+    static bool compareName();
+    static void sortUserByName();
     static void autoCreateAdmin();
     static void changeUserInfo(std::string name, std::string address, int age);
 };
