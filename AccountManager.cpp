@@ -137,7 +137,7 @@ void AccountManager::registerUser(){
     dynamic_cast<User*>(newUser.get())->setAge(age);
     accounts.push_back(move(newUser));
     std::cout << "User account registered successfully." << std::endl;
-    // updateDatabase("./Database/Accounts.txt");
+    updateDatabase("./Database/Accounts.txt");
 
     Utility::delay();
     system("cls");
