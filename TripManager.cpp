@@ -100,7 +100,7 @@ void TripManager::deleteHotel(){
 
 void TripManager::deleteVehicle(){
     std::string type;
-    std::cout << "Input vehicle type(Taxi/Airplane): ";
+    std::cout << "Input vehicle type: ";
     std::cin >> type;
     std::string from;
     std::cout << "From: ";

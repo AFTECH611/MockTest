@@ -1,0 +1,40 @@
+New YorkMaplewood Hotel2Maple Room10120Maple Suite5250
+Los AngelesElmwood Resort3Elm Room15150Elm Cabin8200Elm Suite3300
+ChicagoOakridge Inn1Oak Room5100
+HoustonPinecrest Hotel2Pine Room20130Pine Suite5280
+PhoenixCedarwood Resort2Cedar Room15160Cedar Chalet8220
+PhiladelphiaBirchwood Lodge3Birch Room10140Birch Cabin5250Birch Suite2350
+San AntonioSpruceview Hotel2Spruce Room20170Spruce Suite8300
+San DiegoWillowbrook Resort2Willow Room15180Willow Chalet5280
+DallasLakeside Inn1Lakeside Room10150
+San JoseRiverfront Hotel3Riverfront Room15160Riverfront Suite7300Riverfront Villa3400
+AustinBeachside Resort2Beachside Room20180Beachside Bungalow8320
+JacksonvilleMountainview Lodge2Mountainview Room10170Mountainview Chalet5280
+Fort WorthHilltop Hotel1Hilltop Room5120
+ColumbusSunset Retreat2Sunset Room15190Sunset Suite5320
+CharlotteSunrise Hotel2Sunrise Room20200Sunrise Suite8350
+IndianapolisStarlight Resort3Starlight Room15180Starlight Bungalow7300Starlight Suite3400
+SeattleMoonlight Resort2Moonlight Room10160Moonlight Chalet5280
+DenverRiverside Hotel2Riverside Room15170Riverside Suite8300
+WashingtonLakeshore Lodge1Lakeshore Room10160
+BostonValley View Resort3Valley Room15180Valley Chalet7320Valley Suite3420
+MiamiCoral Reef Hotel2Standard Room20150Deluxe Suite10300
+AtlantaPeachtree Inn3Peach Room15120Peach Villa5250Peach Suite3350
+Las VegasMirage Resort1Mirage Room10200
+San FranciscoGolden Gate Hotel2Golden Room20180Golden Suite8350
+OrlandoSunshine Resort2Sunshine Room15160Sunshine Bungalow5280
+DetroitMotor City Inn3Motor Room10130Motor Suite7270Motor Villa3400
+SeattleRainy City Lodge2Rainy Room15140Rainy Chalet8280
+MiamiOcean Breeze Hotel2Ocean Room20200Ocean Suite10350
+HoustonLone Star Inn1Lone Star Room10150
+ChicagoWindy City Hotel3Windy Room15170Windy Suite7300Windy Villa3420
+New OrleansJazz Palace2Jazz Room20180Jazz Suite8350
+DenverRocky Mountain Lodge2Rocky Room15160Rocky Cabin5280
+PortlandRose Garden Hotel1Rose Room10170
+MiamiPalms Resort2Palm Room15190Palm Suite7320
+NashvilleMusic City Inn2Music Room20200Music Suite8350
+DallasLone Star Resort3Lone Star Room15180Lone Star Cabin7300Lone Star Suite3400
+BostonHarbor View Hotel2Harbor Room20190Harbor Suite8350
+MiamiTropicana Hotel2Tropicana Room15180Tropicana Bungalow7300
+AustinHill Country Lodge2Hill Country Room20200Hill Country Chalet8350
+PhoenixDesert Oasis Resort3Desert Room15170Desert Suite7300Desert Villa3400
