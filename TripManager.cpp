@@ -49,7 +49,7 @@ bool TripManager::comparePriceV(Vehicle &a, Vehicle &b){
 }
 
 void TripManager::sortVehicleByPrice(){
-    std::sort(vehicles.begin(), vehicles.end(), compareDateV);
+    std::sort(vehicles.begin(), vehicles.end(), comparePriceV);
 }
 
 
