@@ -1,6 +1,6 @@
 #include "DatabaseManager.h"
 #include "AccountManager.h"
-#include "User.h"
+
 
 std::vector<std::shared_ptr<Account>> AccountManager::accounts;
 std::shared_ptr<Account> AccountManager::currentAccount;
@@ -130,6 +130,7 @@ void AccountManager::registerUser(){
     std::string acc = inputRegAccount();
     std::string name = inputFullName();
     std::string pass = inputRegPassword();
+    pass = Utility::encrypt(pass);
     int age = inputAge();
     newUser->setUsername(acc);
     newUser->setPassword(pass);
@@ -144,13 +145,25 @@ void AccountManager::registerUser(){
     system("cls");
 }
 
+void AccountManager::greeting() {
+    std::cout << "Loggin successfully! \n";
+    std::cout << "Hello, ";
+    if(currentAccount->getType() == "admin"){
+        std::cout << "Administrator!\n";
+    }
+    else{
+        std::cout << dynamic_cast<User*>(currentAccount.get())->getName() << std::endl;
+    }
+}
+
 bool AccountManager::login() {
     std::string username = inputLogAccountUser(); 
     std::string pass = inputLogPassword();
+    pass = Utility::encrypt(pass);
     for (std::shared_ptr<Account>& acc : accounts) {
         if (acc->getUsername() == username && acc->getPassword() == pass) {
             currentAccount = acc;
-            std::cout << "Logged in successfully." << std::endl;
+            greeting();
             Utility::delay();
             system("cls");
             return true;
@@ -169,9 +182,15 @@ void AccountManager::updateDatabase(std::string accountsPath) {
 }
 
 void AccountManager::displayAllAccounts(){
+    std::cout << ".___________________________________________________________________________________." << std::endl;
+    std::cout << "|      Account       |   Full Name         |  Address              |  Age           |" << std::endl;
+    std::cout << "|____________________|_____________________|_______________________|________________|" << std::endl;
     for(std::shared_ptr<Account>& acc : accounts){
-        acc->display();
+        if(acc->getType() == "user"){
+            acc->display();
+        }
     }
+    std::cout << "____________________________________________________________________________________" << std::endl;
 }
 
 void AccountManager::deleteUser(std::string username){
@@ -179,6 +198,7 @@ void AccountManager::deleteUser(std::string username){
         if(ac->get()->getType() == "user"){
             if(ac->get()->getUsername() == username){
                 accounts.erase(ac);
+                std::cout << "Deleted user " << username << " done!\n";
                 break;
             }
         }
@@ -186,15 +206,34 @@ void AccountManager::deleteUser(std::string username){
 }
 
 void AccountManager::searchUser(std::string username){
+    bool found = false;
+    std::cout << ".___________________________________________________________________________________." << std::endl;
+    std::cout << "|      Account       |   Full Name         |  Address              |  Age           |" << std::endl;
+    std::cout << "|____________________|_____________________|_______________________|________________|" << std::endl;
     for(std::shared_ptr<Account>& acc : accounts){
-        if(acc->getUsername() == username) acc->display();
+        if(acc->getType() == "user" && acc->getUsername() == username) {
+            acc->display();
+            found = true;
+        } 
     }
+    if(!found){
+        std::cout << "|System can not found user:                                                  |" << username << std::endl;
+    }
+    std::cout << "|____________________________________________________________________________________|" << std::endl;
 }
+bool compareName(){
+    //return a.getName() > b.getName();
+    return true;
+}
+
+void AccountManager::sortUserByName(){
+};
 
 void AccountManager::autoCreateAdmin(){
     std::shared_ptr<Account> newUser(new Admin());
     std::string username = "admin";
     std::string password = "admin";
+    password = Utility::encrypt(password);
     newUser->setUsername(username); 
     newUser->setPassword(password);
     newUser->setType("admin");

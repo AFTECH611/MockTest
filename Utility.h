@@ -8,6 +8,8 @@
 #include <memory>
 #include <chrono>
 #include <math.h>
+#include <algorithm>
+
 
 class Utility final{
 public:
@@ -25,6 +27,7 @@ public:
     static bool isValidPlace(std::string s);
     static int inputAge();
     static void delay();
+    static int daysSince1900(int day,int month, int year);
     static int dateDiff(std::string date1, std::string date2);
     static std::string strOpenBracketD();
     static std::string strCloseBracketD();

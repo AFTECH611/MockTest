@@ -5,6 +5,7 @@
 #include "Account.h"
 #include "AccountManager.h"
 #include "Trip.h"
+#include "TripManager.h"
 
 class User: public Account {
 private:
@@ -36,6 +37,8 @@ public:
     void editTrip();
     void editProfile(int command);
     void editAccount(int command);
+    Vehicle chooseVehicle(std::string from, std::string to, std::string sDate);
+    //void chooseHotel();
     void cancelTrip();
     void makeItinerary();
     void showItinerary();

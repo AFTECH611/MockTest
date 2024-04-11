@@ -84,10 +84,10 @@ bool Utility::isValidPassword(std::string pass) {
     }
     if(f1 && f2 && f3) return true;
     if(!f1){
-        std::cout << "Password must have at least 1 lowercase letter!\n";
+        std::cout << "Password must have at least 1 uppercase letter!\n";
     }
     if(!f2){
-        std::cout << "Password must have at least 1 uppercase letter!\n";
+        std::cout << "Password must have at least 1 lowercase letter!\n";
     }
     if(!f3){
         std::cout << "Password must have at least 1 number letter!\n";
@@ -217,10 +217,10 @@ int Utility::inputAge() {
 
 void Utility::delay() {
     auto start = std::chrono::steady_clock::now();
-    while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 1);
+    while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 2);
 }
 
-int daysSince1900(int day, int month, int year) {
+int Utility::daysSince1900(int day, int month, int year) {
     const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     int days = (year - 1900) * 365 + (year - 1901) / 4;
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0 && month <= 2))
