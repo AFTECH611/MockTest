@@ -112,10 +112,15 @@ void Hotel::display() {
 }
 
 void Hotel::showRoomType() {
-	for (int i = 0; i < numbOfTypeRoom; i++) {
+	/*for (int i = 0; i < numbOfTypeRoom; i++) {
 		std::cout << std::setw(10) << std::left << roomTypeList[i].type << "|"
 			<< std::setw(5) << std::left << roomTypeList[i].available << "|"
 			<< std::setw(10) << std::left << roomTypeList[i].price << std::endl;
+	}*/
+	for (int i = 0; i < numbOfTypeRoom; i++) {
+		std::cout << "Room type " << i + 1 << ": " << roomTypeList[i].type << ","
+			<< "Available: " << roomTypeList[i].available << ","
+			<< "Price per night: " << roomTypeList[i].price << std::endl;
 	}
 }
 
@@ -128,3 +133,29 @@ std::vector<Room> Hotel::searchRoom(std::string type, int available, int price){
 	}
 	return result;
 }
+
+void Hotel::minusRoom(int member, std::string type) {
+	for (Room i : roomTypeList) {
+		if (i.type == type) {
+			i.available -= member;
+		}
+	}
+}
+
+int Hotel::getOverallRoom(){
+	int ret = 0;
+	for (int i = 0; i < numbOfTypeRoom; i++) {
+		ret += roomTypeList[i].available;
+	}
+	return ret;
+}
+
+int Hotel::getMinPrice() {
+	int minPrice = 100000000;
+	for (Room i : roomTypeList) {
+		if (i.price < minPrice) {
+			minPrice = i.price;
+		}
+	}
+	return minPrice;
+}	

@@ -1,40 +1,80 @@
-FlightDeltaNew York CityLos Angeles05/10/202615/10/2026600
-CarToyotaChicagoMiami15/11/202630/11/20261200
-FlightUnitedSeattleSan Francisco01/12/202610/12/2026300
-CarBMWBostonLas Vegas15/01/202725/01/20271500
-FlightAmerican AirlinesDallasDenver10/02/202720/02/2027400
-CarFordAtlantaOrlando05/03/202715/03/2027900
-FlightSouthwestLos AngelesSan Diego01/04/202710/04/2027200
-CarChevroletMiamiTampa15/05/202725/05/2027800
-FlightJetBlueBostonNew York City10/06/202720/06/2027150
-CarHondaDenverSeattle05/07/202715/07/20271000
-FlightQantasSan FranciscoLos Angeles15/08/202725/08/2027250
-CarHyundaiNew York CityWashington D.C.10/09/202720/09/2027700
-FlightSingapore AirlinesChicagoMiami05/10/202715/10/2027550
-CarSubaruSeattleSan Francisco01/11/202710/11/2027850
-FlightEmiratesBostonLas Vegas15/12/202725/12/2027400
-CarKiaDallasHouston10/01/202820/01/2028950
-FlightAir CanadaLos AngelesSan Diego05/02/202815/02/2028300
-CarMazdaMiamiTampa01/03/202810/03/2028750
-FlightLufthansaDenverPhoenix15/04/202825/04/2028350
-CarVolvoAtlantaMiami10/05/202820/05/20281100
-FlightBritish AirwaysBostonNew York City05/06/202815/06/2028200
-CarJeepSeattlePortland01/07/202810/07/2028900
-FlightANADallasDenver15/08/202825/08/2028400
-CarAudiLos AngelesSan Francisco10/09/202820/09/20281200
-FlightQatar AirwaysNew York CityWashington D.C.05/10/202815/10/2028300
-CarMercedes-BenzChicagoMiami01/11/202810/11/2028850
-FlightEtihad AirwaysSeattleSan Francisco15/12/202825/12/2028350
-CarBuickBostonLas Vegas10/01/202920/01/2029900
-FlightDeltaLos AngelesSan Diego05/02/202915/02/2029250
-CarChryslerMiamiTampa01/03/202910/03/2029700
-FlightUnitedDenverPhoenix15/04/202925/04/2029300
-CarLexusAtlantaMiami10/05/202920/05/20291100
-FlightAmerican AirlinesBostonNew York City05/06/202915/06/2029200
-CarInfinitiSeattlePortland01/07/202910/07/2029850
-FlightSouthwestDallasDenver15/08/202925/08/2029400
-CarMiniLos AngelesSan Francisco10/09/202920/09/20291200
-FlightJetBlueNew York CityWashington D.C.05/10/202915/10/2029300
-CarVolkswagenChicagoMiami01/11/202910/11/2029750
-FlightAir FranceSeattleSan Francisco15/12/202925/12/2029350
-CarAlfa RomeoBostonLas Vegas10/01/203020/01/2030900
+FlightVNAHoChiMinhHaNoi25/04/202427/04/20241500000
+CarToyotaHaNoiDaNang20/04/202422/04/2024800000
+FlightJetstarHoChiMinhDaNang27/04/202429/04/20241200000
+CarHondaDaNangHoChiMinh22/04/202424/04/20241200000
+FlightVNADaNangHoChiMinh10/05/202412/05/20242000000
+CarFordHoChiMinhHaNoi05/05/202407/05/2024600000
+FlightVietJetAirHoChiMinhHaNoi16/05/202418/05/20241000000
+CarMazdaHaNoiDaNang21/04/202423/04/2024900000
+FlightBambooAirwaysHaNoiDaNang27/04/202429/04/20241800000
+CarHyundaiDaNangHoChiMinh06/05/202408/05/20241500000
+FlightVNAHoChiMinhHaNoi02/05/202404/05/20242200000
+CarToyotaHoChiMinhDaNang07/05/202409/05/2024800000
+FlightJetstarHoChiMinhDaNang25/04/202427/04/20241200000
+CarHondaDaNangHoChiMinh01/05/202403/05/20241200000
+FlightVNADaNangHoChiMinh12/05/202414/05/20242000000
+CarFordHoChiMinhHaNoi08/05/202410/05/2024600000
+FlightVietJetAirHoChiMinhHaNoi22/04/202424/04/20241000000
+CarMazdaHaNoiDaNang03/05/202405/05/2024900000
+FlightBambooAirwaysHaNoiDaNang17/05/202419/05/20241800000
+CarHyundaiDaNangHoChiMinh15/05/202417/05/20241500000
+FlightVNAHoChiMinhHaNoi29/04/202401/05/20242200000
+CarToyotaHoChiMinhDaNang14/05/202416/05/2024800000
+FlightJetstarHoChiMinhDaNang01/05/202403/05/20241200000
+CarHondaDaNangHoChiMinh19/04/202421/04/20241200000
+FlightVNADaNangHoChiMinh20/04/202422/04/20242000000
+CarFordHoChiMinhHaNoi12/05/202414/05/2024600000
+FlightVietJetAirHoChiMinhHaNoi04/05/202406/05/20241000000
+CarMazdaHaNoiDaNang18/04/202420/04/2024900000
+FlightBambooAirwaysHaNoiDaNang05/05/202407/05/20241800000
+CarHyundaiDaNangHoChiMinh24/04/202426/04/20241500000
+FlightVNAHoChiMinhHaNoi06/05/202408/05/20242200000
+CarToyotaHoChiMinhDaNang28/04/202430/04/2024800000
+FlightJetstarHoChiMinhDaNang07/05/202409/05/20241200000
+CarHondaDaNangHoChiMinh29/04/202401/05/20241200000
+FlightVNADaNangHoChiMinh08/05/202410/05/20242000000
+CarFordHoChiMinhHaNoi30/04/202402/05/2024600000
+FlightVietJetAirHoChiMinhHaNoi09/05/202411/05/20241000000
+CarMazdaHaNoiDaNang01/05/202403/05/2024900000
+FlightBambooAirwaysHaNoiDaNang10/05/202412/05/20241800000
+CarHyundaiDaNangHoChiMinh02/05/202404/05/20241500000
+FlightVNAHoChiMinhHaNoi11/05/202413/05/20242200000
+CarToyotaHoChiMinhDaNang03/05/202405/05/2024800000
+FlightJetstarHoChiMinhDaNang12/05/202414/05/20241200000
+CarHondaDaNangHoChiMinh04/05/202406/05/20241200000
+FlightVNADaNangHoChiMinh13/05/202415/05/20242000000
+CarFordHoChiMinhHaNoi05/05/202407/05/2024600000
+FlightVietJetAirHoChiMinhHaNoi14/05/202416/05/20241000000
+CarMazdaHaNoiDaNang06/05/202408/05/2024900000
+FlightBambooAirwaysHaNoiDaNang15/05/202417/05/20241800000
+CarHyundaiDaNangHoChiMinh07/05/202409/05/20241500000
+FlightVNAHoChiMinhHaNoi16/05/202418/05/20242200000
+CarToyotaHoChiMinhDaNang08/05/202410/05/2024800000
+FlightJetstarHoChiMinhDaNang17/05/202419/05/20241200000
+CarHondaDaNangHoChiMinh09/05/202411/05/20241200000
+FlightVNADaNangHoChiMinh18/05/202420/05/20242000000
+CarFordHoChiMinhHaNoi10/05/202412/05/2024600000
+FlightVietJetAirHoChiMinhHaNoi19/05/202421/05/20241000000
+CarMazdaHaNoiDaNang11/05/202413/05/2024900000
+FlightBambooAirwaysHaNoiDaNang20/05/202422/05/20241800000
+CarHyundaiDaNangHoChiMinh12/05/202414/05/20241500000
+FlightVNAHoChiMinhHaNoi21/04/202423/04/20242200000
+CarToyotaHoChiMinhDaNang13/05/202415/05/2024800000
+FlightJetstarHoChiMinhDaNang22/04/202424/04/20241200000
+CarHondaDaNangHoChiMinh14/05/202416/05/20241200000
+FlightVNADaNangHoChiMinh23/04/202425/04/20242000000
+CarFordHoChiMinhHaNoi15/05/202417/05/2024600000
+FlightVietJetAirHoChiMinhHaNoi24/04/202426/04/20241000000
+CarMazdaHaNoiDaNang16/05/202418/05/2024900000
+FlightBambooAirwaysHaNoiDaNang25/04/202427/04/20241800000
+CarHyundaiDaNangHoChiMinh17/05/202419/05/20241500000
+FlightVNAHoChiMinhHaNoi26/04/202428/04/20242200000
+CarToyotaHoChiMinhDaNang18/05/202420/05/2024800000
+FlightJetstarHoChiMinhDaNang27/04/202429/04/20241200000
+CarHondaDaNangHoChiMinh19/05/202421/05/20241200000
+FlightVNADaNangHoChiMinh28/04/202430/04/20242000000
+CarFordHoChiMinhHaNoi20/05/202422/05/2024600000
+FlightVietJetAirHoChiMinhHaNoi29/04/202401/05/20241000000
+CarMazdaHaNoiDaNang21/05/202423/05/2024900000
+FlightBambooAirwaysHaNoiDaNang30/04/202402/05/20241800000
+CarHyundaiDaNangHoChiMinh22/05/202424/05/20241500000

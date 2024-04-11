@@ -86,7 +86,8 @@ std::vector<std::string> User::getCommandsList() {
     return std::vector<std::string>{"1 - View profile", 
         "2 - Make itinerary", 
         "3 - List my itinerary",
-        "4 - Logout"};
+        "4 - Cancel itinerary",
+        "5 - Logout"};
 }
 
 std::vector<std::string> User::getCommandListAfterViewProfile() {
@@ -96,9 +97,10 @@ std::vector<std::string> User::getCommandListAfterViewProfile() {
 }
 
 std::vector<std::string> User::getCommandListAfterMakeItinerary() {
-    return std::vector<std::string>{"1 - Choose vehicle"
+    return std::vector<std::string>{"1 - Choose vehicle",
         "2 - Choose hotel",
-        "3 - Done"};
+        "3 - Done",
+        "4 - Return"};
 }
 
 std::vector<std::string> User::getCommandListEditProfile() {
@@ -128,6 +130,10 @@ void User::executeCommand(int command) {
         break;
     }
     case(4): {
+        cancelItinerary();
+        break;
+    }
+    case(5): {
         AccountManager::setCurrentAccount();
         break;
     }
@@ -239,9 +245,113 @@ void User::editAccount(int command) {
     }
 }
 
+void User::ItineraryDetail(Vehicle choosedVehicle, Hotel choosedHotel, std::string from, std::string to, std::string sDate, int member) {
+    Utility::printVector(getCommandListAfterMakeItinerary());
+    Trip trip;
+    int roomIdx = 0;
+    int command = Utility::getCommandFromCLI();
+    switch (command) {
+    case(1): {
+        choosedVehicle = chooseVehicle(from, to, sDate);
+        ItineraryDetail(choosedVehicle, choosedHotel, from, to, sDate, member);
+        break;
+    }
+    case(2): {
+        choosedHotel = chooseHotel(to, member);
+        std::cout << "here";
+        choosedHotel.display();
+        if (choosedHotel.getName() != "None") {
+            /*std::cout << std::setw(3) << std::left << "ID" << "|"
+                << std::setw(10) << std::left << "Room type" << "|"
+                << std::setw(5) << std::left << "Available" << "|"
+                << std::setw(10) << std::left << "Price" << std::endl;*/
+            choosedHotel.showRoomType();
+            int option = Utility::getCommandFromCLI();
+            while (option <= 0 || option > choosedHotel.getNumbOfRoomType()) {
+                std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
+            }
+            while (choosedHotel.getRoomTypeList()[option - 1].available < member){
+                std::cout << "This room type doesn't have enough room available for your all member" << std::endl;
+                std::cout << "Please choose another room type or 0 to choose another hotel";
+                option = Utility::getCommandFromCLI();
+                if (option == 0) {
+                    break;
+                }
+                else {
+                    roomIdx = option - 1;
+                    for (int i = 0; i < TripManager::hotels.size(); i++) {
+                        if (TripManager::hotels[i].getName() == choosedHotel.getName()) {
+                            TripManager::hotels[i].minusRoom(member, TripManager::hotels[i].getRoomTypeList()[option - 1].type);
+                        }
+                    }
+                }
+            }
+        }
+        ItineraryDetail(choosedVehicle, choosedHotel, from, to, sDate, member);
+        break;
+    }
+    case(3): {
+        if (choosedHotel.getName() == "None") {
+            std::cout << "No hotel selected" << std::endl;
+            break;
+        }
+        else if (choosedVehicle.getBrand() == "None") {
+            std::cout << "No vehicle selected" << std::endl;
+        }
+        else {
+            trip.setData(choosedVehicle.getDeparture(), choosedVehicle.getDestination(), choosedVehicle.getStartDate(), choosedVehicle.getEndDate(),
+                choosedVehicle, choosedHotel, 0, member, roomIdx);
+            int totalPrice = trip.getTotalPrice();
+            bookedTrips.push_back(trip);
+        }
+        break;
+    }
+    case(4): {
+        break;
+    }
+    default: {
+        std::cout << "Invalid option, try: "; command = Utility::getCommandFromCLI();
+    }
+    }
+}
+
+void User::cancelItinerary() {
+    if (bookedTrips.size() != 0) {
+        std::cout << std::setw(5) << std::left << "ID" << "|"
+            << std::setw(10) << std::left << "From" << "|"
+            << std::setw(10) << std::left << "To" << "|"
+            << std::setw(10) << std::left << "Start" << "|"
+            << std::setw(10) << std::left << "End" << "|"
+            << std::setw(15) << std::left << "Vehicle type" << "|"
+            << std::setw(15) << std::left << "Hotel" << "|"
+            << std::setw(10) << std::left << "Total price" << "|" << std::endl;
+        for (int i = 0; i < bookedTrips.size(); i++) {
+            std::cout << std::setw(5) << std::left << i + 1 << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getDeparture() << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getDestination() << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getStartDate() << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getEndDate() << "|"
+                << std::setw(15) << std::left << bookedTrips[i].getVehicle().getType() << "|"
+                << std::setw(15) << std::left << bookedTrips[i].getHotel().getName() << "|"
+                << std::setw(10) << std::left << bookedTrips[i].getTotalPrice() << "|" << std::endl;
+        }
+        std::cout << "Choose itinerary to cancel. ";
+        int option = Utility::getCommandFromCLI();
+        while (option <= 0 || option > bookedTrips.size()) {
+            std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
+        }
+        bookedTrips.erase(bookedTrips.begin() + (option - 1));
+        std::cout << "Itinerary cancelled" << std::endl;
+    }
+    else {
+        std::cout << "You have no itinerary booked to cancel" << std::endl;
+    }
+}
+
 void User::makeItinerary() {
-    std::string from, to, sDate;
+    std::string from, to, sDate, sMember;
     Vehicle choosedVehicle;
+    Hotel choosedHotel;
     std::cout << "Enter your itinerary information" << std::endl;
     std::cin.ignore();
     std::cout << "From: "; getline(std::cin, from);
@@ -256,33 +366,21 @@ void User::makeItinerary() {
     while (!Utility::isValidDate(sDate)) {
         std::cout << "Invalid date, try: "; getline(std::cin, sDate);
     }
-    Utility::printVector(getCommandListAfterMakeItinerary());
-    int command = Utility::getCommandFromCLI();
-    switch (command) {
-    case(1): {
-        choosedVehicle = chooseVehicle(from, to, sDate);
-        break;
+    std::cout << "Member: "; getline(std::cin, sMember);
+    while (!Utility::isValidInt(sMember)) {
+        std::cout << "Inlvaid type, try: ", getline(std::cin, sMember);
     }
-    case(2): {
-        //chooseHotel();
-        break;
-    }
-    case(3): {
-        //cancel
-        break;
-    }
-    default: {
-        std::cout << "Invalid option, try: "; command = Utility::getCommandFromCLI();
-    }
-    }
+    int member = std::stoi(sMember);
+    ItineraryDetail(choosedVehicle, choosedHotel, from, to, sDate, member);
 }
 
 Vehicle User::chooseVehicle(std::string from, std::string to, std::string sDate) {
     TripManager tripManager;
     std::vector<Vehicle> availableVehicle;
     for (int i = 0; i < tripManager.vehicles.size(); i++) {
-        tripManager.vehicles[i].display();
-        if (tripManager.vehicles[i].getEndDate() == sDate) {
+        if (tripManager.vehicles[i].getEndDate() == sDate && 
+            tripManager.vehicles[i].getDeparture() == from &&
+            tripManager.vehicles[i].getDestination() == to) {
             availableVehicle.push_back(tripManager.vehicles[i]);
         }
     }
@@ -294,7 +392,6 @@ Vehicle User::chooseVehicle(std::string from, std::string to, std::string sDate)
     case(1): {
         std::vector<Vehicle> flight;
         for (int i = 0; i < availableVehicle.size(); i++) {
-            availableVehicle[i].display();
             if (availableVehicle[i].getType() == "Flight") {
                 flight.push_back(availableVehicle[i]);
             }
@@ -320,7 +417,7 @@ Vehicle User::chooseVehicle(std::string from, std::string to, std::string sDate)
             return temp;
         }
         int option = Utility::getCommandFromCLI();
-        while (option <= 0 && option > flight.size()) {
+        while (option <= 0 || option > flight.size()) {
             std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
         }
         return flight[option - 1];
@@ -352,8 +449,10 @@ Vehicle User::chooseVehicle(std::string from, std::string to, std::string sDate)
             std::cout << "No car available for this departure and destination!" << std::endl;
         }
         int option = Utility::getCommandFromCLI();
-        while (option <= 0 && option > car.size()) {
+        while (option <= 0 || option > car.size()) {
             std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
+            Utility::delay();
+            return temp;
         }
         return car[option - 1];
         break;
@@ -366,6 +465,37 @@ Vehicle User::chooseVehicle(std::string from, std::string to, std::string sDate)
         std::cout << "Invalid option, try: "; command = Utility::getCommandFromCLI();
         break;
     }
+    }
+    return Vehicle();
+}
+
+Hotel User::chooseHotel(std::string to, int member) {
+    std::vector<Hotel> availableHotel;
+    for (Hotel i : TripManager::hotels) {
+        if (i.getAddress() == to && i.getOverallRoom() > 0) {
+            availableHotel.push_back(i);
+        }
+    }
+    if (availableHotel.size() != 0) {
+        std::cout << std::setw(5) << std::left << "ID" << "|"
+            << std::setw(15) << std::left << "Name" << "|"
+            << std::setw(5) << std::left << "Available" << "|"
+            << std::setw(5) << std::left << "Min Price" << std::endl;
+        for (int i = 0; i < availableHotel.size(); i++) {
+            std::cout << std::setw(5) << std::left << i + 1 << "|"
+                << std::setw(15) << std::left << availableHotel[i].getName() << "|"
+                << std::setw(5) << std::left << availableHotel[i].getOverallRoom() << "|"
+                << std::setw(5) << std::left << availableHotel[i].getMinPrice() << std::endl;
+        }
+        int option = Utility::getCommandFromCLI();
+        while (option <= 0 || option > availableHotel.size()) {
+            std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
+        }
+        return availableHotel[option - 1];
+    }
+    else {
+        std::cout << "No hotel available for this destination" << std::endl;
+        return Hotel();
     }
 }
 

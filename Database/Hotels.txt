@@ -38,3 +38,5 @@ BostonHarbor View Hotel2Harbor Room20190Harbor Suite8350
 MiamiTropicana Hotel2Tropicana Room15180Tropicana Bungalow7300
 AustinHill Country Lodge2Hill Country Room20200Hill Country Chalet8350
 PhoenixDesert Oasis Resort3Desert Room15170Desert Suite7300Desert Villa3400
+DaNangHotelA1Single10100
+DaNangHotel B3Desert15170VIP7300Villa3400

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 1qwerqwer
-=======
 0johndoe123password123John Doe123 Main St30
 0alice_smithpaSsW0rdAlice SmithNone25
 1admin1P@ssw0rd
@@ -22,7 +19,4 @@
 0lauren_clarkclark1234Lauren ClarkNone24
 0robert_hernandezHernandez12Robert Hernandez432 Birch St36
 1admin7SecureAdmin789
->>>>>>> e10c7204f524b128ad5fe75bd7ec5f58c97de0ea
-=======
-0,longvh34,5223669382134602710,vu hoang long,None,1
->>>>>>> origin/HieuNT
+0hieunt10902233727550022889nguyen truong hieuNone22HaNoiDaNang20/04/202422/04/20240DaNangHotel B3Desert15170VIP7300Villa3400CarToyotaHaNoiDaNang20/04/202422/04/2024800000HaNoiDaNang20/04/202422/04/20240DaNangHotel B3Desert15170VIP7300Villa3400CarToyotaHaNoiDaNang20/04/202422/04/2024800000

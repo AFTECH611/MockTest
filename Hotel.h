@@ -26,6 +26,7 @@ public:
 	void showRoomType();
 	std::string toString();
 	std::vector<Room> searchRoom(std::string type, int available, int price);
-
+	int getOverallRoom();
 	bool fromString(std::string s);
+	int getMinPrice();
 };
