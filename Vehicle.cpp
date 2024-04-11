@@ -82,7 +82,9 @@ void Vehicle::display() {
 }
 
 std::string Vehicle::toString() {
-	return type + Utility::strCommaD() + brand + Utility::strCommaD() + departure + Utility::strCommaD() + destination + Utility::strCommaD() + startDate + Utility::strCommaD() + endDate + Utility::strCommaD() + std::to_string(price);
+	// format: type,brand,departure,destination,startDate,endDate,price
+	return type + Utility::strCommaD() + brand + Utility::strCommaD() + departure + Utility::strCommaD() + 
+		   destination + Utility::strCommaD() + startDate + Utility::strCommaD() + endDate + Utility::strCommaD() + std::to_string(price);
 }
 
 bool Vehicle::fromString(std::string s) {

@@ -43,7 +43,9 @@ const std::vector<Trip>& User::getBookedTrips() {
 }
 
 std::string User::toString() {
-    std::string s = "0" + Utility::strCommaD() + username + Utility::strCommaD() + password + Utility::strCommaD() + name + Utility::strCommaD() + address + Utility::strCommaD() + std::to_string(age);
+    // format: 0,username,password,name,address,age,[bookedTrips[0]],[bookedTrips[1]],...
+    std::string s = "0" + Utility::strCommaD() + username + Utility::strCommaD() + password + Utility::strCommaD() + 
+                    name + Utility::strCommaD() + address + Utility::strCommaD() + std::to_string(age);
     for(Trip t: bookedTrips) {
         s+=Utility::strCommaD() + Utility::strOpenBracketD() + t.toString() + Utility::strCloseBracketD();
     }

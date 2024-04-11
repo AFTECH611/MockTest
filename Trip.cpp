@@ -60,6 +60,7 @@ void Trip::setData(std::string _departure, std::string _destination, std::string
 }
 
 std::string Trip::toString() {
+	// format: departure,destination,startDate,endDate,price,member,bookedRoomIndex,[hotel],[room]
 	std::string s = departure + Utility::strCommaD() + destination + Utility::strCommaD() + startDate + Utility::strCommaD() + 
 					endDate + Utility::strCommaD() + std::to_string(price) + Utility::strCommaD() + std::to_string(member) + Utility::strCommaD() + 
 					std::to_string(bookedRoomIndex);
@@ -78,10 +79,6 @@ std::string Trip::toString() {
 
 bool Trip::fromString(std::string s) {
 	std::vector<std::string> vec = Utility::stringToVector(s, 31);
-	// for(std::string s: vec) {
-	// 	std::cout << s << std::endl;
-	// }
-	// std::cout << "size " << vec.size() << std::endl;
 
 	try {
 		departure = vec.at(0);

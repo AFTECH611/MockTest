@@ -74,6 +74,7 @@ bool stringToRoom(std::string s, Room& r) {
 }
 
 std::string Hotel::toString() {
+	// format: address,name,numOfTypeRoom,[room[0]],[room[1]],...
 	std::string s = address + Utility::strCommaD() + name + Utility::strCommaD() + std::to_string(numbOfTypeRoom);
 
 	for(Room r: roomTypeList) {

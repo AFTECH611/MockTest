@@ -18,7 +18,7 @@ void Application::run() {
     TripManager::load("./Database/Hotels.txt", "./Database/Vehicles.txt");
 
     while(true) {
-        // while the account is not logged in
+        // loop until the current account is logged in
         while(!AccountManager::getCurrentAccount()) {
             Utility::printVector(getAppCommandsList());
 
@@ -27,7 +27,7 @@ void Application::run() {
             executeAppCommand(command);
         }
 
-        // while user is logged in
+        // while an account is logged in
         while(AccountManager::getCurrentAccount()) {
             Utility::printVector(AccountManager::getCurrentAccount()->getCommandsList());
             
