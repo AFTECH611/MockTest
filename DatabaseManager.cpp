@@ -1,7 +1,4 @@
-#include <iostream>
 #include <fstream>
-#include <vector>
-
 #include "DatabaseManager.h"
 
 void DatabaseManager::readFile(std::string path, std::vector<std::string>& vec) {
@@ -29,7 +26,11 @@ void DatabaseManager::writeFile(std::string path, const std::vector<std::string>
 void DatabaseManager::appendFile(std::string path, const std::string s) {
     std::ofstream file(path, std::ios_base::app);
     if(file.is_open()) {
-        file << s;
+        file << s << std::endl;
     }
+}
+
+void DatabaseManager::clearFile(std::string path) {
+    std::ofstream file(path);
 }
 

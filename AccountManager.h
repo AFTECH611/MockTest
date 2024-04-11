@@ -1,14 +1,8 @@
 #ifndef ACCOUNT_MANAGER_H
 #define ACCOUNT_MANAGER_H
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <memory>
-
 #include "Utility.h"
 #include "Account.h"
-#include "User.h"
 #include "Admin.h"
 
 class AccountManager {
@@ -30,6 +24,11 @@ public:
     static void registerUser();
     static bool login();
     static void logout();
+    static void updateDatabase(std::string accountsPath);
+    static void deleteUser(std::string account);
+    static void searchUser(std::string account);
+    static void displayAllAccounts();
+    static void autoCreateAdmin();
     static void changeUserInfo(std::string name, std::string address, int age);
 };
 

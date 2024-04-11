@@ -1,9 +1,11 @@
 #ifndef USER_H
 #define USER_H
 
-#include <vector>
+#include "Utility.h"
 #include "Account.h"
+#include "AccountManager.h"
 #include "Trip.h"
+#include "TripManager.h"
 
 class User: public Account {
 private:
@@ -23,18 +25,20 @@ public:
     const std::vector<Trip>& getBookedTrips();
     const std::string& getName();
     void addNewItinerary(Trip newTrip);
-    
     std::vector<std::string> getCommandsList() override;
     std::vector<std::string> getCommandListAfterViewProfile();
-    std::vector<std::string> getCommandListAfterMakeItinerar();
+    std::vector<std::string> getCommandListAfterMakeItinerary();
     std::vector<std::string> getCommandListEditProfile();
     std::vector<std::string> getCommandListEditAccount();
     void executeCommand(int command) override;
     std::string toString() override; 
     bool fromString(std::string s) override;
     void viewProfile();
+    void editTrip();
     void editProfile(int command);
     void editAccount(int command);
+    Vehicle chooseVehicle(std::string from, std::string to, std::string sDate);
+    //void chooseHotel();
     void cancelTrip();
     void makeItinerary();
     void showItinerary();

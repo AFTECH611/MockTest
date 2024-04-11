@@ -1,5 +1,6 @@
 #include "DatabaseManager.h"
 #include "AccountManager.h"
+#include "User.h"
 
 std::vector<std::shared_ptr<Account>> AccountManager::accounts;
 std::shared_ptr<Account> AccountManager::currentAccount;
@@ -8,13 +9,17 @@ bool AccountManager::load(std::string accountsPath) {
     DatabaseManager::readFile(accountsPath, strAccounts);
     try {
         for(std::string acc: strAccounts) {
-            std::shared_ptr<Account> userPtr(new User());
-            std::shared_ptr<Account> adminPtr(new Admin());
-            if(userPtr->fromString(acc)) {
-                accounts.push_back(userPtr);
+            if(acc.at(0) == '0') {
+                std::shared_ptr<Account> userPtr(new User());
+                if(userPtr->fromString(acc)) {
+                    accounts.push_back(userPtr);
+                }
             }
-            else if(adminPtr->fromString(acc)) {
-                accounts.push_back(adminPtr);
+            else if(acc.at(0) == '1') {
+                std::shared_ptr<Account> adminPtr(new Admin());
+                if(adminPtr->fromString(acc)) {
+                    accounts.push_back(adminPtr);
+                }
             }
         }
     }
@@ -59,6 +64,7 @@ std::string AccountManager::inputRegAccount(){
         getline(std::cin, lwacc);
     }
     lwacc = Utility::toLower(_Acc);
+    std::cout << lwacc << std::endl;
     return lwacc;
 }
 
@@ -125,11 +131,14 @@ void AccountManager::registerUser(){
     std::string pass = inputRegPassword();
     int age = inputAge();
     newUser->setUsername(acc);
+    newUser->setPassword(pass);
+    newUser->setType("user");
     dynamic_cast<User*>(newUser.get())->setName(name); 
     dynamic_cast<User*>(newUser.get())->setAge(age);
-    dynamic_cast<User*>(newUser.get())->setPassword(pass);
     accounts.push_back(move(newUser));
     std::cout << "User account registered successfully." << std::endl;
+    updateDatabase("./Database/Accounts.txt");
+
     Utility::delay();
     system("cls");
 }
@@ -150,22 +159,51 @@ bool AccountManager::login() {
     return false;
 }
 
+void AccountManager::updateDatabase(std::string accountsPath) {
+    DatabaseManager::clearFile(accountsPath);
+    
+    for(std::shared_ptr<Account> acc: accounts) {
+        DatabaseManager::appendFile(accountsPath, acc->toString());
+    }
+}
+
+void AccountManager::displayAllAccounts(){
+    for(std::shared_ptr<Account>& acc : accounts){
+        acc->display();
+    }
+}
+
+void AccountManager::deleteUser(std::string username){
+    for(auto ac = accounts.begin(); ac != accounts.end(); ++ac){
+        if(ac->get()->getType() == "user"){
+            if(ac->get()->getUsername() == username){
+                accounts.erase(ac);
+                break;
+            }
+        }
+    }
+}
+
+void AccountManager::searchUser(std::string username){
+    for(std::shared_ptr<Account>& acc : accounts){
+        if(acc->getUsername() == username) acc->display();
+    }
+}
+
+void AccountManager::autoCreateAdmin(){
+    std::shared_ptr<Account> newUser(new Admin());
+    std::string username = "admin";
+    std::string password = "admin";
+    newUser->setUsername(username); 
+    newUser->setPassword(password);
+    newUser->setType("admin");
+    accounts.push_back(move(newUser));
+    std::cout << "Admin account registered successfully." << std::endl;
+}
 
 void AccountManager::logout() {
     currentAccount = nullptr;
     std::cout << "Logged out successfully." << std::endl;
     Utility::delay();
     system("cls");
-}
-
-void AccountManager::changeUserInfo(std::string name, std::string address, int age) {
-    // if(dynamic_cast<User*>(currentAccount.get())) {
-    //     dynamic_cast<User*>(currentAccount.get())->setName(name);
-    //     dynamic_cast<User*>(currentAccount.get())->setAddress(address);
-    //     dynamic_cast<User*>(currentAccount.get())->setAge(age);
-    //     std::cout << "User information updated successfully." << std::endl;
-    // }
-    // else {
-    //     std::cout << "Invalid command." << std::endl;
-    // }
 }

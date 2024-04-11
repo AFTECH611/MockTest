@@ -70,27 +70,22 @@ void Vehicle::display() {
 }
 
 std::string Vehicle::toString() {
-	return type + "," + brand + "," + departure + "," + destination + "," + startDate + "," + endDate + "," + std::to_string(price);
+	return type + Utility::strCommaD() + brand + Utility::strCommaD() + departure + Utility::strCommaD() + destination + Utility::strCommaD() + startDate + Utility::strCommaD() + endDate + Utility::strCommaD() + std::to_string(price);
 }
 
 bool Vehicle::fromString(std::string s) {
-	std::vector<std::string> vec = Utility::stringToVector(s, ',');
-
+	std::vector<std::string> vec = Utility::stringToVector(s, 31);
 	try {
-		std::string _type, _brand, _departure, _destination, _startDate, _endDate;
-		int _price;
-		_type = vec.at(0);
-		_brand = vec.at(1);
-		_departure = vec.at(2);
-		_destination = vec.at(3);
-		_startDate = vec.at(4);
-		_endDate = vec.at(5);
-		_price = stoi(vec.at(6));
-
-		*this = Vehicle(_type, _brand, _departure, _destination, _startDate, _endDate, _price);
+		type = vec.at(0);
+		brand = vec.at(1);
+		departure = vec.at(2);
+		destination = vec.at(3);
+		startDate = vec.at(4);
+		endDate = vec.at(5);
+		price = stoi(vec.at(6));
 	}
 	catch(const std::exception& e) {
-		std::cout << "Can't read vehicle from string" << std::endl;
+		std::cout << "Can't read vehicle from string." << std::endl;
 		return false;
 	}
 

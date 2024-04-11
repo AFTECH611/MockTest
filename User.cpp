@@ -1,6 +1,4 @@
-#include <iostream>
 #include "User.h"
-#include "AccountManager.h"
 
 User::User() {
     username = password = name = address = "None";
@@ -19,6 +17,7 @@ User::User(std::string _username, std::string _password, std::string _name, std:
 const std::string& User::getName()  {
     return name;
 }
+
 void User::setName(std::string _name) {
     name = _name;
 }
@@ -26,6 +25,7 @@ void User::setName(std::string _name) {
 const std::string& User::getAddress()  {
     return address;
 }
+
 void User::setAddress(std::string addr) {
     address = addr;
 }
@@ -33,33 +33,48 @@ void User::setAddress(std::string addr) {
 const int& User::getAge()  {
     return age;
 }
+
 void User::setAge(int a) {
     age = a;
 }
 
+const std::vector<Trip>& User::getBookedTrips() {
+    return bookedTrips;
+}
+
 std::string User::toString() {
-    std::string s = "0," + username + "," + password + "," + name + "," + address + "," + std::to_string(age);
-    for (Trip t : bookedTrips) {
-        s += "," + t.toString();
+    std::string s = "0" + Utility::strCommaD() + username + Utility::strCommaD() + password + Utility::strCommaD() + name + Utility::strCommaD() + address + Utility::strCommaD() + std::to_string(age);
+    for(Trip t: bookedTrips) {
+        s+=Utility::strCommaD() + Utility::strOpenBracketD() + t.toString() + Utility::strCloseBracketD();
     }
     return s;
 }
 
 bool User::fromString(std::string s) {
-    std::vector<std::string> vec = Utility::stringToVector(s, ',');
+    std::vector<std::string> vec = Utility::stringToVector(s, 31);
+    
     try {
-        if (vec.at(0) != "0") return false;
+        if(vec.at(0) != "0") return false;
+        type = "user";
+        username = vec.at(1);
+        password = vec.at(2);
+        name = vec.at(3);
+        address = vec.at(4);
+        age = stoi(vec.at(5));
+        for(int i = 6; i < vec.size(); i++) {
+            Trip tempTrip;
 
+            if(tempTrip.fromString(Utility::stripBrackets(vec.at(i)))) {
+                std::string strRoom = vec[i];
+                bookedTrips.push_back(tempTrip);
+            }
+        }
     }
-    catch (const std::exception& e) {
+    catch(const std::exception& e) {
         return false;
     }
 
     return true;
-}
-
-const std::vector<Trip>& User::getBookedTrips() {
-    return bookedTrips;
 }
 
 void User::addNewItinerary(Trip newTrip) {
@@ -150,11 +165,12 @@ void User::viewProfile() {
 }
 
 void User::display() {
-    std:: cout << "USER ACCOUNT" << std::endl;
-    std::cout << "Username: " << username << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Address: " << address << std::endl;
-    std::cout << "Age: " << age << std::endl;
+    std::cout << "|" << std::setw(20) << std::left << username << "| " << std::setw(20) << std::left << name << "| "  << std::setw(22) << std::left << address << "| " << std::setw(15) << std::right << age << "|" << std::endl;
+    // std:: cout << "USER ACCOUNT" << std::endl;
+    // std::cout << "Username: " << username << std::endl;
+    // std::cout << "Name: " << name << std::endl;
+    // std::cout << "Address: " << address << std::endl;
+    // std::cout << "Age: " << age << std::endl;
 }
 
 void User::editProfile(int command) {
@@ -224,7 +240,8 @@ void User::editAccount(int command) {
 }
 
 void User::makeItinerary() {
-    std::string from, to;
+    std::string from, to, sDate;
+    Vehicle choosedVehicle;
     std::cout << "Enter your itinerary information" << std::endl;
     std::cin.ignore();
     std::cout << "From: "; getline(std::cin, from);
@@ -235,7 +252,121 @@ void User::makeItinerary() {
     while (!Utility::isValidPlace(to)) {
         std::cout << "Invalid place type, try: "; getline(std::cin, to);
     }
+    std::cout << "From date: "; getline(std::cin, sDate);
+    while (!Utility::isValidDate(sDate)) {
+        std::cout << "Invalid date, try: "; getline(std::cin, sDate);
+    }
+    Utility::printVector(getCommandListAfterMakeItinerary());
+    int command = Utility::getCommandFromCLI();
+    switch (command) {
+    case(1): {
+        choosedVehicle = chooseVehicle(from, to, sDate);
+        break;
+    }
+    case(2): {
+        //chooseHotel();
+        break;
+    }
+    case(3): {
+        //cancel
+        break;
+    }
+    default: {
+        std::cout << "Invalid option, try: "; command = Utility::getCommandFromCLI();
+    }
+    }
+}
 
+Vehicle User::chooseVehicle(std::string from, std::string to, std::string sDate) {
+    TripManager tripManager;
+    std::vector<Vehicle> availableVehicle;
+    for (int i = 0; i < tripManager.vehicles.size(); i++) {
+        tripManager.vehicles[i].display();
+        if (tripManager.vehicles[i].getEndDate() == sDate) {
+            availableVehicle.push_back(tripManager.vehicles[i]);
+        }
+    }
+    Utility::printVector(std::vector<std::string>{"1 - Flight", "2 - Car", "3 - Return"});
+    Vehicle temp;
+    temp.setData("None", "None", "None", "None", "NN/NN/NNNN", "NN/NN/NNNN", 0);
+    int command = Utility::getCommandFromCLI();
+    switch (command) {
+    case(1): {
+        std::vector<Vehicle> flight;
+        for (int i = 0; i < availableVehicle.size(); i++) {
+            availableVehicle[i].display();
+            if (availableVehicle[i].getType() == "Flight") {
+                flight.push_back(availableVehicle[i]);
+            }
+        }
+        if (flight.size() != 0) {
+            std::cout << "Available flight: " << std::endl;
+            std::cout << std::setw(2) << std::left << "ID" << "|"
+                << std::setw(10) << std::left << "Type" << "|"
+                << std::setw(10) << std::left << "Brand" << "|"
+                << std::setw(15) << std::left << "Departure" << "|"
+                << std::setw(15) << std::left << "Destination" << "|"
+                << std::setw(10) << std::left << "Start Date" << "|"
+                << std::setw(10) << std::left << "End Date" << "|"
+                << std::setw(10) << std::left << "Price" << "|" << std::endl;
+            for (int i = 0; i < flight.size(); i++) {
+                std::cout << std::setw(2) << std::left << i + 1 << "|";
+                flight[i].display();
+            }
+        }
+        else {
+            std::cout << "No flight available for this departure and destination!" << std::endl;
+            Utility::delay();
+            return temp;
+        }
+        int option = Utility::getCommandFromCLI();
+        while (option <= 0 && option > flight.size()) {
+            std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
+        }
+        return flight[option - 1];
+        break;
+    }
+    case(2): {
+        std::vector<Vehicle> car;
+        for (int i = 0; i < availableVehicle.size(); i++) {
+            if (availableVehicle[i].getType() == "Car") {
+                car.push_back(availableVehicle[i]);
+            }
+        }
+        if (car.size() != 0) {
+            std::cout << "Available car: " << std::endl;
+            std::cout << std::setw(2) << std::left << "ID" << "|"
+                << std::setw(10) << std::left << "Type" << "|"
+                << std::setw(10) << std::left << "Brand" << "|"
+                << std::setw(15) << std::left << "Departure" << "|"
+                << std::setw(15) << std::left << "Destination" << "|"
+                << std::setw(10) << std::left << "Start Date" << "|"
+                << std::setw(10) << std::left << "End Date" << "|"
+                << std::setw(10) << std::left << "Price" << "|" << std::endl;
+            for (int i = 0; i < car.size(); i++) {
+                std::cout << std::setw(2) << std::left << i + 1 << "|";
+                car[i].display();
+            }
+        }
+        else {
+            std::cout << "No car available for this departure and destination!" << std::endl;
+        }
+        int option = Utility::getCommandFromCLI();
+        while (option <= 0 && option > car.size()) {
+            std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
+        }
+        return car[option - 1];
+        break;
+    }
+    case(3): {
+        return temp;
+        break;
+    }
+    default: {
+        std::cout << "Invalid option, try: "; command = Utility::getCommandFromCLI();
+        break;
+    }
+    }
 }
 
 void User::showItinerary() {
@@ -261,6 +392,6 @@ void User::showItinerary() {
         }
     }
     else {
-        std::cout << "You have ho itinerary booked to show" << std::endl;
+        std::cout << "You have no itinerary booked to show" << std::endl;
     }
 }

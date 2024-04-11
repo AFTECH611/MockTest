@@ -1,9 +1,3 @@
-﻿#include <iostream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <unordered_map>
-
 #include "Utility.h"
 
 bool Utility::isValidInt(std::string s) {
@@ -69,7 +63,7 @@ bool Utility::isValidAcc(std::string acc){
     return true;
 }
 
-bool Utility::isValidPassword(std::string pass){
+bool Utility::isValidPassword(std::string pass) {
     bool f1, f2, f3;
     f1 = f2 = f3 = false;
     if(!lengthValidPwd(pass)) {
@@ -119,11 +113,11 @@ bool Utility::isValidName(std::string name) {
 }
 
 void Utility::printVector(std::vector<std::string> vec) {
-    std::cout << "Menu: " << std::endl;
+    std::cout << "Menu: \n";
     for(const std::string& s: vec) {
         std::cout << s << std::endl;
     }
-    std:: cout << "Enter number (1 - " << vec.size() << "): ";
+    std::cout << "Enter number in range (1-" << vec.size() << "): ";
 }
 
 int Utility::getCommandFromCLI() {
@@ -144,17 +138,33 @@ int Utility::getCommandFromCLI() {
 }
 
 std::vector<std::string> Utility::stringToVector(std::string s, char delimiter) {
-    std::vector<std::string> vec;
-
-	std::stringstream ss(s);
-
-	while(ss.good()) {
-		std::string temp;
-		getline(ss,temp, ',');
-		vec.push_back(temp);
-	}
-    
+    std::vector<std::string> vec = {""};
+    int openBrackets = 0;
+    for(char c: s) {
+        if(c == delimiter && openBrackets == 0) {
+            vec.push_back("");
+        }
+        else {
+            if(c == 29) {
+                openBrackets++;
+            }
+            else if(c == 30) {
+                openBrackets--;
+            }
+        
+            vec.back()+=c;
+        } 
+    }
     return vec;
+}
+
+std::string Utility::stripBrackets(std::string s) {
+    if((s[0] == '(' && s.back() == ')') || (s[0] == '[' && s.back() == ']') || (s[0] == '{' && s.back() == '}') || (s[0] == 29 && s.back() == 30)) {
+        s.pop_back();
+        s.erase(0,1);
+    }
+
+    return s;
 }
 
 bool Utility::isValidDate(std::string date) {
@@ -188,6 +198,7 @@ bool Utility::isValidPlace(std::string s) {
             return false;
         }
     }
+    return true;
 }
 
 int Utility::inputAge() {
@@ -208,7 +219,7 @@ void Utility::delay() {
     while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 1);
 }
 
-int daysSince1900(int day, int month, int year) {
+int Utility::daysSince1900(int day, int month, int year) {
     const int daysInMonth[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     int days = (year - 1900) * 365 + (year - 1901) / 4;
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0 && month <= 2))
@@ -219,7 +230,7 @@ int daysSince1900(int day, int month, int year) {
     return days;
 }
 
-int dateDiff(std::string date1, std::string date2) {
+int Utility::dateDiff(std::string date1, std::string date2) {
     int dayDiff, monthDiff, yearDiff;
     int day1, day2, month1, month2, year1, year2;
     day1 = (date1[0] - '0') * 10 + (date1[1] - '0'); day2 = (date2[0] - '0') * 10 + (date2[1] - '0');
@@ -229,4 +240,16 @@ int dateDiff(std::string date1, std::string date2) {
     int date1Since1900 = daysSince1900(day1, month1, year1);
     int date2Since1900 = daysSince1900(day2, month2, year2);
     return std::abs(date2Since1900 - date1Since1900);
+}
+
+std::string Utility::strOpenBracketD() {
+    return std::string(1, char(29));
+}
+
+std::string Utility::strCloseBracketD() {
+    return std::string(1, char(30));
+}
+
+std::string Utility::strCommaD() {
+    return std::string(1, char(31));
 }
