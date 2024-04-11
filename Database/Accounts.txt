@@ -1,1 +1,24 @@
+<<<<<<< HEAD
 1qwerqwer
+=======
+0johndoe123password123John Doe123 Main St30
+0alice_smithpaSsW0rdAlice SmithNone25
+1admin1P@ssw0rd
+0mark_jacksonjackson123Mark Jackson456 Elm St35
+0lisa_garciaGarcia123Lisa GarciaNone28
+1admin2SecureP@ss123
+0ryan_williamsryan_pass123Ryan Williams789 Oak St32
+1admin3Adm1nPa$$
+0samantha_brownSamBrown123Samantha BrownNone27
+0david_jonesPassWord123David Jones567 Pine St33
+1admin4SecretP@ssword123
+0emily_thomasthomasE123Emily Thomas890 Maple St29
+0kevin_rodriguezKRodriguez12Kevin RodriguezNone31
+1admin5Pa$$w0rdAdmin
+0olivia_martinezOliviaM123MartinezNone26
+0michael_taylorTaylorMike123Michael Taylor321 Cedar St34
+1admin6AdminPass123
+0lauren_clarkclark1234Lauren ClarkNone24
+0robert_hernandezHernandez12Robert Hernandez432 Birch St36
+1admin7SecureAdmin789
+>>>>>>> e10c7204f524b128ad5fe75bd7ec5f58c97de0ea
