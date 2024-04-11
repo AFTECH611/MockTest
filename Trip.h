@@ -31,4 +31,6 @@ public:
 	int getTotalPrice();
 	std::string toString();
 	bool fromString(std::string s);
+	int getBookedRoomIndex();
+	int getMember();
 };

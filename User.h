@@ -43,6 +43,7 @@ public:
     void showItinerary();
     void ItineraryDetail(Vehicle choosedVehicle, Hotel choosedHotel, std::string from, std::string to, std::string sDate, int member);
     void display() override;
+    void displayBasicItineraryInfo(std::string from, std::string to, std::string date);
 };
 
 #endif

@@ -135,11 +135,15 @@ std::vector<Room> Hotel::searchRoom(std::string type, int available, int price){
 }
 
 void Hotel::minusRoom(int member, std::string type) {
-	for (Room i : roomTypeList) {
-		if (i.type == type) {
-			i.available -= member;
+	for (int i = 0; i < roomTypeList.size(); i ++) {
+		if (roomTypeList[i].type == type) {
+			roomTypeList[i].available -= member;
 		}
 	}
+}
+
+void Hotel::returnRoom(int roomIndex, int member) {
+	roomTypeList[roomIndex].available += member;
 }
 
 int Hotel::getOverallRoom(){

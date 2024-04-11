@@ -137,3 +137,11 @@ void Trip::display() {
 		<< std::setw(5) << std::left << member << "|"
 		<< std::setw(10) << std::left << price << "|" << std::endl;
 }
+
+int Trip::getBookedRoomIndex() {
+	return bookedRoomIndex;
+}
+
+int Trip::getMember() {
+	return member;
+}
