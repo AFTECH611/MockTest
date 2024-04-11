@@ -25,14 +25,23 @@ public:
     const std::vector<Trip>& getBookedTrips();
     const std::string& getName();
     void addNewItinerary(Trip newTrip);
-    std::vector<std::string> getCommandsList() override;
+
+    // gets the user's list of commands based on different scenarios
+    const std::vector<std::string> getCommandsList() override;
     std::vector<std::string> getCommandListAfterViewProfile();
     std::vector<std::string> getCommandListAfterMakeItinerary();
     std::vector<std::string> getCommandListEditProfile();
     std::vector<std::string> getCommandListEditAccount();
+
+    // execute one of the commands executable by the user given the user's input
     void executeCommand(int command) override;
+
+    // read the user from string and write the user to string
+    // helps with read and write database
     std::string toString() override; 
     bool fromString(std::string s) override;
+
+    // different actions that the user can make
     void viewProfile();
     void editTrip();
     void editProfile(int command);

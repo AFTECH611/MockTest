@@ -81,7 +81,7 @@ void User::addNewItinerary(Trip newTrip) {
     bookedTrips.push_back(newTrip);
 }
 
-std::vector<std::string> User::getCommandsList() {
+const std::vector<std::string> User::getCommandsList() {
     //system("cls");
     return std::vector<std::string>{"1 - View profile", 
         "2 - Make itinerary", 

@@ -12,6 +12,8 @@ private:
     static std::shared_ptr<Account> currentAccount;
 
 public:
+
+    // different commands to interact with the vector of users loaded in by the application
     static bool load(std::string accountsPath);
     static void setCurrentAccount();
     static const std::shared_ptr<Account>& getCurrentAccount();

@@ -21,6 +21,8 @@ public:
 		std::string _destination, std::string _startDate,
 		std::string _endDate, int _price);
 	void display();
+	// read the vehicle from string and write the vehicle to string
+	// helps reading and writing database 
 	std::string toString();
 	bool fromString(std::string s);
 };

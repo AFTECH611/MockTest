@@ -1,14 +1,14 @@
 #include "Account.h"
 
-const std::string Account::getUsername() {
+const std::string& Account::getUsername() {
     return username;
 }
 
-const std::string Account::getPassword() {
+const std::string& Account::getPassword() {
     return password;
 }
 
-const std::string Account::getType() {
+const std::string& Account::getType() {
     return type;
 }
 
