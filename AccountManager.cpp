@@ -63,7 +63,7 @@ std::string AccountManager::inputRegAccount(){
         std::cout << "Username existed! Please choose another username: \n";
         getline(std::cin, lwacc);
     }
-    lwacc = Utility::toLower(_Acc);
+    lwacc = Utility::toLower(lwacc);
     return lwacc;
 }
 
