@@ -27,3 +27,5 @@ BudapestDanube2Classic15120View8250
 IstanbulBosphorus3Cityscape20150View10300Suite5600
 LisbonAtlantic2Standard12180View8300
 AthensAcropolis3Cityscape20150View10300Suite5600
+DaNangHotelA1Single10100
+DaNangHotel B3Desert15170VIP7300Villa3400
