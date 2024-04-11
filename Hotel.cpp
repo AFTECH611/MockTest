@@ -23,6 +23,7 @@ Hotel::Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::
 	}
 }
 
+
 void Hotel::setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList) {
 	address = _address;
 	name = _name;

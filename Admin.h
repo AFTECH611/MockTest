@@ -14,7 +14,7 @@ public:
     const std::vector<std::string> getCmdListsFlightManagement();
     const std::vector<std::string> getCmdListsHotelManagement();
 
-    // execute a specific command based on the admin's input
+    const std::vector<std::string> getCmdListsFlightDisplay();
     void executeCommand(int command) override;
 
     // execute command based on different scenarios
@@ -24,6 +24,7 @@ public:
     void executeCmdAfterFlight();
     
     // different commands that the admin can execute
+    void executeCmdAfterFlightDisplay();
     bool isViewAllUser();
     void editUser(std::string username);
     void removeUser(std::string username);

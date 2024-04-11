@@ -16,8 +16,12 @@ public:
     static void updateDatabase(std::string hotelsPath, std::string vehiclesPath);
 
     // different commands that can be executed by the admin on the hotels and vehicles vector
-    static void sortHotels();
-    static void sortVehicles();
+    static bool compareDateV(Vehicle &a, Vehicle &b);
+    static bool comparePriceV(Vehicle &a, Vehicle &b);
+    static void sortHotelByDate();
+    static void sortVehicleByDate();
+    static void sortHotelByPrice();
+    static void sortVehicleByPrice();
     static void searchHotels();
     static void searchVehicles();
     static void deleteHotel();

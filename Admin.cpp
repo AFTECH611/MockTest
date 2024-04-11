@@ -17,15 +17,19 @@ std::string Admin::toString() {
 }
 
 const std::vector<std::string> Admin::getCmdListsUserManagement() {
-    return std::vector<std::string>{"1.Display all Users", "2.Searching user", "3.Delete user", "4. Back"};
+    return std::vector<std::string>{"1.Display all Users", "2.Searching user", "3.Delete user", "4.Back"};
 }
 
 const std::vector<std::string> Admin::getCmdListsHotelManagement() {
-    return std::vector<std::string>{"1.Display all hotels", "2.Searching hotels", "3.Delete hotel", "4. Add new hotel", "5. Back"};
+    return std::vector<std::string>{"1.Display all hotels", "2.Searching hotels", "3.Delete hotel", "4.Add new hotel", "5.Back"};
 }
 
 const std::vector<std::string> Admin::getCmdListsFlightManagement() {
-    return std::vector<std::string>{"1.Display all flights", "2.Searching flights", "3.Delete flight", "4. Add new flight", "5. Back"};
+    return std::vector<std::string>{"1.Display all flights", "2.Searching flights", "3.Delete flight", "4.Add new flight", "5.Back"};
+}
+
+const std::vector<std::string> Admin::getCmdListsFlightDisplay() {
+    return std::vector<std::string>{"1.Sort by price", "2.Sort by date", "3.Back"};
 }
 
 void Admin::executeCmdAfterUser(){
@@ -105,7 +109,8 @@ void Admin::executeCmdAfterFlight(){
     {
     case 1:
     {
-        TripManager::displayVehicles();
+        Utility::printVector(getCmdListsFlightDisplay());
+        executeCmdAfterFlightDisplay();
         break;
     }
     case 2:
@@ -124,6 +129,30 @@ void Admin::executeCmdAfterFlight(){
         break;
     }
     
+    default:
+        std::cout << "Invalid choice. Please try again!:";
+        break;
+    }
+}
+
+void Admin::executeCmdAfterFlightDisplay(){
+    int cmd;
+    std::cin >> cmd;
+    system("cls");
+    switch (cmd)
+    {
+    case 1:
+    {
+        TripManager::sortVehicleByPrice();
+        TripManager::displayVehicles();
+        break;
+    }
+    case 2:
+    {   
+        TripManager::sortVehicleByDate();
+        TripManager::displayVehicles();
+        break;
+    }      
     default:
         std::cout << "Invalid choice. Please try again!:";
         break;
