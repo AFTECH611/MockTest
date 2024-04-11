@@ -21,6 +21,7 @@ public:
 	int getNumbOfRoomType();
 	std::vector<Room> getRoomTypeList();
 	void minusRoom(int member, std::string type);
+	void returnRoom(int rommIdx, int member);
 	void setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList);
 	void display();
 	void showRoomType();

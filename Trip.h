@@ -34,4 +34,6 @@ public:
     // helps with read and write database
 	std::string toString();
 	bool fromString(std::string s);
+	int getBookedRoomIndex();
+	int getMember();
 };

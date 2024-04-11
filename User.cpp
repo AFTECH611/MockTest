@@ -178,11 +178,6 @@ void User::viewProfile() {
 
 void User::display() {
     std::cout << "|" << std::setw(20) << std::left << username << "| " << std::setw(20) << std::left << name << "| "  << std::setw(22) << std::left << address << "| " << std::setw(15) << std::right << age << "|" << std::endl;
-    // std:: cout << "USER ACCOUNT" << std::endl;
-    // std::cout << "Username: " << username << std::endl;
-    // std::cout << "Name: " << name << std::endl;
-    // std::cout << "Address: " << address << std::endl;
-    // std::cout << "Age: " << age << std::endl;
 }
 
 void User::editProfile(int command) {
@@ -258,19 +253,17 @@ void User::ItineraryDetail(Vehicle choosedVehicle, Hotel choosedHotel, std::stri
     int command = Utility::getCommandFromCLI();
     switch (command) {
     case(1): {
+        system("cls");
+        displayBasicItineraryInfo(from, to, sDate);
         choosedVehicle = chooseVehicle(from, to, sDate);
         ItineraryDetail(choosedVehicle, choosedHotel, from, to, sDate, member);
         break;
     }
     case(2): {
+        system("cls");
+        displayBasicItineraryInfo(from, to, sDate);
         choosedHotel = chooseHotel(to, member);
-        std::cout << "here";
-        choosedHotel.display();
         if (choosedHotel.getName() != "None") {
-            /*std::cout << std::setw(3) << std::left << "ID" << "|"
-                << std::setw(10) << std::left << "Room type" << "|"
-                << std::setw(5) << std::left << "Available" << "|"
-                << std::setw(10) << std::left << "Price" << std::endl;*/
             choosedHotel.showRoomType();
             int option = Utility::getCommandFromCLI();
             while (option <= 0 || option > choosedHotel.getNumbOfRoomType()) {
@@ -283,14 +276,19 @@ void User::ItineraryDetail(Vehicle choosedVehicle, Hotel choosedHotel, std::stri
                 if (option == 0) {
                     break;
                 }
-                else {
-                    roomIdx = option - 1;
-                    for (int i = 0; i < TripManager::hotels.size(); i++) {
-                        if (TripManager::hotels[i].getName() == choosedHotel.getName()) {
-                            TripManager::hotels[i].minusRoom(member, TripManager::hotels[i].getRoomTypeList()[option - 1].type);
-                        }
+            }
+            if (option != 0) {
+                roomIdx = option - 1;
+                for (int i = 0; i < TripManager::hotels.size(); i++) {
+                    if (TripManager::hotels[i].getName() == choosedHotel.getName()) {
+                        TripManager::hotels[i].minusRoom(member, TripManager::hotels[i].getRoomTypeList()[option - 1].type);
+                        int a = 0;
                     }
                 }
+                std::cout << "Book completed, you can check your booked itinerary in option 3" << std::endl;
+                Utility::delay();
+                Utility::delay();
+                system("cls");
             }
         }
         ItineraryDetail(choosedVehicle, choosedHotel, from, to, sDate, member);
@@ -313,6 +311,7 @@ void User::ItineraryDetail(Vehicle choosedVehicle, Hotel choosedHotel, std::stri
         break;
     }
     case(4): {
+        system("cls");
         break;
     }
     default: {
@@ -346,8 +345,17 @@ void User::cancelItinerary() {
         while (option <= 0 || option > bookedTrips.size()) {
             std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
         }
+        std::string hotelName = bookedTrips[option - 1].getHotel().getName();
+        int roomIdx = bookedTrips[option - 1].getBookedRoomIndex();
+        for (int i = 0; i < TripManager::hotels.size(); i++) {
+            if (TripManager::hotels[i].getName() == hotelName) {
+                TripManager::hotels[i].returnRoom(roomIdx, bookedTrips[option - 1].getMember());
+            }
+        }
         bookedTrips.erase(bookedTrips.begin() + (option - 1));
         std::cout << "Itinerary cancelled" << std::endl;
+        Utility::delay();
+        system("cls");
     }
     else {
         std::cout << "You have no itinerary booked to cancel" << std::endl;
@@ -358,6 +366,7 @@ void User::makeItinerary() {
     std::string from, to, sDate, sMember;
     Vehicle choosedVehicle;
     Hotel choosedHotel;
+    system("cls");
     std::cout << "Enter your itinerary information" << std::endl;
     std::cin.ignore();
     std::cout << "From: "; getline(std::cin, from);
@@ -453,12 +462,12 @@ Vehicle User::chooseVehicle(std::string from, std::string to, std::string sDate)
         }
         else {
             std::cout << "No car available for this departure and destination!" << std::endl;
+            return temp;
         }
         int option = Utility::getCommandFromCLI();
         while (option <= 0 || option > car.size()) {
             std::cout << "Invalid option, try: "; option = Utility::getCommandFromCLI();
-            Utility::delay();
-            return temp;
+            
         }
         return car[option - 1];
         break;
@@ -530,4 +539,8 @@ void User::showItinerary() {
     else {
         std::cout << "You have no itinerary booked to show" << std::endl;
     }
+}
+
+void User::displayBasicItineraryInfo(std::string from, std::string to, std::string date) {
+    std::cout << "Dep - Des: " << from << " -> " << to << " | Date: " << date << std::endl;
 }
