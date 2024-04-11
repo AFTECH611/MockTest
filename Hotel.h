@@ -29,5 +29,7 @@ public:
     // read the hotel from string and write the hotel to string
     // helps with read and write database
 	std::string toString();
+	int getOverallRoom();
 	bool fromString(std::string s);
+	int getMinPrice();
 };

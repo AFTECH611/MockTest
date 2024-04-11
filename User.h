@@ -43,14 +43,14 @@ public:
 
     // different actions that the user can make
     void viewProfile();
-    void editTrip();
     void editProfile(int command);
     void editAccount(int command);
     Vehicle chooseVehicle(std::string from, std::string to, std::string sDate);
-    //void chooseHotel();
-    void cancelTrip();
+    Hotel chooseHotel(std::string to, int member);
+    void cancelItinerary();
     void makeItinerary();
     void showItinerary();
+    void ItineraryDetail(Vehicle choosedVehicle, Hotel choosedHotel, std::string from, std::string to, std::string sDate, int member);
     void display() override;
 };
 

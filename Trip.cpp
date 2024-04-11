@@ -18,6 +18,23 @@ Trip::Trip(std::string _departure, std::string _destination, std::string _startD
 	endDate = _endDate;
 	price = _price;
 	member = _member;
+	price = 0;
+}
+
+void Trip::setVehicle(Vehicle _vehicle) {
+	vehicle = _vehicle;
+}
+
+void Trip::setHotel(Hotel _hotel) {
+	hotel = _hotel;
+}
+
+void Trip::setPrice(int _price) {
+	price = _price;
+}
+
+void Trip::setMember(int _member) {
+	member = _member;
 }
 
 int Trip::getPrice() {
@@ -109,8 +126,8 @@ bool Trip::fromString(std::string s) {
 }
 
 int Trip::getTotalPrice() {
-	int ret = price * Utility::dateDiff(startDate, endDate) + vehicle.getPrice();
-	ret += hotel.getRoomTypeList()[bookedRoomIndex].price * Utility::dateDiff(startDate, endDate);
+	int ret = price * Utility::dateDiff(startDate, endDate) + vehicle.getPrice() * member;
+	ret += hotel.getRoomTypeList()[bookedRoomIndex].price * Utility::dateDiff(startDate, endDate) * member;
 	return ret;
 }
 

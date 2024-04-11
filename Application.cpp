@@ -14,8 +14,8 @@ Application& Application::getApplication() {
 }
 
 void Application::run() {
-    AccountManager::load("./Database/Accounts.txt");
-    TripManager::load("./Database/Hotels.txt", "./Database/Vehicles.txt");
+    AccountManager::load("C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Accounts.txt");
+    TripManager::load("C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Hotels.txt", "C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Vehicles.txt");
 
     while(true) {
         // loop until the current account is logged in
@@ -37,8 +37,9 @@ void Application::run() {
         }
 
         AccountManager::logout();
-        AccountManager::updateDatabase("./Database/Accounts.txt");
-        TripManager::updateDatabase("./Database/Hotels.txt", "./Database/Vehicles.txt");
+        AccountManager::updateDatabase("C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Accounts.txt");
+        TripManager::updateDatabase("C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Hotels.txt", "C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Vehicles.txt");
+        
     }
 }
 
