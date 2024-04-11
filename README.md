@@ -1,4 +1,4 @@
-# Trip management C++ Console Program
+# A Mock project: Trip management C++ Console Program
 
 ## Getting Started
 
@@ -12,9 +12,6 @@ Requirements for the software and other tools to build, test and push
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development
-environment running
-
 Open the cmd, move to your cd contain Folder on Window and run:
 
     ./main.exe
@@ -24,23 +21,7 @@ for a little demo
 
 ## Running the tests
 
-Testing for this system
-
-### Sample Tests
-
-Explain what these tests test and why
-
-    Give an example
-
-### Style test
-
-Checks if the best practices and the right coding style has been used.
-
-    Give an example
-
-## Deployment
-
-Add additional notes to deploy this on a live system
+Need testing for this system
 
 ## Built With
 
