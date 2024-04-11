@@ -2,11 +2,14 @@
 #define UTILITY_H
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <vector>
-#include <iomanip>
+#include <memory>
 #include <chrono>
 #include <math.h>
+#include <algorithm>
+
 
 class Utility final{
 public:
@@ -19,6 +22,7 @@ public:
     static bool isValidName(std::string name);  
     static int getCommandFromCLI();
     static std::vector<std::string> stringToVector(std::string s, char delimiter);
+    static std::string stripBrackets(std::string s);
     static bool isValidDate(std::string date);
     static bool isValidPlace(std::string s);
     static int inputAge();

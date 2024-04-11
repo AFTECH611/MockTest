@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include "Utility.h"
 #include "Vehicle.h"
 #include "Hotel.h"
@@ -13,9 +12,10 @@ private:
 	Hotel hotel;
 	int member;
 	int bookedRoomIndex;
+
 public:
 	Trip();
-	Trip(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member);
+	Trip(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member);
 	int getPrice();
 	std::string getDeparture();
 	std::string getDestination();

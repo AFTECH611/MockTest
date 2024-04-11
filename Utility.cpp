@@ -1,9 +1,3 @@
-﻿#include <iostream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <unordered_map>
-
 #include "Utility.h"
 
 bool Utility::isValidInt(std::string s) {
@@ -69,7 +63,7 @@ bool Utility::isValidAcc(std::string acc){
     return true;
 }
 
-bool Utility::isValidPassword(std::string pass){
+bool Utility::isValidPassword(std::string pass) {
     bool f1, f2, f3;
     f1 = f2 = f3 = false;
     if(!lengthValidPwd(pass)) {
@@ -90,10 +84,10 @@ bool Utility::isValidPassword(std::string pass){
     }
     if(f1 && f2 && f3) return true;
     if(!f1){
-        std::cout << "Password must have at least 1 lowercase letter!\n";
+        std::cout << "Password must have at least 1 uppercase letter!\n";
     }
     if(!f2){
-        std::cout << "Password must have at least 1 uppercase letter!\n";
+        std::cout << "Password must have at least 1 lowercase letter!\n";
     }
     if(!f3){
         std::cout << "Password must have at least 1 number letter!\n";
@@ -119,11 +113,11 @@ bool Utility::isValidName(std::string name) {
 }
 
 void Utility::printVector(std::vector<std::string> vec) {
-    std::cout << "Menu: " << std::endl;
+    std::cout << "Menu: \n";
     for(const std::string& s: vec) {
         std::cout << s << std::endl;
     }
-    std:: cout << "Enter number (1 - " << vec.size() << "): ";
+    std::cout << "Enter number in range (1-" << vec.size() << "): ";
 }
 
 int Utility::getCommandFromCLI() {
@@ -144,17 +138,33 @@ int Utility::getCommandFromCLI() {
 }
 
 std::vector<std::string> Utility::stringToVector(std::string s, char delimiter) {
-    std::vector<std::string> vec;
-
-	std::stringstream ss(s);
-
-	while(ss.good()) {
-		std::string temp;
-		getline(ss,temp, ',');
-		vec.push_back(temp);
-	}
-    
+    std::vector<std::string> vec = {""};
+    int openBrackets = 0;
+    for(char c: s) {
+        if(c == delimiter && openBrackets == 0) {
+            vec.push_back("");
+        }
+        else {
+            if(c == '[') {
+                openBrackets++;
+            }
+            else if(c == ']') {
+                openBrackets--;
+            }
+        
+            vec.back()+=c;
+        } 
+    }
     return vec;
+}
+
+std::string Utility::stripBrackets(std::string s) {
+    if((s[0] == '(' && s.back() == ')') || (s[0] == '[' && s.back() == ']') || (s[0] == '{' && s.back() == '}')) {
+        s.pop_back();
+        s.erase(0,1);
+    }
+
+    return s;
 }
 
 bool Utility::isValidDate(std::string date) {
@@ -188,6 +198,7 @@ bool Utility::isValidPlace(std::string s) {
             return false;
         }
     }
+    return true;
 }
 
 int Utility::inputAge() {
@@ -205,7 +216,7 @@ int Utility::inputAge() {
 
 void Utility::delay() {
     auto start = std::chrono::steady_clock::now();
-    while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 1);
+    while (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - start).count() < 2);
 }
 
 int daysSince1900(int day, int month, int year) {
@@ -219,7 +230,7 @@ int daysSince1900(int day, int month, int year) {
     return days;
 }
 
-int dateDiff(std::string date1, std::string date2) {
+int Utility::dateDiff(std::string date1, std::string date2) {
     int dayDiff, monthDiff, yearDiff;
     int day1, day2, month1, month2, year1, year2;
     day1 = (date1[0] - '0') * 10 + (date1[1] - '0'); day2 = (date2[0] - '0') * 10 + (date2[1] - '0');

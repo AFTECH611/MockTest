@@ -17,7 +17,7 @@ void AccountManager::logOutAccount(std::unique_ptr<Account>& account) {
 }
 
 bool AccountManager::checkUsernameUnique(std::string username) {
-    std::string path = "Database/Accounts/" + Utility::encrypt(username);
+    std::string path = "Database/Accounts/" + username;
     return !std::filesystem::exists(path);
 }
 

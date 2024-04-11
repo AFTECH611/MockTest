@@ -1,8 +1,7 @@
 #pragma once
 #include "Utility.h"
-#include <vector>
 
-struct room {
+struct Room {
 	std::string type;
 	int available;
 	int price;
@@ -13,18 +12,20 @@ private:
 	std::string address;
 	std::string name;
 	int numbOfTypeRoom;
-	std::vector<room> roomTypeList;
+	std::vector<Room> roomTypeList;
 public:
 	Hotel();
-	Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList);
+	Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList);
 	std::string getAddress();
 	std::string getName();
 	int getNumbOfRoomType();
-	std::vector<room> getRoomTypeList();
+	std::vector<Room> getRoomTypeList();
 	void minusRoom(int member, std::string type);
-	void setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList);
+	void setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList);
 	void display();
 	void showRoomType();
 	std::string toString();
+	std::vector<Room> searchRoom(std::string type, int available, int price);
+
 	bool fromString(std::string s);
 };

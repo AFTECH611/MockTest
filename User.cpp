@@ -1,6 +1,4 @@
-#include <iostream>
 #include "User.h"
-#include "AccountManager.h"
 
 User::User() {
     username = password = name = address = "None";
@@ -19,6 +17,7 @@ User::User(std::string _username, std::string _password, std::string _name, std:
 const std::string& User::getName()  {
     return name;
 }
+
 void User::setName(std::string _name) {
     name = _name;
 }
@@ -26,6 +25,7 @@ void User::setName(std::string _name) {
 const std::string& User::getAddress()  {
     return address;
 }
+
 void User::setAddress(std::string addr) {
     address = addr;
 }
@@ -33,33 +33,48 @@ void User::setAddress(std::string addr) {
 const int& User::getAge()  {
     return age;
 }
+
 void User::setAge(int a) {
     age = a;
 }
 
+const std::vector<Trip>& User::getBookedTrips() {
+    return bookedTrips;
+}
+
 std::string User::toString() {
     std::string s = "0," + username + "," + password + "," + name + "," + address + "," + std::to_string(age);
-    for (Trip t : bookedTrips) {
-        s += "," + t.toString();
+    for(Trip t: bookedTrips) {
+        s+=",[" + t.toString() + "]";
     }
     return s;
 }
 
 bool User::fromString(std::string s) {
     std::vector<std::string> vec = Utility::stringToVector(s, ',');
+    
     try {
-        if (vec.at(0) != "0") return false;
+        if(vec.at(0) != "0") return false;
+        type = "user";
+        username = vec.at(1);
+        password = vec.at(2);
+        name = vec.at(3);
+        address = vec.at(4);
+        age = stoi(vec.at(5));
+        for(int i = 6; i < vec.size(); i++) {
+            Trip tempTrip;
 
+            if(tempTrip.fromString(Utility::stripBrackets(vec.at(i)))) {
+                std::string strRoom = vec[i];
+                bookedTrips.push_back(tempTrip);
+            }
+        }
     }
-    catch (const std::exception& e) {
+    catch(const std::exception& e) {
         return false;
     }
 
     return true;
-}
-
-const std::vector<Trip>& User::getBookedTrips() {
-    return bookedTrips;
 }
 
 void User::addNewItinerary(Trip newTrip) {
@@ -150,11 +165,12 @@ void User::viewProfile() {
 }
 
 void User::display() {
-    std:: cout << "USER ACCOUNT" << std::endl;
-    std::cout << "Username: " << username << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "Address: " << address << std::endl;
-    std::cout << "Age: " << age << std::endl;
+    std::cout << "|" << std::setw(20) << std::left << username << "| " << std::setw(20) << std::left << name << "| "  << std::setw(22) << std::left << address << "| " << std::setw(15) << std::right << age << "|" << std::endl;
+    // std:: cout << "USER ACCOUNT" << std::endl;
+    // std::cout << "Username: " << username << std::endl;
+    // std::cout << "Name: " << name << std::endl;
+    // std::cout << "Address: " << address << std::endl;
+    // std::cout << "Age: " << age << std::endl;
 }
 
 void User::editProfile(int command) {

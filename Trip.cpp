@@ -11,8 +11,7 @@ Trip::Trip() {
 	startDate = "None";
 }
 
-Trip::Trip(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member) {
-	id = _id;
+Trip::Trip(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, int _price, int _member) {
 	member = _member;
 	departure = _departure;
 	destination = _destination;
@@ -51,7 +50,6 @@ Hotel Trip::getHotel() {
 }
 
 void Trip::setData(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, Vehicle _vehicle, Hotel _hotel, int _price, int _member, int _bookedRoomIndex) {
-	id = _id;
 	member = _member;
 	departure = _departure;
 	destination = _destination;
@@ -69,8 +67,6 @@ std::string Trip::toString() {
 		s+= ",[" + hotel.toString() + "]";
 	}
 
-	s+=",";
-
 	if(vehicle.getType() != "") {
 		s+= ",[" + vehicle.toString() + "]";
 	}
@@ -80,7 +76,7 @@ std::string Trip::toString() {
 
 bool Trip::fromString(std::string s) {
 	std::vector<std::string> vec = Utility::stringToVector(s,',');
-
+	
 	try {
 		std::string _departure, _destination, _startDate, _endDate;
 		int _price;
@@ -89,17 +85,20 @@ bool Trip::fromString(std::string s) {
 		startDate = vec.at(2);
 		endDate = vec.at(3);
 		price = std::stoi(vec.at(4));
+
 		Hotel tempHotel;
-		if(tempHotel.fromString(vec.at(5)) && tempHotel.getName() != "None") {
+		if(tempHotel.fromString(Utility::stripBrackets(vec.at(5))) && tempHotel.getName() != "None") {
 			hotel = tempHotel;
 		}
+
 		Vehicle tempVehicle;
-		if(tempVehicle.fromString(vec.at(6)) && tempVehicle.getType() != "None") {
+
+		if(tempVehicle.fromString(Utility::stripBrackets(vec.at(6))) && tempVehicle.getType() != "None") {
 			vehicle = tempVehicle;
 		}
 	}
 	catch(const std::exception& e) {
-		std::cout << "Can't read vehicle from string." << std::endl;
+		std::cout << "Can't read trip from string." << std::endl;
 		return false;
 	}
 

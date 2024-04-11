@@ -7,7 +7,7 @@ Hotel::Hotel() {
 	address = name = "None";
 }
 
-Hotel::Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList) {
+Hotel::Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList) {
 	address = _address;
 	name = _name;
 	numbOfTypeRoom = _numbOfTypeRoom;
@@ -15,7 +15,7 @@ Hotel::Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::
 		std::string _type = _roomTypeList[i].type;
 		int _available = _roomTypeList[i].available;
 		int _price = _roomTypeList[i].price;
-		room newRoom;
+		Room newRoom;
 		newRoom.available = _available;
 		newRoom.price = _price;
 		newRoom.type = _type;
@@ -23,7 +23,7 @@ Hotel::Hotel(std::string _address, std::string _name, int _numbOfTypeRoom, std::
 	}
 }
 
-void Hotel::setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<room> _roomTypeList) {
+void Hotel::setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList) {
 	address = _address;
 	name = _name;
 	numbOfTypeRoom = _numbOfTypeRoom;
@@ -31,14 +31,13 @@ void Hotel::setData(std::string _address, std::string _name, int _numbOfTypeRoom
 		std::string _type = _roomTypeList[i].type;
 		int _available = _roomTypeList[i].available;
 		int _price = _roomTypeList[i].price;
-		room newRoom;
+		Room newRoom;
 		newRoom.available = _available;
 		newRoom.price = _price;
 		newRoom.type = _type;
 		roomTypeList.push_back(newRoom);
 	}
 }
-
 std::string Hotel::getAddress() {
 	return address;
 }
@@ -47,8 +46,28 @@ std::string Hotel::getName() {
 	return name;
 }
 
-std::vector<room> Hotel::getRoomTypeList() {
+std::vector<Room> Hotel::getRoomTypeList() {
 	return roomTypeList;
+}
+
+std::string roomToString(Room r) {
+	return r.type + "," + std::to_string(r.available) + "," + std::to_string(r.price);
+}
+
+bool stringToRoom(std::string s, Room& r) {
+	std::vector<std::string> vec = Utility::stringToVector(s, ',');
+
+	try {
+		r.type = vec.at(0);
+		r.available = std::stoi(vec.at(1));
+		r.price = std::stoi(vec.at(2));;
+	}
+	catch(const std::exception& e) {
+		std::cout << "Can't read room from string." << std::endl;
+		return false;
+	}
+
+	return true;
 }
 
 int Hotel::getNumbOfRoomType() {
@@ -57,40 +76,35 @@ int Hotel::getNumbOfRoomType() {
 
 std::string Hotel::toString() {
 	std::string s = address + "," + name;
-	// for(room r: roomTypeList) {
-	// 	s+= (",[" + r.toString() + "]"); 
-	// }
+	
+	for(Room r: roomTypeList) {
+		s+= (",[" + roomToString(r) + "]"); 
+	}
+
 	return s;
 }
 
 bool Hotel::fromString(std::string s) {
-	// std::vector<std::string> vec = Utility::stringToVector(s, ',');
+	std::vector<std::string> vec = Utility::stringToVector(s, ',');
 
-	// try {
-	// 	std::string _address, _name;
-	// 	_address = vec.at(0);
-	// 	_name = vec.at(1);
-	// 	address = _address;
-	// 	name = _name;
-	// 	roomTypeList.clear();
-	// 	for(int i = 2; i < vec.size(); i++) {
-	// 		std::string strRoom = vec[i];
-	// 		strRoom.pop_back();
-	// 		strRoom.erase(0,1);
-
-	// 		Room tempRoom;
-	// 		tempRoom.fromString(strRoom);
-	// 		roomTypeList.push_back(tempRoom);
-	// 	}
-	// }
-	// catch(const std::exception& e) {
-	// 	std::cout << "Can't read hotel from string." << std::endl;
-	// 	return false;
-	// }
+	try {
+		address = vec.at(0);
+		name = vec.at(1);
+		roomTypeList.clear();
+		for(int i = 2; i < vec.size(); i++) {
+			Room tempRoom;
+			if(stringToRoom(Utility::stripBrackets(vec.at(i)), tempRoom)) {
+				roomTypeList.push_back(tempRoom);
+			}
+		}
+	}
+	catch(const std::exception& e) {
+		std::cout << "Can't read hotel from string." << std::endl;
+		return false;
+	}
 
 	return true;
 }
-
 
 void Hotel::display() {
 	std::cout << std::setw(15) << std::left << name << "|"
@@ -104,4 +118,14 @@ void Hotel::showRoomType() {
 			<< std::setw(5) << std::left << roomTypeList[i].available << "|"
 			<< std::setw(10) << std::left << roomTypeList[i].price << std::endl;
 	}
+}
+
+std::vector<Room> Hotel::searchRoom(std::string type, int available, int price){
+	std::vector<Room> result;
+	for(Room myRoom : roomTypeList){
+		if(myRoom.type == type && myRoom.available == price && myRoom.price == price){
+			result.push_back(myRoom);
+		}
+	}
+	return result;
 }
