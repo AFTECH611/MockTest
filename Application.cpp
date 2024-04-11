@@ -14,8 +14,8 @@ Application& Application::getApplication() {
 }
 
 void Application::run() {
-    AccountManager::load("C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Accounts.txt");
-    TripManager::load("C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Hotels.txt", "C:/Users/truon/OneDrive/Desktop/MockProject/MockProject/Code/MockTest/Database/Vehicles.txt");
+    AccountManager::load("./Database/Accounts.txt");
+    TripManager::load("./Database/Hotels.txt", "./Database/Vehicles.txt");
 
     while(true) {
         // loop until the current account is logged in
