@@ -19,6 +19,18 @@ Vehicle::Vehicle(std::string _type, std::string _brand, std::string _departure,
 	price = _price;
 }
 
+
+bool Vehicle::operator<(const Vehicle& other) {
+	if(Utility::dateDiff1(this->getStartDate(), other.startDate) < 0) return true;
+	return false;
+}
+
+
+bool Vehicle::operator>(const Vehicle& other) {
+	if(Utility::dateDiff1(this->getStartDate(), other.startDate) > 0) return true;
+	return false;
+}
+
 std::string Vehicle::getStartDate() {
 	return startDate;
 }
@@ -60,7 +72,7 @@ void Vehicle::setData(std::string _type, std::string _brand, std::string _depart
 }
 
 void Vehicle::display() {
-	std::cout << std::setw(10) << std::left << type << "|"
+	std::cout << std::setw(15) << std::left << "|" << type << "|"
 		<< std::setw(10) << std::left << brand << "|"
 		<< std::setw(15) << std::left << departure << "|"
 		<< std::setw(15) << std::left << destination << "|"

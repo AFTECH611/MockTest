@@ -12,8 +12,14 @@ private:
 public:
     static bool load(std::string hotelsPath, std::string vehiclesPath);
 
-    static void sortHotels();
-    static void sortVehicles();
+    static bool compareDateV(Vehicle &a, Vehicle &b);
+    static bool comparePriceV(Vehicle &a, Vehicle &b);
+
+    static void sortHotelByDate();
+    static void sortVehicleByDate();
+
+    static void sortHotelByPrice();
+    static void sortVehicleByPrice();
 
     static void updateDatabase(std::string hotelsPath, std::string vehiclesPath);
     static void searchHotels();

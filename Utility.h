@@ -9,11 +9,14 @@
 #include <chrono>
 #include <math.h>
 #include <algorithm>
+#include "Vehicle.h"
+#include "Hotel.h"
 
 
 class Utility final{
 public:
     static bool isValidInt(std::string s);
+    static bool isValidPrice(std::string s);
     static std::string encrypt(std::string s);
     static std::string toLower(std::string input);
     static void printVector(std::vector<std::string> vec);
@@ -28,6 +31,7 @@ public:
     static int inputAge();
     static void delay();
     static int dateDiff(std::string date1, std::string date2);
+    static int dateDiff1(std::string date1, std::string date2);
 };
 
 #endif

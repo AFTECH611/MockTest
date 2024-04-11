@@ -10,6 +10,11 @@ bool Utility::isValidInt(std::string s) {
     }
 }
 
+bool Utility::isValidPrice(std::string s) {
+    if(isValidInt(s) and std::stoi(s) >= 0) return true;
+    return false;
+}
+
 std::string Utility::encrypt(std::string s) {
     std::hash<std::string> hasher;
     size_t hash = hasher(s);
@@ -25,7 +30,7 @@ std::string Utility::toLower(std::string input){
 }
 
 bool lengthValidAcc(std::string acc){
-    return acc.length() < 12;
+    return acc.length() < 16 && acc.length() >= 2;
 }
 
 bool lengthValidPwd(std::string pwd){
@@ -50,12 +55,12 @@ bool isLowerLetter(char c) {
 
 bool Utility::isValidAcc(std::string acc){
     if (!lengthValidAcc(acc)) {
-        std::cout << "User account length must not greater than 16!\n";
+        std::cout << "User account length must in range 1-16 characters!\n";
         return false;
     }
     for (int i = 0; i < acc.length(); i++) {
         char c = acc[i];
-        if(c == ' ') {
+        if(c == ' ' || c == '\t') { //tab or space is not allowed
             std::cout << "Account user must not contain space character!\n";
             return false;
         }
@@ -72,6 +77,10 @@ bool Utility::isValidPassword(std::string pass) {
     }
 
     for (char c:pass){
+        if (c == '\t'){
+            std::cout << "Password can not contain a Tab space!. \n";
+            return false;
+        }
         if (isLowerLetter(c)){
             f1 = true;
         }
@@ -240,4 +249,16 @@ int Utility::dateDiff(std::string date1, std::string date2) {
     int date1Since1900 = daysSince1900(day1, month1, year1);
     int date2Since1900 = daysSince1900(day2, month2, year2);
     return std::abs(date2Since1900 - date1Since1900);
+}
+
+int Utility::dateDiff1(std::string date1, std::string date2) {
+    int dayDiff, monthDiff, yearDiff;
+    int day1, day2, month1, month2, year1, year2;
+    day1 = (date1[0] - '0') * 10 + (date1[1] - '0'); day2 = (date2[0] - '0') * 10 + (date2[1] - '0');
+    month1 = (date1[3] - '0') * 10 + (date1[4] - '0'); month2 = (date2[3] - '0') * 10 + (date2[4] - '0');
+    year1 = (date1[6] - '0') * 1000 + (date1[7] - '0') * 100 + (date1[8] - '0') * 10 + (date1[9] - '0');
+    year2 = (date2[6] - '0') * 1000 + (date2[7] - '0') * 100 + (date2[8] - '0') * 10 + (date2[9] - '0');
+    int date1Since1900 = daysSince1900(day1, month1, year1);
+    int date2Since1900 = daysSince1900(day2, month2, year2);
+    return date2Since1900 - date1Since1900;
 }

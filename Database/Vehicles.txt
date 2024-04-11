@@ -1,0 +1,2 @@
+Airplan,Boeing,Hanoi,Danang,06-11-2024,19-12-2024,300
+Taxi,Mercedes,Hanoi,Danang,16/5/2024,18/5/2024,100
