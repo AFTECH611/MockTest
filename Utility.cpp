@@ -155,6 +155,7 @@ std::vector<std::string> Utility::stringToVector(std::string s, char delimiter) 
             vec.back()+=c;
         } 
     }
+
     return vec;
 }
 

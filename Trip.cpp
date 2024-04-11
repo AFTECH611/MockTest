@@ -3,7 +3,6 @@
 #include "Trip.h"
 
 Trip::Trip() {
-	id = 0;
 	price = 0;
 	member = 0;
 	departure = "None";
@@ -49,7 +48,7 @@ Hotel Trip::getHotel() {
 	return hotel;
 }
 
-void Trip::setData(int _id, std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, Vehicle _vehicle, Hotel _hotel, int _price, int _member, int _bookedRoomIndex) {
+void Trip::setData(std::string _departure, std::string _destination, std::string _startDate, std::string _endDate, Vehicle _vehicle, Hotel _hotel, int _price, int _member, int _bookedRoomIndex) {
 	member = _member;
 	departure = _departure;
 	destination = _destination;
@@ -61,39 +60,46 @@ void Trip::setData(int _id, std::string _departure, std::string _destination, st
 }
 
 std::string Trip::toString() {
-	std::string s = departure + Utility::strCommaD() + destination + Utility::strCommaD() + startDate + Utility::strCommaD() + endDate + Utility::strCommaD() + std::to_string(price);
+	std::string s = departure + Utility::strCommaD() + destination + Utility::strCommaD() + startDate + Utility::strCommaD() + 
+					endDate + Utility::strCommaD() + std::to_string(price) + Utility::strCommaD() + std::to_string(member) + Utility::strCommaD() + 
+					std::to_string(bookedRoomIndex);
 
-	if(hotel.getName() != "") {
-		s+= Utility::strCommaD() + Utility::strOpenBracketD() + hotel.toString() + Utility::strCloseBracketD();
+	s += Utility::strCommaD();
+	if(hotel.getName() != "None") {
+		s += Utility::strOpenBracketD() + hotel.toString() + Utility::strCloseBracketD();
 	}
 
-	if(vehicle.getType() != "") {
-		s+= Utility::strCommaD() + Utility::strOpenBracketD() + vehicle.toString() + Utility::strCloseBracketD();
+	s+=Utility::strCommaD();
+	if(vehicle.getType() != "None") {
+		s += Utility::strOpenBracketD() + vehicle.toString() + Utility::strCloseBracketD();
 	}
-
 	return s;
 }
 
 bool Trip::fromString(std::string s) {
 	std::vector<std::string> vec = Utility::stringToVector(s, 31);
-	
+	// for(std::string s: vec) {
+	// 	std::cout << s << std::endl;
+	// }
+	// std::cout << "size " << vec.size() << std::endl;
+
 	try {
-		std::string _departure, _destination, _startDate, _endDate;
-		int _price;
 		departure = vec.at(0);
 		destination = vec.at(1);
 		startDate = vec.at(2);
 		endDate = vec.at(3);
 		price = std::stoi(vec.at(4));
+		member = std::stoi(vec.at(5));
+		bookedRoomIndex = std::stoi(vec.at(6));
 
 		Hotel tempHotel;
-		if(tempHotel.fromString(Utility::stripBrackets(vec.at(5))) && tempHotel.getName() != "None") {
+		if(tempHotel.fromString(Utility::stripBrackets(vec.at(7))) && tempHotel.getName() != "None") {
 			hotel = tempHotel;
 		}
 
 		Vehicle tempVehicle;
 
-		if(tempVehicle.fromString(Utility::stripBrackets(vec.at(6))) && tempVehicle.getType() != "None") {
+		if(tempVehicle.fromString(Utility::stripBrackets(vec.at(8))) && tempVehicle.getType() != "None") {
 			vehicle = tempVehicle;
 		}
 	}
@@ -112,8 +118,7 @@ int Trip::getTotalPrice() {
 }
 
 void Trip::display() {
-	std::cout << std::setw(5) << std::left << id << "|"
-		<< std::setw(15) << std::left << departure << "|"
+	std::cout << std::setw(15) << std::left << departure << "|"
 		<< std::setw(15) << std::left << destination << "|"
 		<< std::setw(10) << std::left << startDate << "|"
 		<< std::setw(10) << std::left << endDate << "|"

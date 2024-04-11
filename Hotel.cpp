@@ -84,7 +84,7 @@ std::string Hotel::toString() {
 
 bool Hotel::fromString(std::string s) {
 	std::vector<std::string> vec = Utility::stringToVector(s, 31);
-
+	
 	try {
 		address = vec.at(0);
 		name = vec.at(1);

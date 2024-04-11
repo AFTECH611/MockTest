@@ -7,6 +7,7 @@ std::shared_ptr<Account> AccountManager::currentAccount;
 bool AccountManager::load(std::string accountsPath) {
     std::vector<std::string> strAccounts;
     DatabaseManager::readFile(accountsPath, strAccounts);
+
     try {
         for(std::string acc: strAccounts) {
             if(acc.at(0) == '0') {
@@ -137,7 +138,7 @@ void AccountManager::registerUser(){
     dynamic_cast<User*>(newUser.get())->setAge(age);
     accounts.push_back(move(newUser));
     std::cout << "User account registered successfully." << std::endl;
-    updateDatabase("./Database/Accounts.txt");
+    // updateDatabase("./Database/Accounts.txt");
 
     Utility::delay();
     system("cls");

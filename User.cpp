@@ -71,6 +71,7 @@ bool User::fromString(std::string s) {
         }
     }
     catch(const std::exception& e) {
+        std::cout << "Can't read user from string" << std::endl;
         return false;
     }
 

@@ -1,40 +1,16 @@
-FlightDeltaNew York CityLos Angeles05/10/202615/10/2026600
-CarToyotaChicagoMiami15/11/202630/11/20261200
-FlightUnitedSeattleSan Francisco01/12/202610/12/2026300
-CarBMWBostonLas Vegas15/01/202725/01/20271500
-FlightAmerican AirlinesDallasDenver10/02/202720/02/2027400
-CarFordAtlantaOrlando05/03/202715/03/2027900
-FlightSouthwestLos AngelesSan Diego01/04/202710/04/2027200
-CarChevroletMiamiTampa15/05/202725/05/2027800
-FlightJetBlueBostonNew York City10/06/202720/06/2027150
-CarHondaDenverSeattle05/07/202715/07/20271000
-FlightQantasSan FranciscoLos Angeles15/08/202725/08/2027250
-CarHyundaiNew York CityWashington D.C.10/09/202720/09/2027700
-FlightSingapore AirlinesChicagoMiami05/10/202715/10/2027550
-CarSubaruSeattleSan Francisco01/11/202710/11/2027850
-FlightEmiratesBostonLas Vegas15/12/202725/12/2027400
-CarKiaDallasHouston10/01/202820/01/2028950
-FlightAir CanadaLos AngelesSan Diego05/02/202815/02/2028300
-CarMazdaMiamiTampa01/03/202810/03/2028750
-FlightLufthansaDenverPhoenix15/04/202825/04/2028350
-CarVolvoAtlantaMiami10/05/202820/05/20281100
-FlightBritish AirwaysBostonNew York City05/06/202815/06/2028200
-CarJeepSeattlePortland01/07/202810/07/2028900
-FlightANADallasDenver15/08/202825/08/2028400
-CarAudiLos AngelesSan Francisco10/09/202820/09/20281200
-FlightQatar AirwaysNew York CityWashington D.C.05/10/202815/10/2028300
-CarMercedes-BenzChicagoMiami01/11/202810/11/2028850
-FlightEtihad AirwaysSeattleSan Francisco15/12/202825/12/2028350
-CarBuickBostonLas Vegas10/01/202920/01/2029900
-FlightDeltaLos AngelesSan Diego05/02/202915/02/2029250
-CarChryslerMiamiTampa01/03/202910/03/2029700
-FlightUnitedDenverPhoenix15/04/202925/04/2029300
-CarLexusAtlantaMiami10/05/202920/05/20291100
-FlightAmerican AirlinesBostonNew York City05/06/202915/06/2029200
-CarInfinitiSeattlePortland01/07/202910/07/2029850
-FlightSouthwestDallasDenver15/08/202925/08/2029400
-CarMiniLos AngelesSan Francisco10/09/202920/09/20291200
-FlightJetBlueNew York CityWashington D.C.05/10/202915/10/2029300
-CarVolkswagenChicagoMiami01/11/202910/11/2029750
-FlightAir FranceSeattleSan Francisco15/12/202925/12/2029350
-CarAlfa RomeoBostonLas Vegas10/01/203020/01/2030900
+FlightAirlineANewYorkLondon05/05/202410/05/2024800
+FlightAirlineBLondonParis08/05/202412/05/2024600
+CarToyotaLosAngelesSanFrancisco10/05/202412/05/2024200
+FlightAirlineCParisRome15/05/202420/05/2024700
+CarFordSanFranciscoLosAngeles18/05/202420/05/2024180
+FlightAirlineDRomeMadrid22/05/202427/05/2024500
+FlightAirlineEMadridBarcelona25/05/202430/05/2024300
+CarHondaBarcelonaMadrid28/05/202430/05/2024150
+FlightAirlineFBarcelonaNewYork01/06/202406/06/2024900
+CarChevroletLondonParis05/06/202407/06/2024120
+FlightAirlineGParisRome08/06/202413/06/2024700
+CarVolkswagenSanFranciscoLosAngeles10/06/202412/06/2024180
+FlightAirlineHRomeMadrid15/06/202420/06/2024500
+FlightAirlineIMadridBarcelona18/06/202423/06/2024300
+CarBMWBarcelonaMadrid22/06/202424/06/2024200
+FlightAirlineJBarcelonaNewYork25/06/202430/06/2024950
