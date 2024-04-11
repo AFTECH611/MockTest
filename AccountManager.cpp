@@ -41,7 +41,7 @@ const std::shared_ptr<Account>& AccountManager::getCurrentAccount() {
 bool AccountManager::exists(std::string username){
     for (int i = 0; i < accounts.size(); i++) {
         if(accounts[i]->getUsername() == username) {
-            std::cout << accounts[i]->getUsername();
+            //std::cout << accounts[i]->getUsername();
             return true;
         }
     }
@@ -55,7 +55,7 @@ std::string AccountManager::inputRegAccount(){
     std::cin.ignore();
     getline(std::cin, _Acc);
     while (!Utility::isValidAcc(_Acc)) {
-        std::cout << "Username must not have special character or space. Please enter again: \n";
+        //std::cout << "Username must not have special character or space. Please enter again: \n";
         getline(std::cin, _Acc);
     }
     std::string lwacc = Utility::toLower(_Acc);
@@ -63,8 +63,7 @@ std::string AccountManager::inputRegAccount(){
         std::cout << "Username existed! Please choose another username: \n";
         getline(std::cin, lwacc);
     }
-    lwacc = Utility::toLower(_Acc);
-    std::cout << lwacc << std::endl;
+    lwacc = Utility::toLower(lwacc);
     return lwacc;
 }
 
@@ -145,13 +144,13 @@ void AccountManager::registerUser(){
 }
 
 void AccountManager::greeting() {
-    std::cout << "Loggin successfully! \n";
-    std::cout << "Hello, ";
+    std::cout << "Loggin successfully! \n\n";
+    std::cout << "***   Hello, ";
     if(currentAccount->getType() == "admin"){
-        std::cout << "Administrator!\n";
+        std::cout << "Administrator!   ***\n";
     }
     else{
-        std::cout << dynamic_cast<User*>(currentAccount.get())->getName() << std::endl;
+        std::cout << dynamic_cast<User*>(currentAccount.get())->getName() << "!   ***" << std::endl;
     }
 }
 

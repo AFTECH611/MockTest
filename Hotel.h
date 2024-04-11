@@ -24,8 +24,10 @@ public:
 	void setData(std::string _address, std::string _name, int _numbOfTypeRoom, std::vector<Room> _roomTypeList);
 	void display();
 	void showRoomType();
-	std::string toString();
 	std::vector<Room> searchRoom(std::string type, int available, int price);
 
+    // read the hotel from string and write the hotel to string
+    // helps with read and write database
+	std::string toString();
 	bool fromString(std::string s);
 };

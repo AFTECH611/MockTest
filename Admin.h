@@ -9,17 +9,22 @@ class Admin: public Account {
 public:
     Admin();
     Admin(std::string _username, std::string _password);
-    std::vector<std::string> getCommandsList() override;
-    std::vector<std::string> getCmdListsUserManagement();
-    std::vector<std::string> getCmdListsFlightManagement();
-    std::vector<std::string> getCmdListsHotelManagement();
-    std::string toString() override;
+    const std::vector<std::string> getCommandsList() override;
+    const std::vector<std::string> getCmdListsUserManagement();
+    const std::vector<std::string> getCmdListsFlightManagement();
+    const std::vector<std::string> getCmdListsHotelManagement();
+
+    const std::vector<std::string> getCmdListsFlightDisplay();
     void executeCommand(int command) override;
+
+    // execute command based on different scenarios
     void executeCmdAfterLogin(int cmd);
     void executeCmdAfterUser();
     void executeCmdAfterHotel();
     void executeCmdAfterFlight();
-    bool fromString(std::string s) override;
+    
+    // different commands that the admin can execute
+    void executeCmdAfterFlightDisplay();
     bool isViewAllUser();
     void editUser(std::string username);
     void removeUser(std::string username);
@@ -30,6 +35,11 @@ public:
     void editTransportation();
     void removeTransportation();
     void display() override;
+    
+    // read the admin from string and write the admin to string
+    // helps with read and write database
+    std::string toString() override;
+    bool fromString(std::string s) override;
 };
 
 #endif

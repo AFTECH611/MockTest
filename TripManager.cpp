@@ -40,11 +40,21 @@ void TripManager::updateDatabase(std::string hotelsPath, std::string vehiclesPat
     }
 }
 
-void sortHotels(){
-
+bool TripManager::compareDateV(Vehicle &a, Vehicle &b){
+    return a>b;
 }
-void sortVehicles(){
 
+bool TripManager::comparePriceV(Vehicle &a, Vehicle &b){
+    return a.getPrice()<b.getPrice();
+}
+
+void TripManager::sortVehicleByPrice(){
+    std::sort(vehicles.begin(), vehicles.end(), comparePriceV);
+}
+
+
+void TripManager::sortVehicleByDate(){
+    std::sort(vehicles.begin(), vehicles.end(), compareDateV);
 }
 
 void TripManager::searchHotels(){
@@ -55,18 +65,18 @@ void TripManager::searchHotels(){
     std::cout << "Input Hotel's Name: ";
     std::cin >> name;
     bool found = false;
-    std::cout << "|==========================================+Search HOTELS+==============================================|" << std::endl;
-    std::cout << "|_____________________________________________________________________________________________________|" << std::endl;
-    std::cout << "|    Hottel     |    Room type    |  Available  |    Price    |        From        |        To        |" << std::endl;
-    std::cout << "|_______________|_________________|_____________|_____________|____________________|__________________|" << std::endl;
+    std::cout << "|========================+Search HOTELS+=====================|" << std::endl;
+    std::cout << "|____________________________________________________________|" << std::endl;
+    std::cout << "|    Hottel     |     Address     |  Room type |    Price    |" << std::endl;
+    std::cout << "|_______________|_________________|____________|_____________|" << std::endl;
     for(auto ht = hotels.begin(); ht != hotels.end(); ++ht){
         if(ht->getAddress() == address && ht->getName() == name){
             found = true;
             ht->display();
         }
     }
-    if(!found) std::cout << "|........................System cannot find your Hotel! Please try another!...........................|" << std::endl;
-    std::cout << "|_____________________________________________________________________________________________________|" << std::endl;
+    if(!found) std::cout << "|.......System cannot find your Hotel! Please try another!....|" << std::endl;
+    std::cout << "|_______________|_________________|____________|_____________|" << std::endl;
 }
 
 void TripManager::searchVehicles(){
@@ -85,18 +95,18 @@ void TripManager::searchVehicles(){
     std::cout << "Input Price: ";
     std::cin >> price;
     bool found = false;
-    std::cout << "|================================+LIST VEHICLES+=============================|" << std::endl;
-    std::cout << "|____________________________________________________________________________|" << std::endl;
-    std::cout << "| Vehicle Type |     Cost     |    Departure Date    |      Arrival Date     |" << std::endl;
-    std::cout << "|______________|______________|______________________|_______________________|" << std::endl;
+    std::cout << "|===========================================+Search VEHICLES+===================================================|" << std::endl;
+    std::cout << "|_______________________________________________________________________________________________________________|" << std::endl;
+    std::cout << "| Vehicle Type  |     Brand     |    Departure    |   Destination    | Departure Date |  Arrival Date  |  Cost  |" << std::endl;
+    std::cout << "|_______________|_______________|_________________|__________________|________________|________________|________|" << std::endl;
     for(auto vc = vehicles.begin(); vc != vehicles.end(); ++vc){
         if(vc->getDeparture() == from && vc->getDestination() == to && vc->getType() == type && vc->getPrice() == price && vc->getBrand() == brand && vc->getStartDate() == fromDate){
             vc->display();
             found = true;
         }
     }
-    if(!found) std::cout << "|.............System cannot find your transport! Please try another!.........|" << std::endl;
-    std::cout << "|____________________________________________________________________________|" << std::endl;
+    if(!found) std::cout << "|.............................System cannot find your transport! Please try another!............................|" << std::endl;
+    std::cout << "|_______________|_______________|_________________|__________________|________________|________________|________|" << std::endl;
 }
 
 void TripManager::deleteHotel(){
@@ -144,24 +154,37 @@ void TripManager::deleteVehicle(){
 
 void TripManager::addHotel(){
     std::string name, address;
-    int numbOfType;
+    int numbOfType; std::cin.ignore();
     std::vector<Room> roomList;
     std::cout << "Hotel name: " ;
-    std::cin >> name;
+    getline(std::cin, name);
+    while (!Utility::isValidName(name)){
+        std::cout << "Invalid name, try: "; getline(std::cin, name);
+    }
     std::cout << "Hotel address: ";
-    std::cin >> address;
+    getline(std::cin, address);
+    while (!Utility::isValidPlace(address)){
+        std::cout << "Invalid address, try: "; getline(std::cin, address);
+    }
     std::cout << "Input number of room's type: ";
     std::cin >> numbOfType;
+    while (!Utility::isValidInt(std::to_string(numbOfType))){
+
+    }
     for (int i = 0; i < numbOfType; i ++){
         std::cout << "Room type " << i + 1 << ": " << std::endl; 
         std::string type;
         int available, price;
         std::cout << "Room type: ";
-        std::cin >> type;
+        std::cin.ignore();
+        getline(std::cin, type);
+        while (!Utility::isValidPlace(type)){
+            std::cout << "Invalid type, try: "; getline(std::cin, type);
+        }
         std::cout << "Available: ";
-        std::cin >> available;
+        available = Utility::getCommandFromCLI();
         std::cout << "Price: "; 
-        std::cin >> price;
+        price = Utility::getCommandFromCLI();
         Room newRoom;
         newRoom.type = type;
         newRoom.available = available;
@@ -174,8 +197,7 @@ void TripManager::addHotel(){
 }
 
 void TripManager::addVehicle(){
-    std::string type, brand, from, to, fromDate, toDate;
-    int price;
+    std::string type, brand, from, to, fromDate, toDate, price;
     std::cout << "Input type (Taxi/Airplane): ";
     std::cin >> type;
     std::cout << "Input brand: ";
@@ -185,33 +207,45 @@ void TripManager::addVehicle(){
     std::cout << "To: ";
     std::cin >> to;
     std::cout << "Input Start Date: ";
-    std::cin >> fromDate;
+    std::cin>>fromDate;
+    while(!Utility::isValidDate(fromDate)){
+        std::cout << "Invalid date input!Try again: ";
+        std::cin >> fromDate;
+    }
     std::cout << "Input End Date: ";
     std::cin >> toDate;
+    while(!Utility::isValidDate(toDate)){
+        std::cout << "Invalid date input!Try again: ";
+        std::cin >> toDate;
+    }
     std::cout << "Input Price: ";
     std::cin >> price;
-    Vehicle newVehicle(type, brand, from, to, fromDate, toDate, price);
+    while(!Utility::isValidPrice(price)){
+        std::cout << "Invalid price input!Try again: ";
+        std::cin >> price;
+    }
+    Vehicle newVehicle(type, brand, from, to, fromDate, toDate, std::stoi(price));
     vehicles.push_back(newVehicle);
-    std::cout << "New " << type << "has been created successfully!" << std::endl;
+    std::cout << "New " << type << " has been created successfully!" << std::endl;
 }
 
 void TripManager::displayHotels(){
-    std::cout << "|==========================================+LIST HOTELS+==============================================|" << std::endl;
-    std::cout << "|_____________________________________________________________________________________________________|" << std::endl;
-    std::cout << "|    Hottel     |    Room type    |  Available  |    Price    |        From        |        To        |" << std::endl;
-    std::cout << "|_______________|_________________|_____________|_____________|____________________|__________________|" << std::endl;
+    std::cout << "|=======================+LIST HOTELS+========================|" << std::endl;
+    std::cout << "|____________________________________________________________|" << std::endl;
+    std::cout << "|    Hottel     |     Address     |  Room type |    Price    |" << std::endl;
+    std::cout << "|_______________|_________________|____________|_____________|" << std::endl;
     for(Hotel h : hotels){
         h.display();
     }
-    std::cout << "|_____________________________________________________________________________________________________|" << std::endl;
+    std::cout << "|_______________|_________________|____________|_____________|" << std::endl;
 }
 void TripManager::displayVehicles(){
-    std::cout << "|================================+LIST VEHICLES+=============================|" << std::endl;
-    std::cout << "|____________________________________________________________________________|" << std::endl;
-    std::cout << "| Vehicle Type |     Cost     |    Departure Date    |      Arrival Date     |" << std::endl;
-    std::cout << "|______________|______________|______________________|_______________________|" << std::endl;
+    std::cout << "|============================================+LIST VEHICLES+====================================================|" << std::endl;
+    std::cout << "|_______________________________________________________________________________________________________________|" << std::endl;
+    std::cout << "| Vehicle Type  |     Brand     |    Departure    |   Destination    | Departure Date |  Arrival Date  |  Cost  |" << std::endl;
+    std::cout << "|_______________|_______________|_________________|__________________|________________|________________|________|" << std::endl;
     for(Vehicle v : vehicles){
         v.display();
     }
-    std::cout << "|____________________________________________________________________________|" << std::endl;
+    std::cout << "|_______________|_______________|_________________|__________________|________________|________________|________|" << std::endl;
 }
