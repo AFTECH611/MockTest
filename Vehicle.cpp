@@ -72,13 +72,13 @@ void Vehicle::setData(std::string _type, std::string _brand, std::string _depart
 }
 
 void Vehicle::display() {
-	std::cout << std::setw(15) << std::left << "|" << type << "|"
-		<< std::setw(10) << std::left << brand << "|"
-		<< std::setw(15) << std::left << departure << "|"
-		<< std::setw(15) << std::left << destination << "|"
-		<< std::setw(10) << std::left << startDate << "|"
-		<< std::setw(10) << std::left << endDate << "|"
-		<< std::setw(10) << std::left << price << "|" << std::endl;
+	std::cout << "|" << std::setw(15) << std::left  << type << "|"
+		<< std::setw(15) << std::left << brand << "|"
+		<< std::setw(17) << std::left << departure << "|"
+		<< std::setw(18) << std::left << destination << "|"
+		<< std::setw(16) << std::left << startDate << "|"
+		<< std::setw(16) << std::left << endDate << "|"
+		<< std::setw(8) << std::left << price << "|" << std::endl;
 }
 
 std::string Vehicle::toString() {

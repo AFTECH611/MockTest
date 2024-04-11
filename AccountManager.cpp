@@ -41,7 +41,7 @@ const std::shared_ptr<Account>& AccountManager::getCurrentAccount() {
 bool AccountManager::exists(std::string username){
     for (int i = 0; i < accounts.size(); i++) {
         if(accounts[i]->getUsername() == username) {
-            std::cout << accounts[i]->getUsername();
+            //std::cout << accounts[i]->getUsername();
             return true;
         }
     }
@@ -150,7 +150,7 @@ void AccountManager::greeting() {
         std::cout << "Administrator!   ***\n";
     }
     else{
-        std::cout << dynamic_cast<User*>(currentAccount.get())->getName() << std::endl;
+        std::cout << dynamic_cast<User*>(currentAccount.get())->getName() << "!   ***" << std::endl;
     }
 }
 

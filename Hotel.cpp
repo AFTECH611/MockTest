@@ -108,9 +108,9 @@ bool Hotel::fromString(std::string s) {
 }
 
 void Hotel::display() {
-	std::cout << std::setw(15) << std::left << name << "|"
-		<< std::setw(15) << std::left << address << "|"
-		<< std::setw(5) << std::left << numbOfTypeRoom << std::endl;
+	std::cout << "|" << std::setw(15) << std::left << name << "|"
+		<< std::setw(17) << std::left << address << "|"
+		<< std::setw(12) << std::left << numbOfTypeRoom << "|" << std::endl;
 }
 
 void Hotel::showRoomType() {
