@@ -138,7 +138,11 @@ void User::executeCommand(int command) {
 }
 
 void User::viewProfile() {
+    std::cout << ".___________________________________________________________________________________." << std::endl;
+    std::cout << "|      Account       |   Full Name         |  Address              |  Age           |" << std::endl;
+    std::cout << "|____________________|_____________________|_______________________|________________|" << std::endl;
     this->display();
+    std::cout << "|____________________|_____________________|_______________________|________________|" << std::endl;
     Utility::printVector(getCommandListAfterViewProfile());
     int command; command = Utility::getCommandFromCLI();
     switch (command) {
