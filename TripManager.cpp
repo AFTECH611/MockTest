@@ -154,24 +154,37 @@ void TripManager::deleteVehicle(){
 
 void TripManager::addHotel(){
     std::string name, address;
-    int numbOfType;
+    int numbOfType; std::cin.ignore();
     std::vector<Room> roomList;
     std::cout << "Hotel name: " ;
-    std::cin >> name;
+    getline(std::cin, name);
+    while (!Utility::isValidName(name)){
+        std::cout << "Invalid name, try: "; getline(std::cin, name);
+    }
     std::cout << "Hotel address: ";
-    std::cin >> address;
+    getline(std::cin, address);
+    while (!Utility::isValidPlace(address)){
+        std::cout << "Invalid address, try: "; getline(std::cin, address);
+    }
     std::cout << "Input number of room's type: ";
     std::cin >> numbOfType;
+    while (!Utility::isValidInt(std::to_string(numbOfType))){
+
+    }
     for (int i = 0; i < numbOfType; i ++){
         std::cout << "Room type " << i + 1 << ": " << std::endl; 
         std::string type;
         int available, price;
         std::cout << "Room type: ";
-        std::cin >> type;
+        std::cin.ignore();
+        getline(std::cin, type);
+        while (!Utility::isValidPlace(type)){
+            std::cout << "Invalid type, try: "; getline(std::cin, type);
+        }
         std::cout << "Available: ";
-        std::cin >> available;
+        available = Utility::getCommandFromCLI();
         std::cout << "Price: "; 
-        std::cin >> price;
+        price = Utility::getCommandFromCLI();
         Room newRoom;
         newRoom.type = type;
         newRoom.available = available;
