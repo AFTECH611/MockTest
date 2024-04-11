@@ -1,20 +1,29 @@
-NewYorkHotelA1Single10100
-LosAngelesHotelB1Standard880
-ParisHotelC2Economy1260
-LondonHotelD1Standard1590
-TokyoHotelE1Single10120
-MoscowHotelF1Standard870
-BerlinHotelG1Economy1250
-RomeHotelH1Standard15100
-SydneyHotelI1Single10130
-ShanghaiHotelJ1Standard875
-BeijingHotelK1Economy1255
-SeoulHotelL1Standard15110
-BangkokHotelM1Single10140
-IstanbulHotelN1Standard885
-DubaiHotelO1Economy1265
-SingaporeHotelP1Standard15120
-MumbaiHotelQ1Single10150
-SaoPauloHotelR1Standard895
-MexicoCityHotelS1Economy1275
-NewDelhiHotelT1Standard15130
+Paris Le Grand Hôtel 3 Standard10100Deluxe5200Suite3300
+London The Royal Plaza 2 Standard15120Executive8250
+Tokyo Sakura Resort 4 City View20180Executive Suite10300Japanese Style3500Luxury Villa5700
+New York Manhattan Tower 3 Cityscape12150Penthouse6400Studio5200
+Rome Bella Vista Hotel 2 Classic18100Superior10180
+Sydney Harbour View Lodge 3 Standard15150Oceanfront8300Executive Suite4500
+Hong Kong Skyline Hotel 4 City View25200Harbour View12350Presidential Suite31000Family Room8400
+Berlin Imperial Palace 2 Classic2080Executive10200
+Dubai Oasis Resort 4 Desert View30250Luxury Suite15600Royal Villa51000
+Barcelona Mediterranean Bay 3 Standard22120Sea View10250Deluxe Suite6400
+Shanghai Silk Road Inn 2 Cityscape18150Executive Suite8350
+Singapore Marina Grand 4 City View25200Marina View12400Luxury Suite5800Family Room10350
+Florence Tuscan Retreat 2 Classic15100Renaissance8220
+Bangkok Thai Palace 3 Cityscape20150River View10300Grand Suite5600
+Venice Canal Grande Hotel 2 Standard12180Waterfront8350
+Seoul Skyline Tower 3 City View18180Mountain View10250Presidential Suite4800
+Moscow Kremlin Heights 4 Cityscape25200Red Square View12400Imperial Suite5700Family Room10350
+Toronto Maple Leaf Manor 3 City View20150Lake View10300Executive Suite5500
+Vienna Danube Palace 2 Classic15120River View8250
+Cairo Nileview Hotel 3 Cityscape20150Nile View10300Presidential Suite5600
+Amsterdam Canal View Inn 2 Standard12180Canal View8300
+Mumbai Bollywood Tower 3 Cityscape18150Luxury Suite10400Family Room5300
+Los Angeles Hollywood Heights 4 City View25200Hollywood View12400Luxury Suite5800Family Room10350
+Zurich Alpine Retreat 2 Mountain View15180Swiss Chalet8350
+Prague Bohemian Palace 3 Classic20120Castle View10300Royal Suite5600
+Budapest Danube Dream Hotel 2 Classic15120River View8250
+Istanbul Bosphorus Palace 3 Cityscape20150Bosphorus View10300Presidential Suite5600
+Lisbon Atlantic Vista 2 Standard12180Ocean View8300
+Athens Acropolis Tower 3 Cityscape20150Acropolis View10300Presidential Suite5600
