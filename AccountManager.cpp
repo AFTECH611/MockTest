@@ -138,7 +138,6 @@ void AccountManager::registerUser(){
     accounts.push_back(move(newUser));
     std::cout << "User account registered successfully." << std::endl;
     updateDatabase("./Database/Accounts.txt");
-
     Utility::delay();
     system("cls");
 }
